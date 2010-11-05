@@ -1,0 +1,48 @@
+<ul class="solrsearch-results-header" tal:condition="not: noHits">
+	<li class="count"><h4 class="title" tal:content="resultsHeader | default"></h4></li>
+	<li class="sorting">
+		<tal:block change:translate="&modules.solrsearch.frontoffice.Sort-byLabel;" />
+		<ol>
+		<span tal:condition="byScore" tal:omit-tag="">
+			<li class="first"><strong i18n:translate="&modules.solrsearch.frontoffice.Sort-by-score;"/></li>
+			<li class="last"><a class="link" change:currentPageLink="byDateParams" i18n:translate="&modules.solrsearch.frontoffice.Sort-by-date;"/></li>
+		</span>
+		<span tal:condition="not: byScore" tal:omit-tag="">
+			<li class="first"><a class="link" change:currentPageLink="byScoreParams" i18n:translate="&modules.solrsearch.frontoffice.Sort-by-score;"/></li>
+			<li class="last"><strong i18n:translate="&modules.solrsearch.frontoffice.Sort-by-date;"/></li>
+		</span>
+		</ol>
+	</li>
+</ul>
+
+<p tal:condition="noHits" class="solrsearch-no-hits">
+	<em i18n:translate="&modules.solrsearch.frontoffice.Search-results-emptyLabel;" />
+	<tal tal:replace="terms" />
+</p>
+
+	<p tal:condition="exists: suggestionParams/solrsearchParam" class="solrsearch-suggestions">
+		<tal i18n:translate="&modules.solrsearch.frontoffice.Search-suggestions;" tal:omit-tag=""/>
+		<a class="link" change:currentPageLink="suggestionParams" tal:content="suggestionParams/solrsearchParam/terms" />
+	</p>
+<ol class="solrsearch-results-list">
+	<tal:block tal:repeat="item searchResults">
+		<tal:block tal:condition="repeat/item/start" tal:define="global posclass string:first"/>
+		<tal:block tal:condition="not: repeat/item/start" tal:define="global posclass" />
+		<tal:block tal:condition="repeat/item/end" tal:define="global posclass string: last" />
+		<tal:block tal:define="global documentclass item/getResultType" />
+		<li tal:define="liclass string:$documentclass $posclass" tal:attributes="class liclass">
+			<h3 class="title">
+				<img change:gauge="item/getNormalizedScore" />
+				<a class="link" tal:condition="not: item/isMedia" change:link="document item/getDocument">
+					<strong tal:content="item/getHighlightedLabel"></strong>
+				</a>	
+			</h3>		
+			<tal:block tal:condition="item/isMedia">
+				<strong tal:content="item/getHighlightedLabel"/><a class="link" change:download="item/getDocument" />
+			</tal:block>			
+			<div change:include="module 'solrsearch'; template 'Solrsearch-Block-SearchresultDetail'; type 'html'; item item" />
+		</li>
+	</tal:block>
+</ol>
+
+<div change:paginator="paginator" />

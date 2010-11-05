@@ -1,0 +1,5 @@
+<span tal:repeat="item menu" tal:omit-tag="">
+	<a tal:condition="item/href" tal:attributes="href item/href; title item/label;" tal:content="item/label" />
+	<span tal:condition="not: item/href" tal:content="item/label" />
+	<span tal:condition="not: repeat/item/end" tal:omit-tag=""> | </span>
+</span>

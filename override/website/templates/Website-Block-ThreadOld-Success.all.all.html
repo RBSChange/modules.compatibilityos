@@ -1,0 +1,5 @@
+<ul tal:condition="breadcrumb" change:menu="menuObject breadcrumb; itemName item; masterUlClass thread; maxLevel -1; liFirstClass first; liLastClass last; flat true" tal:omit-tag="">
+<strong tal:condition="repeat/item/isCurrent" tal:content="item/getLabel"></strong>
+<a class="link" tal:condition="not: repeat/item/isCurrent" tal:attributes="href item/getUrl" tal:content="item/getLabel"></a><span tal:condition="not: repeat/item/end"> &gt; </span>
+</ul>
+<p tal:condition="emptyBreadcrumb" change:translate="&modules.website.bo.general.EmptyBreadcrumb;"/>

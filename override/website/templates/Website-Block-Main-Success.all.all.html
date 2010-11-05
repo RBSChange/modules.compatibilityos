@@ -1,0 +1,17 @@
+<ul change:menu="menuObject menu; itemName item; maxLevel 1; masterUlClass header-menu" tal:omit-tag="">
+<span tal:condition="repeat/item/isCurrent" tal:omit-tag="">
+<strong class="current"><span tal:content="item/getLabel" /></strong>
+</span>
+<span tal:condition="not: repeat/item/isCurrent" tal:omit-tag="">
+<span tal:condition="repeat/item/isDescendent" tal:omit-tag="">
+<strong class="current">
+<a tal:condition="item/hasUrl" tal:attributes="href item/getUrl" tal:content="item/getLabel"></a>
+<span tal:condition="not: item/hasUrl" tal:replace="item/getLabel"></span>
+</strong>
+</span>
+<span tal:condition="not: repeat/item/isDescendent" tal:omit-tag="">
+<a tal:condition="item/hasUrl" tal:attributes="href item/getUrl" tal:content="item/getLabel"></a>
+<span tal:condition="not: item/hasUrl" tal:replace="item/getLabel"></span>
+</span>
+</span>
+</ul>

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<dashboard-widget>
+	<title tal:content="title" />
+	<icon tal:attributes="image icon" />
+	<content tal:content="content" />
+</dashboard-widget>

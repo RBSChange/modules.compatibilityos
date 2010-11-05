@@ -1,0 +1,655 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<style tal:replace="cssInclusion" />
+<window i18n:attributes="title &modules.uixul.bo.richtext.link.Edit-title;"
+        orient="vertical"
+	    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	    onload="init();">
+
+	<script tal:replace="scriptInclusion" />
+
+	<script type="text/javascript"><![CDATA[
+
+	    var param = null;
+        var dynUrl = '${dynUrl}';
+        var languages = {${languages}};
+        var host = '${HOST}';
+        var documentId = '${documentId}';
+
+        function init()
+        {
+            window.resizeBy(20, 90);
+        	
+            param = wToolkit.getDialogParam();
+            wToolkit.setDialogReturnValue(false);
+
+            if (param
+            && param.opt
+            && param.opt.contentObject
+            && param.opt.contentObject.tagName)
+            {
+                if (param.opt.contentObject.tagName.toLowerCase() == "body")
+                {
+                    param.opt.contentObject = null;
+                }
+                else if (param.opt.contentObject.firstChild && !param.opt.contentObject.firstChild.tagName && (param.opt.contentObject.childNodes.length < 2))
+                {
+                    param.opt.contentObject = null;
+                }
+            }
+
+            var labelInput = document.getElementById("label");
+            if (param.opt && param.opt.contentObject)
+            {
+                if (param.opt.contentObject)
+                {
+                    labelInput.value = "${object}";
+                    labelInput.disable();
+                }
+                else if (param.opt.contentObject.firstChild && param.opt.contentObject.firstChild.data)
+                {
+                    labelInput.value = param.opt.contentObject.firstChild.data;
+                    labelInput.enable();
+                }
+
+            }
+            else if (param.opt && param.opt.contentText)
+            {
+                labelInput.value = param.opt.contentText;
+                labelInput.enable();
+            }
+            else if (param.node && param.node.firstChild && param.node.firstChild.data)
+            {
+                labelInput.value = param.node.firstChild.data;
+                labelInput.enable();
+            }
+
+            var langInput = document.getElementById("lang");
+            for (i in languages)
+            {
+                if (languages[i].substr(0, 1) == "!")
+            	{
+            	   langInput.addItem(i, languages[i].substr(1), null, true);
+            	}
+            	else
+            	{
+            	   langInput.addItem(i, languages[i], null, false);
+            	}
+            }
+
+            if (param.node && param.node.hasAttribute("lang"))
+            {
+                langInput.value = param.node.getAttribute("lang");
+            }
+            else
+            {
+                langInput.value = param.lang;
+            }
+
+            var hrefInput = document.getElementById("href");
+            if (dynUrl != '')
+            {
+                hrefInput.value = dynUrl.replace(host + '/', '');
+                hrefInput.disable();
+                document.getElementById("hrefauto").removeAttribute("collapsed");
+            }
+            else if (param.node && param.node.hasAttribute("href"))
+            {
+                hrefInput.value = param.node.getAttribute("href");
+                if (!hrefInput.value.match(/^(#|http:\/\/|https:\/\/|ftp:\/\/|mailto:)/i))
+                {
+                	hrefInput.value = host + '/' + hrefInput.value;
+                }
+                hrefInput.enable();
+                document.getElementById("hrefauto").setAttribute("collapsed", "true");
+            }
+            else
+            {
+                hrefInput.enable();
+                document.getElementById("hrefauto").setAttribute("collapsed", "true");
+            }
+
+            var titleInput = document.getElementById("title");
+            if (param.node && param.node.hasAttribute("title"))
+            {
+                titleInput.value = param.node.getAttribute("title");
+                titleInput.enable();
+            }
+            else if (param.opt && param.opt.contentObject)
+            {
+                if (param.opt.contentObject.hasAttribute && param.opt.contentObject.hasAttribute("alt"))
+                {
+                    titleInput.value = param.opt.contentObject.getAttribute("alt");
+                }
+                else if (param.opt.contentObject.hasAttribute && param.opt.contentObject.hasAttribute("title"))
+                {
+                    titleInput.value = param.opt.contentObject.getAttribute("title");
+                }
+                titleInput.enable();
+            }
+
+            var popupInput = document.getElementById("popup");
+            if (param.node && param.node.hasAttribute("popup"))
+            {
+                if (param.node.getAttribute("popup") == "true")
+                {
+                    popupInput.checked = true;
+                }
+                popupInput.enable();
+            }
+            
+            if (param.node && param.node.hasAttribute("rel"))
+            {
+                if (param.node.getAttribute("rel") == "nofollow")
+                {
+                    document.getElementById("nofollow").checked = true;
+                }
+            }
+            
+            var tooltipInput = document.getElementById("tooltip");
+            if (param.node && param.node.hasAttribute("class") && param.node.getAttribute("class").match(/tooltip/))
+            {
+                tooltipInput.checked = true;
+                tooltipInput.enable();
+            }
+            
+            refreshAvailableAnchors();
+
+            document.getElementById("wizard").submit = function ()
+            {
+                this.revalidate();
+			    if (this.isValid)
+				{
+				    if (param.opt && param.opt.useCommand)
+				    {
+				        if (!param.node)
+				        {
+    				        var htmlLang = document.getElementById("lang").value;
+
+                            if ((dynUrl == '') && (documentId == ''))
+                            {
+                                var htmlHref = document.getElementById("href").value;
+                            }
+                            else
+                            {
+                                var htmlHref = 'javascript:;" cmpref="' + documentId;
+                            }
+
+                            if (!param.opt.contentObject)
+                            {
+                                var htmlLabel = document.getElementById("label").value;
+                            }
+                            else
+                            {
+                                var htmlLabel = new XMLSerializer().serializeToString(param.opt.contentObject);
+                            }
+
+                            if (document.getElementById("title").value)
+                            {
+                                var htmlTitle = ' title="' + document.getElementById("title").value + '"';
+                            }
+                            else
+                            {
+                                var htmlTitle = '';
+                            }
+
+                            if (document.getElementById("popup").checked)
+                            {
+                                var htmlPopup = ' popup="true"';
+                            }
+                            else
+                            {
+                                var htmlPopup = '';
+                            }
+
+                       		if (document.getElementById("tooltip").checked)
+                       		{
+                               		var htmlClass = "link tooltip";
+                       		}
+                       		else
+                       		{
+                               		var htmlClass = "link";
+                       		}
+
+                        	if (document.getElementById("nofollow").checked)
+                       		{
+                               		var htmlRel = ' rel="nofollow"';
+                       		}
+                       		else
+                       		{
+                               		var htmlRel = '';
+                       		}  
+                       		
+    				        var insertedHtml = '<a href="' + htmlHref + '" class="' + htmlClass + '" lang="' + htmlLang + '" xml:lang="' + htmlLang + '"' + htmlTitle + htmlPopup + htmlRel + '>' + htmlLabel + '</a>';
+
+    				        param.richtext.applyStyle('replacehtml', insertedHtml);
+							param.richtext.resize();
+    				    }
+    				    else
+    				    {
+                    		if (document.getElementById("tooltip").checked)
+                    		{
+                            		param.node.setAttribute("class", "link tooltip");
+                    		}
+                    		else
+                    		{
+                            		param.node.setAttribute("class", "link");
+                    		}
+    				        param.node.setAttribute("lang", document.getElementById("lang").value);
+                            param.node.setAttribute("xml:lang", document.getElementById("lang").value);
+
+                            if (!param.opt.contentObject)
+                            {
+                                if (param.node.firstChild)
+            				    {
+            				        param.node.firstChild.data = document.getElementById("label").value;
+            				    }
+            				    else
+            				    {
+            				        var textNode = document.createTextNode(document.getElementById("label").value);
+            				        param.node.appendChild(textNode);
+            				    }
+                            }
+
+                            if ((dynUrl == '') && (documentId == ''))
+                            {
+                                param.node.setAttribute("href", document.getElementById("href").value);
+                            }
+                            else
+                            {
+                                param.node.setAttribute("href", "javascript:;");
+                                param.node.setAttribute("cmpref", documentId);
+                            }
+
+                            var title = document.getElementById("title").value;
+                            if (title != '')
+                            {
+                                param.node.setAttribute("title", title);
+                            }
+                            else
+                            {
+                                param.node.removeAttribute("title");
+                            }
+
+                            if (document.getElementById("popup").checked)
+                            {
+                                param.node.setAttribute("popup", "true");
+                            }
+                            else
+                            {
+                                param.node.removeAttribute("popup");
+                            }
+                            
+                            if (document.getElementById("nofollow").checked)
+                            {
+                                param.node.setAttribute("rel", "nofollow");
+                            }
+                            else
+                            {
+                            	param.node.removeAttribute("rel");
+                            }
+                            							
+							if (param.richtext)
+	                    	{
+	                    		//wCore.debug("SELECT NODE");
+	                    		param.richtext.selectNode(param.node);	                        	
+	                        	param.richtext.resize();
+	                        }
+    				    }
+				    }
+				    else
+				    {
+    				    if (!param.opt.contentObject)
+                        {
+        				    if (param.node.firstChild)
+        				    {
+        				        param.node.firstChild.data = document.getElementById("label").value;
+        				    }
+        				    else
+        				    {
+        				        var textNode = document.createTextNode(document.getElementById("label").value);
+        				        param.node.appendChild(textNode);
+        				    }
+        				}
+
+    				    param.node.setAttribute("lang", document.getElementById("lang").value);
+                        param.node.setAttribute("xml:lang", document.getElementById("lang").value);
+
+                        if (dynUrl == '')
+                        {
+                            param.node.setAttribute("href", document.getElementById("href").value);
+                        }
+
+                        var title = document.getElementById("title").value;
+                        if (title != '')
+                        {
+                            param.node.setAttribute("title", title);
+                        }
+                        else
+                        {
+                            param.node.removeAttribute("title");
+                        }
+
+                        if (document.getElementById("popup").checked)
+                        {
+                            param.node.setAttribute("popup", "true");
+                        }
+                        else
+                        {
+                            param.node.removeAttribute("popup");
+                        }
+                        
+                        if (document.getElementById("nofollow").checked)
+                        {
+                            param.node.setAttribute("rel", "nofollow");
+                        }
+                        else
+                        {
+                        	param.node.removeAttribute("rel");
+                        }
+                     
+                    	if (document.getElementById("tooltip").checked)
+                    	{
+                        	param.node.setAttribute("class", "link tooltip");
+                    	}
+                    	else
+                    	{
+                        	param.node.setAttribute("class", "link");
+                    	}
+	                        	    	
+                        if (param.richtext)
+                        {   
+                            if (param.opt && param.opt.isnew)
+                            {
+                                if (param.opt.contentObject)
+                                {
+                                    param.node.appendChild(param.opt.contentObject);
+                                }
+
+                                param.richtext.insertNode(param.node);
+                            }
+							//wCore.debug("SELECT NODE");
+                            param.richtext.selectNode(param.node);
+                        	param.richtext.resize();
+                        }
+                    }
+
+                    wToolkit.setDialogReturnValue(true);
+    				window.close();
+				}
+            };
+        }
+
+        function initRecap()
+        {
+            var langInput = document.getElementById("lang");
+            for (i in languages)
+            {
+                if (i == langInput.value)
+                {
+                    var langValue = languages[i];
+                }
+            }
+
+            var hrefInput = document.getElementById("href");
+            if (dynUrl != '')
+            {
+                var hrefValue = dynUrl.replace(host + '/', '') + " (auto)";
+            }
+            else
+            {
+                var hrefValue = hrefInput.value;
+            }
+
+            var titleInput = document.getElementById("title");
+            var titleValue = titleInput.value;
+
+            var popupInput = document.getElementById("popup");
+            if (popupInput.checked)
+            {
+                var popupInput = document.getElementById("yes-popup").getAttribute("value");
+            }
+            else
+            {
+                var popupInput = document.getElementById("no-popup").getAttribute("value");
+            }
+
+            var tooltipInput = document.getElementById("tooltip");
+            if (tooltipInput.checked)
+            {
+                var tooltipInput = document.getElementById("yes-popup").getAttribute("value");
+            }
+            else
+            {
+                var tooltipInput = document.getElementById("no-popup").getAttribute("value");
+            }
+            var nofollowValue = null;
+            if (document.getElementById("nofollow").checked)
+            {
+                nofollowValue = document.getElementById("yes-popup").getAttribute("value");
+            }
+            else
+            {
+            	nofollowValue = document.getElementById("no-popup").getAttribute("value");
+            }
+
+            document.getElementById("recap-label").setAttribute("value", document.getElementById("label").value);
+            document.getElementById("recap-href").setAttribute("value", hrefValue);
+            document.getElementById("recap-lang").setAttribute("value", langValue);
+            document.getElementById("recap-title").setAttribute("value", titleValue);
+            document.getElementById("recap-popup").setAttribute("value", popupInput);
+            document.getElementById("recap-tooltip").setAttribute("value", tooltipInput);
+            document.getElementById("recap-nofollow").setAttribute("value", nofollowValue);
+        }
+        
+        function refreshAvailableAnchors()
+        {                 
+            var availableList = document.getElementById('anchor-list');            
+            while (availableList.childNodes.length > 1)
+            {
+                availableList.removeItemAt(1);
+            }
+            var content = "";
+            if (param.editor)
+            {
+            	var editor = window.opener.document.getElementById('mainEditor');
+	            content = editor.layouts[0].getContent();
+            }
+            else if (param.richtext)
+            {
+            	content = param.richtext.value;
+            }
+            var anchorsRegExp = /<a[^>]+name="([^"]+)"[^>]*>/gi;
+            var titleRegExp = /title="([^"]+)"/gi;
+            var hrefInput = document.getElementById("href");
+        	while (anchorMatch = anchorsRegExp.exec(content))
+            {
+            	var titleMatch = titleRegExp.exec(anchorMatch[0]);
+            	var title =  (titleMatch) ? titleMatch[1] : anchorMatch[1];
+                var newItem = availableList.appendItem(title, anchorMatch[1]);
+                if (hrefInput.value == ("#" + newItem.value))
+                {
+                	availableList.selectItem(newItem);
+                }
+            }
+        }
+        
+        function handleAnchorSelect(list, copyLabel)
+        {
+        	var hrefInput = document.getElementById("href");
+        	if (list.selectedItem.value != "")
+        	{
+        		hrefInput.value = "#" + list.selectedItem.value;
+        		hrefInput.disable();
+        	}
+        	else
+        	{
+        		hrefInput.value = "";
+        		hrefInput.enable();
+        	}
+        	
+        	if (copyLabel && (list.selectedItem.value != ""))
+        	{
+        		document.getElementById("label").value = list.selectedItem.label;
+        	}
+        }
+	]]></script>
+
+	<vbox id="container">
+
+    <wcontroller>
+
+    	<wwizard debug="true" i18n:attributes="title &modules.uixul.bo.richtext.link.Edit-title;" width="450px" id="wizard" standalone="true">
+
+    		<wwizardpanel
+    			panelId="welcome"
+                i18n:attributes="title &modules.uixul.bo.richtext.link.Edit-headerLabel;"
+    			change:icon="link_edit/big shadow">
+
+    			<vbox>
+
+        			<groupbox>
+
+        			    <caption i18n:attributes="label &modules.uixul.bo.richtext.link.Edit-Mandatory;"/>
+
+        			    <grid>
+                    		<columns>
+                    			<column />
+                    			<column />
+                    		</columns>
+                    		<rows>
+                    		   <row align="center">
+                    			    <label i18n:attributes="value &modules.uixul.bo.richtext.link.Edit-LabelLabel;" />
+                    				<wtextbox name="label" id="label">
+                    				    <constraint name="blank">false</constraint>
+                    					<constraint name="maxSize">80</constraint>
+                    				</wtextbox>
+                    		   </row>
+
+                    		   <row align="center">
+                    			    <label i18n:attributes="value &modules.uixul.bo.richtext.link.Edit-HrefLabel;" />
+                    				<wtextbox name="href" id="href">
+                    				    <constraint name="url">true</constraint>
+                    					<constraint name="blank">false</constraint>
+                    				</wtextbox>
+                    		   </row>
+                    		   
+                    		   <row pack="end">
+                    		   		<spacer/>
+                    			    <hbox align="right">
+	                    			    <label i18n:attributes="value &modules.uixul.bo.richtext.link.Edit-AnchorLinkLabel;" />
+	                    			    <listbox id="anchor-list" rows="4" onselect="handleAnchorSelect(this);" ondblclick="handleAnchorSelect(this, true);">
+										  <listitem i18n:attributes="label &modules.uixul.bo.richtext.link.Edit-anchornone;" value="" style="font-style: italic; border-bottom: 1px dotted silver;"/>
+										</listbox>
+            		           		</hbox>
+            		           </row>
+
+            		           <hbox id="hrefauto" align="right" style="margin-bottom: 15px;" collapsed="true">
+                    			    <image change:icon="warning/small shadow" />
+            		                <label i18n:attributes="value &modules.uixul.bo.richtext.link.Edit-HrefAutomatic;" />
+            		           </hbox>
+
+            			       <row align="center">
+                        			<label i18n:attributes="value &modules.uixul.bo.richtext.link.Edit-LangLabel;" />
+                    				<wcombobox name="lang" id="lang">
+                    					<constraint name="blank">false</constraint>
+                    				</wcombobox>
+                    		   </row>
+                    	    </rows>
+            		    </grid>
+
+        		    </groupbox>
+
+        		    <groupbox>
+
+        			    <caption i18n:attributes="label &modules.uixul.bo.richtext.link.Edit-Optional;"/>
+
+        			    <grid>
+                    		<columns>
+                    			<column />
+                    			<column />
+                    		</columns>
+                    		<rows>
+                    			<row align="center">
+                    			    <label i18n:attributes="value &modules.uixul.bo.richtext.link.Edit-TitlepropLabel;" />
+                    				<wtextbox name="title" id="title">
+                    				    <constraint name="maxSize">80</constraint>
+                    				</wtextbox>
+                    		    </row>
+
+            		           <wcheckbox show-indicator="false" id="popup" name="popup" value="yes" i18n:attributes="label &modules.uixul.bo.richtext.link.Edit-popup;" />
+            		           <wcheckbox show-indicator="false" id="tooltip" name="tooltip" value="yes" i18n:attributes="label &modules.uixul.bo.richtext.link.Edit-tooltip;" />
+							   <wcheckbox show-indicator="false" id="nofollow" name="nofollow" value="no" i18n:attributes="label &modules.uixul.bo.richtext.link.Edit-nofollow;" />
+                    	    </rows>
+            		    </grid>
+
+        		    </groupbox>
+
+        	    </vbox>
+
+    		</wwizardpanel>
+
+    		<wwizardpanel
+    			panelId="congratulations"
+    			i18n:attributes="title &modules.uixul.bo.richtext.link.Edit-recapLabel;"
+    			change:icon="check/big shadow">
+
+    			<behaviour>
+
+    				<onShow><![CDATA[
+        				initRecap();
+    			    ]]></onShow>
+
+    			</behaviour>
+
+    			<label id="yes-popup" i18n:attributes="value &modules.uixul.bo.general.Yes;" collapsed="true" />
+    			<label id="no-popup" i18n:attributes="value &modules.uixul.bo.general.No;" collapsed="true" />
+
+    			<grid>
+            		<columns>
+            			<column />
+            			<column />
+            		</columns>
+            		<rows>
+            		    <row align="center">
+            			    <label i18n:attributes="value &modules.uixul.bo.richtext.link.Edit-LabelLabel;" />
+            			    <label id="recap-label" />
+            		    </row>
+            		    <row align="center">
+            			    <label i18n:attributes="value &modules.uixul.bo.richtext.link.Edit-HrefLabel;" />
+            			    <label id="recap-href" />
+            		    </row>
+            		    <row align="center">
+            			    <label i18n:attributes="value &modules.uixul.bo.richtext.link.Edit-LangLabel;" />
+            			    <label id="recap-lang" />
+            		    </row>
+            			<row align="center">
+            			    <label i18n:attributes="value &modules.uixul.bo.richtext.link.Edit-TitlepropLabel;" />
+            			    <label id="recap-title" />
+            		    </row>
+            		    <row align="center">
+            			    <label i18n:attributes="value &modules.uixul.bo.richtext.link.Edit-PopupShortLabel;" />
+            			    <label id="recap-popup" />
+            		    </row>
+            		    <row align="center">
+            			    <label i18n:attributes="value &modules.uixul.bo.richtext.link.Edit-TooltipShortLabel;" />
+            			    <label id="recap-tooltip" />
+            		    </row>
+            		    <row align="center">
+            			    <label i18n:attributes="value &modules.uixul.bo.richtext.link.Edit-NofollowShortLabel;" />
+            			    <label id="recap-nofollow" />
+            		    </row>
+            	    </rows>
+    		    </grid>
+
+    			<description i18n:translate="&modules.uixul.bo.wizard.Submit-desc;" style="margin-top: 15px; font-weight: bold;" />
+
+    		</wwizardpanel>
+
+    	</wwizard>
+
+    </wcontroller>
+
+	</vbox>
+
+</window>

@@ -1,0 +1,9 @@
+<h3 i18n:translate="&modules.topics.frontoffice.sidebar.Title;" />
+<ul id="sidebar-menu">
+	
+	<span tal:repeat="item menu">
+		<li tal:condition="item/href"><a tal:attributes="href item/href; title item/label;" tal:content="item/label" /></li>
+		<li tal:condition="not: item/href" tal:content="item/label" />
+	</span>
+	
+</ul>

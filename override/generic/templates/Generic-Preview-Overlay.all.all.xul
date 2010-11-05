@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<overlay id="toverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+	<label id="preview-label-${id}-${lang}" tal:content="label" />
+	<image id="preview-icon-${id}-${lang}" tal:attributes="src icon" />
+	<box id="preview-content-${id}-${lang}" tal:content="contents">
+	</box>
+</overlay>

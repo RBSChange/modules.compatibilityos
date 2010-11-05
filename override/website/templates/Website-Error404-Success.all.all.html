@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+	<head>
+		<title tal:content="title">Error 404 - Not found</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<style>
+			body, h1, h2, p {
+				font-family	: Arial, Sans-serif;
+				background	: white;
+			}
+			body, p {
+				color		: #888;
+			}
+			h1 {
+				font-size		: 16pt;
+				text-transform	: lowercase;
+				padding-bottom	: 5px;
+				font-style		: italic;
+				border-bottom	: 2px solid black;
+				color			: black;
+			}
+			h2 {
+				font-size		: 12pt;
+				color			: black;
+				margin			: 20px 0px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>${title}</h1>
+	
+		<h2 tal:condition="requestedUrl">${requestedUrl}</h2>
+	
+		<p change:translate="modules.website.frontoffice.Not-found-long-message"></p>
+	
+		<p>
+			<a href="/" change:translate="modules.website.frontoffice.Back-to-homepage"></a>
+		</p>
+	
+		<p tal:condition="lastVisitedUrl">
+			<a tal:attributes="href lastVisitedUrl" change:translate="modules.website.frontoffice.Back-to-previous-visited-page"></a>
+		</p>
+	</body>
+</html>
