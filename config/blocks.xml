@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blocks>
+	<!-- Contactcard -->
+	<block type="modules_contactcard_detail" icon="contactcard" label="&amp;modules.contactcard.bo.blocks.Detail;" />
+
+	<!-- FAQ -->
+	<block type="modules_faq_contextuallist" icon="list-block" label="&amp;modules.faq.bo.blocks.contextualList.title;" hidden="true">
+		<parameters>
+			<parameter name="order" type="String" min-occurs="1" default-value="manual" fieldtype="dropdownlist" hidehelp="true">
+				<fieldlistitem value="manual" labeli18n="modules.faq.bo.general.Manual" />
+				<fieldlistitem value="alpha" labeli18n="modules.faq.bo.general.Alphanumeric" />
+			</parameter>
+			<parameter name="navigation" type="Boolean" min-occurs="1" default-value="onlycontainer" fieldtype="dropdownlist" hidehelp="true">
+				<fieldlistitem value="onlycontainer" labeli18n="modules.faq.bo.general.OnlyContainer" />
+				<fieldlistitem value="navigation" labeli18n="modules.faq.bo.general.WithNavigation" />
+			</parameter>
+			<parameter name="nbItemsPerPage" type="Integer" min-occurs="1" default-value="10" hidehelp="true">
+				<constraints>min:1</constraints>
+			</parameter>
+		</parameters>
+	</block>
+	<block type="modules_faq_topic" icon="list-block" label="&amp;modules.faq.bo.blocks.topic.Title;" hidden="true">
+		<parameters>
+			<parameter name="order" type="String" min-occurs="1" default-value="manual" fieldtype="dropdownlist" hidehelp="true">
+				<fieldlistitem value="manual" labeli18n="modules.faq.bo.general.Manual" />
+				<fieldlistitem value="alpha" labeli18n="modules.faq.bo.general.Alphanumeric" />
+			</parameter>
+			<parameter name="navigation" type="Boolean" min-occurs="1" default-value="onlycontainer" fieldtype="dropdownlist" hidehelp="true">
+				<fieldlistitem value="onlycontainer" labeli18n="modules.faq.bo.general.OnlyContainer" />
+				<fieldlistitem value="navigation" labeli18n="modules.faq.bo.general.WithNavigation" />
+			</parameter>
+			<parameter name="nbItemsPerPage" type="Integer" min-occurs="1" default-value="10" hidehelp="true">
+				<constraints>min:1</constraints>
+			</parameter>
+		</parameters>
+	</block>
+
+	<!-- Solrserach -->
+	<block type="modules_solrsearch_searchform" icon="form" label="&amp;modules.solrsearch.bo.blocks.Searchform;" hidden="true" />
+	<block type="modules_solrsearch_searchresults" icon="list-block" label="&amp;modules.solrsearch.bo.blocks.Searchresults;" hidden="true">
+		<parameters>
+			<parameter name="displaysuggestions" type="Boolean" default-value="true" />
+		</parameters>
+	</block>
+
+	<!-- Website -->
+	<block type="empty" icon="selection" hidden="true" label="&amp;modules.uixul.bo.layout.EmptyBlock;" />
+	<block type="modules_website_copyright" hidden="true" label="&amp;modules.website.bo.blocks.Copyright;" />
+	<block type="modules_website_footer" hidden="true" label="&amp;modules.website.bo.blocks.Footer;" />
+	<block type="modules_website_header" hidden="true" label="&amp;modules.website.bo.blocks.Header;" />
+	<block type="modules_website_main" hidden="true" label="&amp;modules.website.bo.blocks.Main;" />
+	<block type="modules_website_quicklinks" hidden="true" label="&amp;modules.website.bo.blocks.Quicklinks;" />
+	<block type="modules_website_sidebar" hidden="true" label="&amp;modules.website.bo.blocks.Sidebar;" />
+	<block type="modules_website_threadOld" hidden="true" afterAll="true" />
+	<block type="modules_website_xhtmltemplate" hidden="true" label="&amp;modules.website.bo.blocks.Xhtmltemplate.Title;">
+		<parameters>
+			<parameter name="template" type="String" default-value="" />
+			<parameter name="usecache" type="Boolean" default-value="false" />
+		</parameters>
+	</block>
+</blocks>
