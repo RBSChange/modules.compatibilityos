@@ -3,7 +3,7 @@
 	<module>
 		<enabled>true</enabled>
 		<visible>false</visible>
-		<icon>package</icon>
+		<icon>compatibility</icon>
 		<usetopic>true</usetopic>
 	</module>
 </config>
