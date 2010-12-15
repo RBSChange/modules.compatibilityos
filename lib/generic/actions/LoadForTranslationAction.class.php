@@ -16,7 +16,7 @@ class generic_LoadForTranslationAction extends f_action_BaseAction
 		$document = DocumentHelper::getDocumentInstance($documentId);
 
 		$request->setAttribute('document', $document);
-		$request->setAttribute('contents', DocumentHelper::toXmlFormForTranslation($document));
+		$request->setAttribute('contents', compatibilityos_DocumentHelper::toXmlFormForTranslation($document));
 		return self::getSuccessView();
 	}
 	

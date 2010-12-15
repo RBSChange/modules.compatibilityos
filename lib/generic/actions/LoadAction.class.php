@@ -13,7 +13,7 @@ class generic_LoadAction extends f_action_BaseAction
 		$docId = $this->getDocumentIdFromRequest($request);
 		$document = $this->getDocumentService()->getDocumentInstance($docId);
 		$request->setAttribute('document', $document);
-		$request->setAttribute('contents', DocumentHelper::toXmlForm($document));
+		$request->setAttribute('contents', compatibilityos_DocumentHelper::toXmlForm($document));
 
 		return self::getSuccessView();
 	}
