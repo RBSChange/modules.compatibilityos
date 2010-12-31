@@ -288,9 +288,9 @@ class tree_parser_XmlTreeParser extends tree_parser_TreeParser
 			 * Charge tout les identifiants de noeud possedant des permissions
 			 */
 			$this->permissionned_nodes = f_persistentdocument_PersistentProvider::getInstance()->getPermissionDefinitionPoints('modules_' . $this->moduleName);
-			
+			$cModule = ModuleService::getInstance()->getModule($this->moduleName);
 			// "Topic Mode" (on trees only) with ordering by Parent ID :
-			if (($this->getTreeType() == self::TYPE_TREE) && defined('MOD_' . strtoupper($this->moduleName) . '_USETOPIC') && (constant('MOD_' . strtoupper($this->moduleName) . '_USETOPIC') == true))
+			if (($this->getTreeType() == self::TYPE_TREE) && $cModule->isTopicBased())
 			{
 				$this->useTopic = true;
 				// Sorting is now done in generic_persistentdocument_rootfolder::getTopicsArray()

@@ -23,8 +23,7 @@ class uixul_ElementPickerPopupSuccessView extends f_view_BaseView
 				foreach ($availableModules as $availableModuleName)
 				{
 				    $availableShortModuleName = substr($availableModuleName, strpos($availableModuleName, '_') + 1);
-		            if (defined('MOD_' . strtoupper($availableShortModuleName) . '_VISIBLE')
-				    && (constant('MOD_' . strtoupper($availableShortModuleName) . '_VISIBLE') == true))
+		            if ( ModuleService::getInstance()->getModule($availableShortModuleName)->isVisible())
 				    {
 				    	$documents[] = $availableModuleName;
 				    }
@@ -103,8 +102,8 @@ class uixul_ElementPickerPopupSuccessView extends f_view_BaseView
         // Module widgets :
 		foreach ($modules as $module)
         {
-	        if (defined('MOD_' . strtoupper($module) . '_VISIBLE')
-		    && (constant('MOD_' . strtoupper($module) . '_VISIBLE') == true))
+        	$cModule = ModuleService::getInstance()->getModule($module);
+	        if ($cModule->isVisible())
 		    {
 		        $link = LinkHelper::getUIChromeActionLink('uixul', 'GetStylesheet')
 		        	->setQueryParametre('uilang', RequestContext::getInstance()->getUILang())
@@ -117,16 +116,7 @@ class uixul_ElementPickerPopupSuccessView extends f_view_BaseView
 					"selector"   => "default",
 					"components" => join(" ", $documentTypesPerModule[$module])
 					);
-
-                if (defined('MOD_' . strtoupper($module) . '_ICON'))
-    		    {
-                    $icon = constant('MOD_' . strtoupper($module) . '_ICON');
-    		    }
-    		    else
-    		    {
-    		        $icon = 'component';
-    		    }
-    		    $icon = MediaHelper::getIcon($icon, MediaHelper::SMALL);
+    		    $icon = MediaHelper::getIcon($cModule->getIconName(), MediaHelper::SMALL);
 
     		    $label = f_Locale::translate('&modules.' . $module . '.backoffice.ModuleName;');
     	        $moduleButtons[$label] = array(

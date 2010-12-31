@@ -47,17 +47,10 @@ class uixul_EditLocaleInputView extends f_view_BaseView
             'moduleLabel',
             f_Locale::translateUI('&modules.' . $moduleName . '.bo.general.Module-Name;')
         );
-
-        if (defined('MOD_' . strtoupper($moduleName) . '_ICON'))
-	    {
-            $icon = constant('MOD_' . strtoupper($moduleName) . '_ICON');
-	    }
-	    else
-	    {
-	        $icon = 'component';
-	    }
-
-        $this->setAttribute('moduleIcon', MediaHelper::getIcon($icon, MediaHelper::COMMAND, null, MediaHelper::LAYOUT_SHADOW));
+		$cModule = ModuleService::getInstance()->getModule($moduleName);
+		
+        $icon = $cModule->getIconName();
+        $this->setAttribute('moduleIcon', MediaHelper::getIcon($icon, MediaHelper::SMALL));
 
         $this->setAttribute('defaultLanguages', f_util_StringUtils::php_to_js(RequestContext::getInstance()->getSupportedLanguages()));
 
