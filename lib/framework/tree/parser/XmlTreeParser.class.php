@@ -629,7 +629,7 @@ class tree_parser_XmlTreeParser extends tree_parser_TreeParser
 			$nodeAttributes = array();
 		}
 		
-		$document->buildTreeAttributes($this->moduleName, $this->getTreeType(), $nodeAttributes);
+		$document->getDocumentService()->addTreeAttributes($document, $this->moduleName, $this->getTreeType(), $nodeAttributes);
 		
 		if (isset($nodeAttributes[self::ATTRIBUTE_PUBLICATED]))
 		{
