@@ -716,11 +716,10 @@
 					if (srcIds.length > 0)
 					{
 						this._locateAfterMove = srcIds[0];
-					
+						
     					wCore.executeJSON(this.name, "Move", {
     							{K::COMPONENT_ID_ACCESSOR}: srcIds,
     							{K::LANG_ACCESSOR}: this.getContextLang(),
-    							{K::PARENT_ID_ACCESSOR}: parentIds,
     							{K::DESTINATION_ID_ACCESSOR}: destId
     						}
     					);
