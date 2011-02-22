@@ -264,7 +264,7 @@ wToolkit.startUploadFile = function (file, target, sender)
         muxInput.appendStream(footerInput);
         // INIT REQUEST :
         var request = new wServerRequest(controller.controllerUrl, 'post');
-		request.label = "&modules.media.backoffice.progress;";
+		request.label = "&modules.media.bo.general.progress;";
 		request.addParameter('module', 'media');
 		request.addParameter('action', 'Upload');
 		request.addParameter('filename', file.leafName);
