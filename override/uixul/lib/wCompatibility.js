@@ -18,11 +18,14 @@ function setupCompatibility(event)
 	wCore.debug('setupCompatibility');
 	
 	// wForm.
-	
-	var form = document.createElement('wform');
-	form.setAttribute('id', 'searchResultEditForm');
-	form.setAttribute('attachment', 'globalSearchResultsList/editcomponent');
-	document.getElementById('wmodule_searchresults').appendChild(form);
+	var wSearchResults = document.getElementById('wmodule_searchresults'); 
+	if (wSearchResults)
+	{
+		var form = document.createElement('wform');
+		form.setAttribute('id', 'searchResultEditForm');
+		form.setAttribute('attachment', 'globalSearchResultsList/editcomponent');
+		wSearchResults.appendChild(form);
+	}
 	
 	// Controller.
 	
