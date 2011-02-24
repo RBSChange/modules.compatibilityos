@@ -217,3 +217,16 @@ wrolecondition{
 wsearchresults{
 	-moz-binding: url(binding:widgets.wSearchResults#wSearchResults);
 }
+
+crichtextblocktoolbar{
+	-moz-binding: url(binding:deprecated.cRichTextBlockToolbar#cRichTextBlockToolbar);
+}
+clayouttoolbar{
+	-moz-binding: url(binding:deprecated.cLayoutToolbars#cLayoutToolbar);
+}
+wblocktoolbar{
+	-moz-binding: url(binding:deprecated.cLayoutToolbars#wBlockToolbar);
+}
+wblocktoolbar[type="empty"]{
+	-moz-binding: url(binding:deprecated.cLayoutToolbars#wEmptyToolbar);
+}
