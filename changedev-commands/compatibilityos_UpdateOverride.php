@@ -60,7 +60,7 @@ class commands_compatibilityos_UpdateOverride extends commands_AbstractChangeCom
 		$this->loadFramework();
 		
 		$module = $params[0];		
-		$from = f_util_FileUtils::buildDocumentRootPath('modules', 'compatibilityos', 'override', $module);
+		$from = f_util_FileUtils::buildWebeditPath('modules', 'compatibilityos', 'override', $module);
 		$dest = f_util_FileUtils::buildOverridePath('modules', $module);
 		$this->cpDir($from, $dest);
 			
