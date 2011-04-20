@@ -1,0 +1,177 @@
+ul.header-menu li a.link{
+	color: #205d97/*@var menuheaderfgcolor*/;
+	text-decoration: none/*@var menuheadertextdecoration*/;
+}
+ul.header-menu li a.link:hover{
+	color: #000/*@var menuheaderhoverfgcolor*/;
+	text-decoration: none/*@var menuheaderhovertextdecoration*/;
+}
+ul.header-menu li.current strong{
+	color: #000/*@var menuheadercurrentfgcolor*/;
+}
+ul.header-menu li span{
+	color: #000/*@var menuheaderseparator*/;
+}
+ul.tagged-menu-horizontal{
+	font-family: "Trebuchet MS", verdana, arial, helvetica, sans-serif/*@var menumaintopfontfamily*/;
+}
+ul.tagged-menu-horizontal li a.link{
+	padding: 6px 18px;
+    display: block;
+	color: #205d97/*@var menumaintopfgcolor*/;
+	text-decoration: none/*@var menumaintoptextdecoration*/;
+}
+
+ul.tagged-menu-horizontal li strong{
+	padding: 6px 18px;
+    display: block;
+}
+
+ul.tagged-menu-horizontal li a.link:hover{
+	color: #000/*@var menumaintophoverfgcolor*/;
+	text-decoration: none/*@var menumaintophovertextdecoration*/;
+	background-color: transparent/*@var menumaintophoverlibgcolor*/;
+	background-image: /*@var menumaintophoverimage*/;
+	background-position: top left/*@var menumaintophoverimageposition*/;
+	background-repeat: no-repeat/*@var menumaintophoverimagerepeat*/;
+}
+ul.tagged-menu-horizontal li.current strong{
+	color: #000/*@var menumaintopcurrentfgcolor*/;
+}
+ul.thread li a.link{
+	color: #205d97/*@var threadafgcolor*/;
+	text-decoration: none/*@var threadatextdecoration*/;
+}
+ul.thread li a.link:hover{
+	color: #000/*@var threadahoverfgcolor*/;
+	text-decoration: none/*@var threadahovertextdecoration*/;
+}
+ul.footer-menu li a.link{
+	color: #205d97/*@var menufooterfgcolor*/;
+	text-decoration: none/*@var menufootertextdecoration*/;
+}
+ul.footer-menu li a.link:hover{
+	color: #000/*@var menufooterhoverfgcolor*/;
+	text-decoration: none/*@var menufooterhovertextdecoration*/;
+}
+ul.footer-menu li.current strong{
+	color: #000/*@var menufootercurrentfgcolor*/;
+}
+ul.footer-menu li span{
+	color: #000/*@var menufooterseparator*/;
+}
+
+ul.header-menu{
+	padding: 16px 10px 0 10px;
+}
+ul.header-menu li{
+	display: inline;
+}
+ul.tagged-menu-horizontal li{
+	float: left;
+	display: block;
+	background-color: transparent;
+	border-color: transparent;
+}
+
+ul.thread li{
+	display: inline;
+}
+ul.thread li strong{
+	color: #000/*@var threadcurrentfgcolor*/;
+}
+ul.thread li span{
+	color: #205D97/*@var threadseparatorcolor*/;
+}
+
+ul.footer-menu li{
+	display: inline;
+}
+
+.modules-website-switchlanguage ul{
+	padding: 16px 10px 0;
+}
+ 
+.modules-website-switchlanguage ul li{
+	display: inline;
+}
+ 
+.modules-website-switchlanguage ul li a.link{
+	color: #205d97/*@var menuheaderfgcolor*/;
+	text-decoration: none/*@var menuheadertextdecoration*/;
+}
+.modules-website-switchlanguage ul li a.link:hover{
+	color: #000/*@var menuheaderhoverfgcolor*/;
+	text-decoration: none/*@var menuheaderhovertextdecoration*/;
+}
+
+
+.modules-website-thread{
+	padding: 0 10px 10px 10px;
+	float: left;
+}
+
+.modules-website-thread span{
+	color: #205d97;
+}
+
+.modules-website-contextualmenu h3{
+	padding: 6px 10px;
+	border: none;
+	margin: 0;
+}
+
+.modules-solrsearch-searchform,
+.modules-solrsearch-form{
+	padding: 10px 10px 4px 10px;
+}
+
+.modules-website-sitemap li{
+	padding: 0 0 4px 60px;
+	font-size: 1.3em;
+	list-style-type: disc/*@var ultype*/;
+	list-style-position: inside;
+}
+
+.modules-website-sitemap li li{
+	font-size: 0.9em;
+}
+
+.modules-website-sitemap li li li{
+	font-size: 0.8em;
+}
+
+.benchtimes{
+	clear: both;
+	border: 1px solid yellow;
+	background-color: #ffffca;
+	text-align: left;
+	position: absolute;
+	top: 5px;
+	left: 5px;
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+	font-family: Arial;
+	font-size: 12px;
+}
+
+.benchtimes div.title{
+	cursor: pointer;
+	text-decoration: underline;
+	color: blue;
+}
+
+.benchtimes ul {
+	clear: both;
+}
+
+.benchtimes li.block {
+	cursor: pointer;
+}
+.benchtimes li.block strong {
+	text-decoration: underline;
+	color: blue;
+}
+
+@import url(/modules/website/style/content.css);
+@import url(/modules/website/style/form.css);

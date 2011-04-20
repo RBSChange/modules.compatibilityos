@@ -1,0 +1,242 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,window{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+}
+h1,h2,h3,h4,h5,h6{
+	font-weight: normal;
+}
+/*
+:focus{
+	outline: 0;
+}*/
+ol,ul{
+	list-style-type: none;
+}
+table{
+	border-collapse: separate;
+	border-spacing: 0;
+}
+caption,th,td{
+	text-align: left;
+	font-weight: normal;
+}
+blockquote:before,blockquote:after,q:before,q:after{
+	content: "";
+}
+blockquote,q{
+	quotes: "" "";
+}
+
+textarea,input,select{
+	font-family:inherit;
+	font-size:100%;
+}
+
+form label{
+	cursor:pointer;
+}
+
+fieldset{
+	border:none;
+}
+
+.freeLocation{
+	clear: left;
+	width: 100%;
+}
+.freeBlock{
+	float: left;
+	width: 100%;
+}
+acronym,abbr{
+	cursor: help;
+	border-bottom: 1px dotted;
+}
+ul.normal li{
+	list-style-position: inside;
+}
+ol.normal li{
+	list-style-position: inside;
+}
+table.normal{
+	empty-cells: show;
+	border-collapse: collapse;
+	width: 100%;
+	font-size: 1em;
+}
+table.normal caption{
+	text-align: left;
+	font-weight: normal;
+}
+table.normal tr td,table.normal tr th{
+	padding: 6px 0px;
+}
+table.normal tr th{
+	font-weight: bold;
+}
+.pagination{
+	clear: both;
+	padding: 5px 0 5px 0;
+	margin-bottom: 24px;
+}
+.pagination ul li{
+	margin-right: 5px;
+	display: inline;
+}
+.pagination span.detail{
+	float: right;
+	margin-left: 5px;
+}
+.website-block{
+	width: 100%;
+	float: left;
+	margin-bottom: 16px;
+}
+.row-100{
+	width: 100%;
+}
+.column-50{
+	width: 49%;
+	float: left;
+}
+.column-25{
+	width: 24%;
+	float: left;
+}
+.column-75{
+	width: 74%;
+	float: left;
+}
+.column-33{
+	width: 32%;
+	float: left;
+}
+.column-66{
+	width: 66%;
+	float: left;
+}
+.margin-left{
+	margin-left: 1%;
+}
+.margin-right{
+	margin-right: 1%;
+}
+.removable{
+	display: table-cell;
+	height: 100%;
+}
+.cleaner{
+	clear: both;
+	width: 100%;
+}
+.float-left,
+.floatLeft{
+	float: left;
+}
+
+.float-right,
+.floatRight{
+	float: right;
+}
+
+img.float-left{
+	float: left;
+	margin-right: 10px;
+}
+
+img.float-right{
+	float: right;
+	margin-left: 10px;
+}
+
+.text-align-left{
+	text-align: left;
+}
+.text-align-right{
+	text-align: right;
+}
+.text-align-center{
+	text-align: center;
+}
+.text-align-justify{
+	text-align: justify;
+}
+.display-none{
+	display: none;
+}
+.display-inline{
+	display: inline;
+}
+.hidden{
+	position: absolute;
+	left: -10000px;
+}
+ul.mini-navigation{
+	text-align:right;
+	width:100%;
+	padding:10px 0;
+}
+
+.block-error{
+	border: 1px dashed red;
+	padding: 5px 5px 5px 20px;
+	max-width: 180px;
+	max-height: 60px;
+	overflow: auto;
+	text-align: left;
+	background: #ff8888 center left no-repeat;
+	font-size: 10px;
+	color: #220000;
+	opacity: 0.7;
+}
+.block-message{
+	border: 1px dashed green;
+	padding: 5px 5px 5px 20px;
+	max-width: 180px;
+	max-height: 60px;
+	overflow: auto;
+	text-align: left;
+	background: #88ff88 center left no-repeat;
+	font-size: 10px;
+	color: #220000;
+	opacity: 0.7;
+}
+.link-broken,a.link-broken:hover,a.link-broken:active,a.link-broken:visited{
+	text-decoration: line-through;
+	color: red;
+}
+.image{
+	margin: 0;
+}
+img.float-left,img.floatLeft{
+	padding: 0;
+	margin-right: 10px/*@var imgmargin*/;
+	margin-bottom: 10px/*@var imgmargin*/;
+	border-width: 0;
+	border-style: solid;
+	border-color: transparent;
+	float: left;
+}
+img.float-right,img.floatRight{
+	padding: 0;
+	margin-left: 10px/*@var imgmargin*/;
+	margin-bottom: 10px/*@var imgmargin*/;
+	border-width: 0;
+	border-style: solid;
+	border-color: transparent;
+	float: right;
+}
+img.image{
+	padding: 0/*@var imgpadding*/;
+	border-width: 0/*@var imgborderwidth*/;
+	border-style: solid/*@var imgborderstyle*/;
+	border-color: transparent/*@var imgbordercolor*/;
+}
+.modules-website-staticrichtext{
+	background-color: transparent/*@var textbgcolor*/;
+}
+
+@import url(/modules/generic/style/frontoffice.trident.4.css);
+@import url(/modules/generic/style/frontoffice.trident.5.css);

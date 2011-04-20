@@ -1,0 +1,14 @@
+#AccountContentColumn1{
+	margin: 15px 30px 15px 15px;
+	display: inline;
+	float: left;
+}
+#AccountContentColumn2{
+	margin: 15px 5px 15px 0;
+	margin-left: -2px;
+	display: inline;
+	float: left;
+}
+fieldset.password{
+	border: 0px none;
+}

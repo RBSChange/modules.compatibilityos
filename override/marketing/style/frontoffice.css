@@ -1,0 +1,55 @@
+.ecom-block li.picture{
+	text-align: center;
+}
+.basic.homepage, .basic.normal, .basic.small{
+	width: 100%;
+	padding: 0;
+}
+.basic.homepage ul, .basic.normal ul, .basic.small ul{
+	padding: 10px;
+}
+p.all-products{
+	padding: 0 10px 10px 10px;
+	text-align: right;
+}
+.basic.homepage, .basic.normal, .basic.small{
+	color: #000/*@var bodyfgcolor*/;
+	margin-bottom: 16px;
+}
+.basic.normal{
+	width: 141px;
+}
+.basic.small{
+	width: 141px;
+}
+.basic.homepage .content, .basic.normal .content, .basic.small .content{
+	background-color: #eeeeee;
+}
+.basic.homepage .content a.link, .basic.normal .content a.link, .basic.small .content a.link{
+	color: #696a12/*@var linkfgcolor*/;
+}
+.basic.homepage .content a.link:hover, .basic.normal .content a.link:hover, .basic.small .content a.link:hover{
+	color: #696a12/*@var linkhoverfgcolor*/;
+}
+.basic.homepage h3.title, .basic.normal h3.title, .basic.small h3.title{
+	margin: 0;
+	padding: 10px;
+}
+.basic.homepage li.priceht, .basic.normal li.priceht, .basic.small li.priceht{
+	color: #fff;
+	font-size: 2.2em;
+	display: inline;
+}
+.basic.homepage li.pricettc, .basic.normal li.pricettc, .basic.small li.pricettc{
+	color: #fff;
+	font-size: 2.2em;
+	display: inline;
+}
+.basic.homepage li.priceht del, .basic.normal li.priceht del, .basic.small li.priceht del{
+	color: #fff;
+	font-size: 0.6em;
+}
+.basic.homepage li.pricettc del, .basic.normal li.pricettc del, .basic.small li.pricettc del{
+	color: #fff;
+	font-size: 0.6em;
+}

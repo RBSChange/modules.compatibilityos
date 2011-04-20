@@ -1,0 +1,160 @@
+p{
+	padding-bottom: 8px;
+}
+p.notabene{
+	font-style: italic;
+}
+pre,code{
+	font-size: 120%;
+}
+pre{
+	display: block;
+	white-space: pre;
+}
+pre.code{
+	overflow: auto;
+	width: 95%;
+	max-height: 300px;
+	border: 1px dashed #ccc;
+	padding: 5px;
+	background-color: #eee;
+	margin-bottom: 5px;
+}
+a.popup{
+	padding-right: 13px;
+	background: url(/media/frontoffice/external.png) center right no-repeat;
+}
+a.anchor *{
+	background-color: greenyellow;
+}
+img.image{
+	margin-right: 10px;
+	margin-left: 10px;
+}
+p img.image{
+	margin-bottom: 0;
+}
+img.floatLeft,img.image.float-left{
+	margin-bottom: 10px;
+	margin-left: 0;
+}
+img.floatRight,img.image.float-right{
+	margin-bottom: 10px;
+	margin-right: 0;
+}
+hr.clear-both{
+	background: url(/changeicons/small/arrow_left_blue.png) center left no-repeat;
+	width: 100%;
+	height: 16px;
+	border: none;
+	clear: both;
+}
+hr.clear-both:after{
+	padding-left: 20px;
+	content: 'Retour en début de ligne';
+}
+acronym{
+	cursor: help;
+	border-bottom: 1px dotted;
+}
+blockquote{
+	margin: 0 0 5px 40px;
+	padding: 6px;
+	border: 2px dashed #ccc;
+}
+abbr[title]{
+	font-style: italic;
+}
+span.lang{
+	background-color: #e0ffff;
+	border-bottom: 1px dotted cyan;
+}
+span.lang:after{
+	background-color: #84d6d6;
+	font-weight: bold;
+	font-style: normal;
+	border-bottom: 1px solid white;
+	content: '\0000a0['  attr(lang) ']\0000a0';
+}
+ul.normal{
+	margin: 0 0 8px 10px;
+	padding: 0;
+	list-style-type: disc;
+	list-style-position: inside;
+}
+ul.normal ul{
+	margin: inherit;
+	padding: inherit;
+	list-style-type: inherit;
+	list-style-position: inherit;
+}
+ol.normal{
+	margin: 0 0 8px 10px;
+	padding: 0;
+	list-style-type: decimal;
+	list-style-position: inside;
+}
+ol.normal ol{
+	margin: inherit;
+	padding: inherit;
+	list-style-type: inherit;
+	list-style-position: inherit;
+}
+dl.normal{
+	margin-bottom: 10px;
+}
+dl.normal dt{
+	font-weight: bold;
+}
+dl.normal dd{
+	margin-left: 20px;
+	margin-bottom: 5px;
+}
+table.normal caption{
+	caption-side: bottom;
+	font-style: italic;
+	text-align: center;
+	margin-bottom: 15px;
+}
+table.normal caption{
+	min-width: 32px;
+}
+table.normal tr td,table.normal tr th{
+	padding: 6px 3px;
+	margin: 0;
+	border-width: 1px;
+	border-style: solid;
+}
+table.normal tr th{
+	padding: 3px 3px;
+	font-weight: bold;
+}
+a.media-flash-dummy{
+	display: block;
+	border: 1px solid silver;
+	font-weight: bold;
+	font-size: 15px;
+	text-align: center;
+	text-decoration: none;
+	vertical-align: middle;
+	color: #000;
+	background: url(/media/backoffice/flash-logo.png) ghostwhite center no-repeat;
+}
+object{
+	display: block;
+	border: 1px dotted orange;
+	background: moccasin;
+}
+span.underline{
+	text-decoration: underline; 
+}
+
+/** Required for correct table edition. */
+body#richtext-body{
+	padding-left: 7px; 	
+	padding-right: 7px; 	
+}
+html, body {
+	background-image: none !important;
+	background-color: #fff !important;
+}

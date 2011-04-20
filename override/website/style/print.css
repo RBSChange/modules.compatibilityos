@@ -1,0 +1,106 @@
+body{
+	width: 100%!important;
+	margin: 0!important;
+	padding: 0!important;
+	line-height: 1.4/*@var printlineheight*/;
+	word-spacing: 1.1pt/*@var printwordspacing*/;
+	letter-spacing: 0.2pt/*@var printletterspacing*/;
+	font-family: "Trebuchet MS", verdana, arial, helvetica, sans-serif/*@var printfontfamily*/;
+	color: #000/*@var printfgcolor*/;
+	background: none;
+	font-size: 12pt/*@var printfontsize*/;
+}
+h1{
+	color: #000/*@var printheadingonefgcolor*/;
+	font-family: "Trebuchet MS", verdana, arial, helvetica, sans-serif/*@var printheadingonefontfamily*/;
+	font-style: normal/*@var printheadingonefontstyle*/;
+	font-weight: normal/*@var printheadingonefontweight*/;
+	font-size: 19pt/*@var printheadingonefontsize*/;
+}
+h2{
+	color: #000/*@var printheadingtwofgcolor*/;
+	font-family: "Trebuchet MS", verdana, arial, helvetica, sans-serif/*@var printheadingtwofontfamily*/;
+	font-style: normal/*@var printheadingtwofontstyle*/;
+	font-weight: normal/*@var printheadingtwofontweight*/;
+	font-size: 17pt/*@var printheadingtwofontsize*/;
+}
+h3{
+	color: #000/*@var printheadingthreefgcolor*/;
+	font-family: "Trebuchet MS", verdana, arial, helvetica, sans-serif/*@var printheadingthreefontfamily*/;
+	font-style: normal/*@var printheadingthreefontstyle*/;
+	font-weight: normal/*@var printheadingthreefontweight*/;
+	font-size: 15pt/*@var printheadingthreefontsize*/;
+}
+h4{
+	color: #000/*@var printheadingfourfgcolor*/;
+	font-family: "Trebuchet MS", verdana, arial, helvetica, sans-serif/*@var printheadingfourfontfamily*/;
+	font-style: normal/*@var printheadingfourfontstyle*/;
+	font-weight: normal/*@var printheadingfourfontweight*/;
+	font-size: 12pt/*@var printheadingfourfontsize*/;
+}
+h5{
+	color: #000/*@var printheadingfivefgcolor*/;
+	font-family: "Trebuchet MS", verdana, arial, helvetica, sans-serif/*@var printheadingfivefontfamily*/;
+	font-style: normal/*@var printheadingfivefontstyle*/;
+	font-weight: normal/*@var printheadingfivefontweight*/;
+	font-size: 12pt/*@var printheadingfivefontsize*/;
+}
+h6{
+	color: #000/*@var printheadingsixfgcolor*/;
+	font-family: "Trebuchet MS", verdana, arial, helvetica, sans-serif/*@var printheadingsixfontfamily*/;
+	font-style: normal/*@var printheadingsixfontstyle*/;
+	font-weight: normal/*@var printheadingsixfontweight*/;
+	font-size: 12pt/*@var printheadingsixfontsize*/;
+}
+blockquote{
+	margin: 1.3em;
+	padding: 1em;
+	font-size: 10pt;
+}
+hr{
+	background-color: #ccc;
+}
+img{
+	float: left;
+	margin: 1em 1.5em 1.5em 0;
+}
+a img{
+	border: none;
+}
+a{
+	background: transparent;
+	font-weight: bold/*@var printlinkfontweight*/;
+	text-decoration: underline/*@var printlinkdecoration*/;
+	color: #333333/*@var printlinkfgcolor*/;
+}
+a[href^="http://"]:after{
+	content: " (" attr(href) ") "/*@var printlinkurl*/;
+}
+table{
+	margin: 1px;
+	text-align: left;
+}
+th{
+	border-bottom: 1px solid #333;
+	font-weight: bold;
+}
+td{
+	border-bottom: 1px solid #333;
+}
+th,td{
+	padding: 4px 10px 4px 0;
+}
+tfoot{
+	font-style: italic;
+}
+caption{
+	background: #fff;
+	margin-bottom: 2em;
+	text-align: left;
+}
+thead{
+	display: table-header-group;
+}
+tr{
+	page-break-inside: avoid;
+}

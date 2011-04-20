@@ -1,0 +1,97 @@
+textarea,input,select{
+	font-family: inherit;
+	font-size: 100%;
+}
+form label{
+	cursor: pointer;
+}
+fieldset{
+	border: none;
+}
+form.cmxform ul.errors li{
+	list-style-position: inside;
+}
+form.cmxform ol{
+	margin: 0;
+	padding: 0;
+}
+form.cmxform ol li{
+	float: none;
+	clear: both;
+	list-style: none;
+	margin: 4px 0px;
+}
+form.cmxform legend,legend{
+	white-space: normal;
+}
+form.cmxform label{
+	vertical-align: top;
+	display: block;
+	float: left;
+}
+form.cmxform textarea,textarea{
+	margin: 0;
+	padding: 0;
+}
+form.cmxform input.button,input.button{
+	font-size: 1em;
+	cursor: pointer;
+	padding: 0 4px;
+	vertical-align: top;
+	border-width: 1px;
+	border-style: solid;
+}
+form.cmxform .buttons input.button , .buttons input.button{
+	vertical-align: baseline;
+}
+form.cmxform fieldset.radio{
+	border: none;
+	margin: 3px 0 0;
+}
+form.cmxform fieldset.radio label{
+	display: block;
+	width: auto;
+}
+input[type="radio"]{
+	margin-right: 4px;
+	float: left;
+}
+li.captcha{
+	text-align: center;
+}
+p.buttons{
+	clear: both;
+	text-align: center;
+}
+a.button{
+	cursor: pointer;
+}
+form.cmxform label.option-label{
+	width: auto;
+	margin-left: 0px;
+}
+form.cmxform ul.uploads{
+	margin: 5px 0 5px 33%;
+}
+form.cmxform ul.uploads li{
+	list-style-type: disc;
+	list-style-position: inside;
+	line-height: 2;
+	margin-left: 16px;
+}
+form.cmxform ul.documentpicker-elements{
+	margin: 5px 0 5px 33%;
+}
+form.cmxform ul.documentpicker-elements li{
+	list-style-type: disc;
+	list-style-position: inside;
+	line-height: 2;
+	margin-left: 16px;
+}
+form.cmxform a.picker-choose{
+	line-height: 2;
+}
+
+@import url(/modules/form/style/frontoffice.trident.4.css);
+@import url(/modules/form/style/frontoffice.trident.5.css);
+@import url(/modules/form/style/datepicker.css);
