@@ -306,7 +306,6 @@ function setupCompatibility(event)
 	controller.actionStartedHandler = function (request) {
 		this.isBusy = true;
 		clearTimeout(this._windowStatusTimeout);
-		wToolkit.setNotificationMessage("&amp;modules.generic.backoffice.Currently-executing; " + request.label + "...", wToolkit.INFO);
 	};
 
 	controller.actionEndedHandler = function (request, status, message) {
@@ -324,7 +323,6 @@ function setupCompatibility(event)
 			msg = request.label + " : "+message;
 			timeout = 60000;
 		}
-		wToolkit.setNotificationMessage(msg, status, timeout);
 
 		// runs next request if the action stack is not empty
 		this._currentRequest = null;
@@ -347,7 +345,6 @@ function setupCompatibility(event)
 
 	controller.actionAbortedHandler = function (request) {
 		var msg = request.label + " : aborted by user.";
-		wToolkit.setNotificationMessage(msg, wToolkit.ERROR, 60000);
 	};
 
 	controller.unexpectedServerErrorHandler = function (message) {
