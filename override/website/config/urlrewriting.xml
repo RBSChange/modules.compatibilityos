@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlrewriting>
+	<rules>
+		<rule documentModel="topic" viewMode="detail">
+			<template>/$label,$id/</template>
+		</rule>
+
+		<rule documentModel="page" viewMode="detail">
+			<template>/$navigationtitle,$id,$lang</template>
+		</rule>
+
+		<rule documentModel="pagereference" viewMode="detail">
+			<template>/$navigationtitle,$id,$lang</template>
+		</rule>
+
+		<rule documentModel="pagegroup" viewMode="detail">
+			<template>/$navigationtitle,$id,$lang</template>
+		</rule>
+
+
+		<rule documentModel="pageversion" viewMode="detail">
+			<template>/version/$navigationtitle,$id,$lang</template>
+		</rule>
+
+		<rule redirection="website/ViewPageexternal">
+			<template>/external/$navigationtitle,$cmpref,$lang</template>
+			<parameters>
+				<parameter name="navigationtitle" />
+				<parameter name="cmpref" format="[0-9]+"/>
+				<parameter name="lang" />
+			</parameters>
+		</rule>
+		
+		<rule redirection="website/Permalink">
+			<template>/permalink/$cmpref</template>
+			<parameters>
+				<parameter name="cmpref" format="[0-9]+"/>
+			</parameters>
+		</rule>
+	</rules>
+
+</urlrewriting>

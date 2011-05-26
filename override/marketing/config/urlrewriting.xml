@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlrewriting>
+	<rules>
+		<rule documentModel="dynamicanim" viewMode="detail">
+			<template>/animation/$shelfLabel/promotion-$label,$lang,$id</template>
+		</rule>
+		<rule documentModel="editableanim" viewMode="detail">
+			<template>/animation/$shelfLabel/promotion-$label,$lang,$id</template>
+		</rule>
+		<rule documentModel="operation" viewMode="detail">
+			<template>/operation/$shelfLabel/promotion-$label,$id</template>
+		</rule>
+		<rule redirection="marketing/ViewFeed">
+			<template>/animation/feed/$documentId/$label</template>
+		</rule>
+	</rules>
+</urlrewriting>

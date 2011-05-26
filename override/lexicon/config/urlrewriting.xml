@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlrewriting>
+	<rules>
+		<rule documentModel="word" viewMode="detail">
+			<template>/lexicon/$label,$lang,$id</template>
+		</rule>
+
+		<rule documentModel="word" viewMode="detail" lang="fr">
+			<template>/lexique/$label,$lang,$id</template>
+		</rule>
+	</rules>
+</urlrewriting>

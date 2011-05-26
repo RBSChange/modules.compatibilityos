@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlrewriting>
+	<rules>
+		<rule documentModel="offer" viewMode="detail" lang="fr">
+			<template>/emploi/$label,$id</template>
+		</rule>
+		<rule documentModel="offer" viewMode="detail">
+			<template>/jobs/$label,$id</template>
+		</rule>
+	</rules>
+</urlrewriting>

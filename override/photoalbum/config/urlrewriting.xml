@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlrewriting>
+
+	<rules>
+
+		<rule documentModel="album" viewMode="detail">
+			<template>/galerie-photo/$label,$id,$lang,</template>
+		</rule>
+
+	</rules>
+
+</urlrewriting>
