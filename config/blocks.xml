@@ -58,4 +58,5 @@
 			<parameter name="usecache" type="Boolean" default-value="false" />
 		</parameters>
 	</block>
+        <block type="modules_website_edit" icon="edit" label="&amp;modules.website.bo.blocks.Edit;"/>
 </blocks>
