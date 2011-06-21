@@ -1,0 +1,6 @@
+<h3 class="heading-three">${container/getLabelAsHtml}</h3>
+<ol class="photoalbum">
+	<tal:block tal:repeat="item paginator">
+		<tal:block change:include="module 'photoalbum'; template 'Photoalbum-Block-AlbumList-Success'; type 'html'; item item" />
+	</tal:block>
+</ol>
