@@ -751,19 +751,19 @@
 	                        case 'justifyright':
 	                        case 'justifyfull':
 	                        case 'justifynone':
-	                        	var class = '';
+	                        	var className = '';
 	                        	if (command == 'justifyfull')
 	                        	{
-	                        		class = 'text-align-justify';
+	                        		className = 'text-align-justify';
 	                        	} 
 	                        	else if (command != 'justifynone')
 	                        	{
-	                        		class = command.replace(/justify/, "text-align-");
+	                        		className = command.replace(/justify/, "text-align-");
 	                        	}
 	                        	var elements = this.getSelectedElements(currentSelection);
 	                        	if ((elements.length > 0 && elements[0].tagName == 'BODY') || currentSelection.range.commonAncestorContainer.tagName == 'BODY')
 	                        	{
-	                        		this.applyStyle('formatblock', 'p.' + class);
+	                        		this.applyStyle('formatblock', 'p.' + className);
 	                        		return; 
 	                        	}
 	                        	else
@@ -778,7 +778,7 @@
 		                        			case 'TR':
 		                        			case 'TD':
 		                        			case 'TH':
-		                        				elements[i].setAttribute('class', class);
+		                        				elements[i].setAttribute('class', className);
 		                        				break;
 		                       			}
 		                        	}
@@ -1289,9 +1289,9 @@
                             case 'formatblock':
                             case 'heading':                            	
                             	var extendedValue = value.match(/^([a-z0-9]+)\.([a-z0-9_-]+)/i);
-                            	var class = extendedValue[2];
+                            	var className = extendedValue[2];
                             	var tagName = actualValue.toUpperCase();
-                            	//wCore.debug('Setting :'  + class + ' ' + tagName);
+                            	//wCore.debug('Setting :'  + className + ' ' + tagName);
                             	
                             	var startNode = currentSelection.range.startContainer;                           	
                             	while (startNode && (startNode.nodeType != startNode.ELEMENT_NODE || startNode.tagName != tagName))
@@ -1314,7 +1314,7 @@
                             			if (startNode.nodeType == startNode.ELEMENT_NODE && startNode.tagName == tagName)
                             			{
 	                            			//wCore.debug('apply class : '  + startNode);
-	                            			startNode.setAttribute("class", class);
+	                            			startNode.setAttribute("class", className);
                             			}
                             			if (startNode == endNode) {break;}
                             		} while (startNode = startNode.nextSibling)
@@ -1689,6 +1689,7 @@
                     var currentSelection = this.getCurrentSelection();
                     var identifiers = [];
                     var nodes = currentSelection.ancestors;
+                    var className = null;
                     if (nodes)
                     {
 	                    nodes.unshift(currentSelection.node);
@@ -1700,17 +1701,17 @@
 	                    {
 	    				    if (identifier = this.getTagName(nodes[i]))
 	    				    {
-	    				        if (class = nodes[i].getAttribute("class"))
+	    				        if (className = nodes[i].getAttribute("class"))
 	    				        {
-	    				        	var classes = class.split(" ");
+	    				        	var classes = className.split(" ");
 	    				        	
 	    				        	for (var j = 0; j < classes.length; j++)
 	    				        	{
-	    				        		class = trim(classes[j]);
+	    				        		className = trim(classes[j]);
 	    				        		
-	    				        		if (class)
+	    				        		if (className)
 	    				        		{
-	    				        			identifiers.push(identifier + '.' + class);
+	    				        			identifiers.push(identifier + '.' + className);
 	    				        		}
 	    				        	}    				            
 	    				        }
