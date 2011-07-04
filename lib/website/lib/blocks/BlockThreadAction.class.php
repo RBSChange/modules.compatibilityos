@@ -63,7 +63,7 @@ class website_BlockThreadOldAction extends website_BlockAction
 			$breadcrumb = null;
 		}
 
-		if ($this->isInBackoffice() && !$breadcrumb)
+		if ($this->isInBackofficeEdition() && !$breadcrumb)
 		{
 			$request->setAttribute('emptyBreadcrumb', true);
 		}
