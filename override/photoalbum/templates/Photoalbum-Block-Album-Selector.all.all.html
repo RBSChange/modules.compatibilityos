@@ -1,0 +1,13 @@
+<a tal:condition="item/hasPagePreviousSelector" id="previousselector" class="link previous" change:link="document item; photoalbumParam[currentpageindex] item/getPagePreviousSelector" title="${trans:m.photoalbum.frontoffice.diapoprevious,ucf}" data-pageindex="${item/getPagePreviousSelector}">
+	<img change:img="icon/small/control-backward.png" alt="${trans:m.photoalbum.frontoffice.diapoprevious,ucf}" />
+</a>
+<ol>
+	<li tal:repeat="photo item/getPhotosSelector">
+		<a class="photoselector" change:link="document item; photoalbumParam[currentphoto] photo/getId" title="${photo/getLabelAsHtml}" data-photoid="${photo/getId}">
+			<img src="${photo/getSelectorUrl}" alt="${photo/getLabelAsHtml}" />
+		</a>
+	</li>
+</ol>
+<a tal:condition="item/hasPageNextSelector" id="nextselector" class="link next" change:link="document item;photoalbumParam[currentpageindex] item/getPageNextSelector" title="${trans:m.photoalbum.frontoffice.diaponext,ucf}" data-pageindex="${item/getPageNextSelector}">
+	<img change:img="icon/small/control-forward.png" alt="${trans:m.photoalbum.frontoffice.diaponext,ucf}" />
+</a>

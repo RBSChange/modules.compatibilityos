@@ -1,0 +1,10 @@
+.selectorcontainer ol li{
+	width: 68px;
+	height: 68px;
+}
+.selectorcontainer a.previous,.selectorcontainer a.next{
+	display: block;
+}
+.selectorcontainer a.next{
+	top: 55px;
+}

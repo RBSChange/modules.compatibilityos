@@ -40,4 +40,9 @@
 			<dependency name="modules.uixul.lib.wCompatibility" />
 		</dependencies>
 	</script>
+	<script name="modules.photoalbum.lib.js.jquery-cycle-all">
+		<dependencies>
+			<dependency name="modules.website.lib.js.jquery" />
+		</dependencies>
+	</script>
 </scripts>

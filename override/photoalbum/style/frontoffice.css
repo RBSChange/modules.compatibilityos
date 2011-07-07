@@ -1,0 +1,97 @@
+ol.photoalbum li{
+	margin-top: 5px;
+}
+ol.photoalbum h4{
+	padding-top: 5px;
+}
+#selectorcontainer{
+	height: 68px;
+}
+#diaporamaprev{
+	background: url(/changeicons/small/control-backward.png) center left no-repeat;
+	padding-left: 18px;
+	margin-left: 10px;
+}
+#diaporamapause{
+	background: url(/changeicons/small/control-pause.png) center left no-repeat;
+	padding-left: 18px;
+	margin-left: 10px;
+}
+#diaporamaresume{
+	background: url(/changeicons/small/control-start.png) center left no-repeat;
+	padding-left: 18px;
+	margin-left: 10px;
+}
+#diaporamaexit{
+	background: url(/changeicons/small/control-stop.png) center left no-repeat;
+	padding-left: 18px;
+	margin-left: 10px;
+}
+#diaporamanext{
+	background: url(/changeicons/small/control-forward.png) center left no-repeat;
+	padding-left: 18px;
+	margin-left: 10px;
+}
+#photonavigation{
+	text-align: center;
+	border: 1px solid silver;
+	background: #fff;
+	padding: 3px;
+	margin-left: 360px;
+}
+#controls{
+	list-style-type: none;
+}
+#controls li{
+	display: inline;
+}
+#diaporama{
+	height: 720px;
+}
+#previousselectordisabled,#nextselectordisabled{
+	color: silver;
+}
+#previewinfos{
+	margin: 5px;
+}
+.photopreview{
+	width: 350px;
+	float: left;
+}
+.selectorcontainer{
+	margin-left: 376px;
+}
+.selectorcontainer ol{
+	margin: 0 2em;
+}
+.selectorcontainer ol li{
+	float: left;
+	margin: 2px;
+	display: block;
+	width: 64px;
+	height: 64px;
+	text-align: center;
+	background: #f0f0f0;
+}
+.selectorcontainer span{
+	height: 64px;
+}
+.selectorcontainer a.link:hover{
+	cursor: pointer;
+}
+.selectorcontainer a.previous,.selectorcontainer a.next{
+	float: left;
+}
+.selectorcontainer a.next{
+	position: relative;
+	top: 49px;
+	margin-left: 9px;
+}
+.photopreview ul li{
+	display: inline;
+	margin-right: 12px;
+}
+
+@import url(/modules/photoalbum/style/frontoffice.trident.4.css);
+@import url(/modules/photoalbum/style/frontoffice.trident.all.css);
+@import url(/modules/photoalbum/style/frontoffice.trident.5.css);

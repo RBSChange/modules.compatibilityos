@@ -1,0 +1,5 @@
+<h2 tal:condition="configuration/getPrintcontainer" change:h="">${container/getLabelAsHtml}</h2>
+<ol class="photoalbum">
+	<tal:block tal:condition="configuration/getShowDetailsInCurrentTopic" tal:repeat="item paginator" change:include="module 'photoalbum'; template 'Photoalbum-Block-AlbumList-Success'; type 'html'; item item; topicId container/getId" />
+	<tal:block tal:condition="not: configuration/getShowDetailsInCurrentTopic" tal:repeat="item paginator" change:include="module 'photoalbum'; template 'Photoalbum-Block-AlbumList-Success'; type 'html'; item item" />
+</ol>
