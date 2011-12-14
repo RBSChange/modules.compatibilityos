@@ -434,3 +434,10 @@ wwizardpanel behaviour{
 	background-position: center left;
 	background-repeat: no-repeat;
 }
+
+wmultitree{
+	-moz-binding: url(binding:widgets.wMultitree#wMultitree);
+}
+wformhelppanel{
+	-moz-binding: url(binding:form.wFormHelpPanel#wFormHelpPanel);
+}
