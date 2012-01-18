@@ -1,0 +1,6 @@
+<p>
+	<a tal:condition="not: customer" change:link="tag ctx_customer_new-account" change:translate="modules.customer.frontoffice.Customer-create"></a>
+	<a tal:condition="customer" change:link="tag ctx_customer_my-account">${user/getFullname}</a>
+	<a tal:condition="not: user" change:link="tag ctx_customer_my-account" change:translate="modules.customer.frontoffice.Customer-connect"></a>
+	<a tal:condition="user" change:link="module users; action FrontendLogout" change:translate="modules.customer.frontoffice.Customer-disconnect"></a>
+</p>

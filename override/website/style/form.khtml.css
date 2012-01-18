@@ -1,0 +1,37 @@
+form.cmxform label,
+form.cmxform fieldset.radio legend,
+fieldset.radio legend{
+	line-height: 1.5;
+}
+
+form input.button,
+form.cmxform input.button{
+	line-height: 1.4;
+}
+
+form.cmxform ol li.list label{
+	line-height: 1.6;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+	vertical-align: bottom;
+}
+
+label.nocmx input[type="radio"],
+label.nocmx input[type="checkbox"] {
+	vertical-align: baseline;
+}
+
+li.checkbox label{
+	line-height: 1.8;
+}
+
+
+
+/*
+	http://html5boilerplate.com/
+*/
+
+/* Webkit browsers add a 2px margin outside the chrome of form elements */
+button, input, select, textarea { margin: 0; }

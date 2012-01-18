@@ -1,0 +1,302 @@
+/* MODULES FORM */
+
+ /*@var labelwidth*/
+
+/*---------------*/
+/* FORM CONTROLS */
+/*---------------*/
+form.cmxform fieldset,
+fieldset{
+	padding:10px;
+	border-width:1px /*@var fieldsetborderwidth*/;
+	border-style:solid;
+}
+
+form.cmxform legend,
+legend{
+	padding:0 2px;
+	white-space:normal;
+	font-size: 150%;
+	font-weight: bold;
+}
+
+form.cmxform label{
+	text-align: right;
+	width: 33%;
+	display:block;
+	float:left;
+	margin-right:8px;
+	font-weight: bold;
+	line-height: 1.6;
+}
+form.cmxform label.form-validation.error{
+	margin-left: 33%;
+	padding-left: 8px;
+    text-align: left;
+}
+
+form.cmxform label.option-label{
+	width: auto;
+	float: left;
+	font-weight: normal;
+}
+
+form.cmxform input.option-label{
+	float: left;
+	margin-right: 8px;
+}
+
+form.cmxform input.textfield,
+form.cmxform input.date-picker,
+form.cmxform input.passwordinput,
+form.cmxform textarea,
+form.cmxform select,
+input.textfield,
+textarea,
+select,
+form.cmxform option,
+option,
+form.cmxform input.button,
+input.button{
+	font-size: 1em;
+}
+
+form.cmxform input.textfield,
+form.cmxform input.date-picker,
+form.cmxform input.passwordinput,
+form.cmxform textarea,
+form.cmxform select,
+input.textfield,
+textarea,
+select{
+	border-width: 1px;
+	border-style: solid;
+}
+
+form.cmxform input.textfield,
+form.cmxform input.date-picker,
+form.cmxform input.passwordinput,
+form.cmxform select,
+input.textfield,
+select{
+	line-height: 1.33;
+	min-height: 18px;
+}
+
+form.cmxform input.textfield,
+input.textfield,
+form.cmxform textarea,
+textarea{
+	padding:0 3px;	
+}
+
+form.cmxform input.button,
+input.button,
+a.button{
+	cursor: pointer;
+	border-width: 1px;
+	border-style: solid;
+	font-weight: bold;
+	text-decoration: none;
+	vertical-align:top;
+	background-color:#000000;
+	color:#ffffff;
+}
+
+form.cmxform input.button,
+input.button{
+	padding:0 4px;
+}
+
+a.button{
+	display: inline-block;
+	padding: 0 8px;
+	line-height: 1.4;
+}
+
+form.cmxform input.button:hover,
+input.button:hover,
+a.button:hover{
+	text-decoration: none;
+}
+
+/*----------------*/
+/* FORM STRUCTURE */
+/*----------------*/
+form.cmxform ol{
+	margin:0;
+	padding:0;
+}
+
+form.cmxform ol li{
+	float:none;
+	clear:both;
+	list-style:none;
+	margin:0;
+	margin-bottom: 8px;
+}
+
+form.cmxform ol li.radio label,
+form.cmxform label.nocmx{
+	width: 23%;
+	min-height: 10px;
+	display: -moz-inline-stack;
+	display: inline-block;
+	vertical-align: top;
+	margin-right: 8px;
+	text-align: left;
+	float: none;
+	font-weight: normal;
+	zoom: 1;
+	*display: inline;
+	_height: 10px;	
+}
+
+form.cmxform li.radio-container,
+li.radio-container {
+	overflow: hidden;
+}
+
+form.cmxform fieldset.radio,
+fieldset.radio{
+	border-width: 0px;
+	padding: 0px;
+	position: relative;
+	left: 33%;
+	margin: 0;	
+	margin-left: 8px;	
+}
+
+form.cmxform fieldset.radio legend,
+fieldset.radio legend{
+	font-size: 1em;
+	line-height: 1.6;
+	position: absolute;
+	right: 100%;
+	width: 33%;
+	margin-right: 8px;
+	text-align: right;	
+}
+
+form.cmxform fieldset.radio ol,
+fieldset.radio ol{
+	margin-right: 33%;
+}
+
+li.checkbox input[type="radio"],
+li.checkbox input[type="checkbox"]{
+	margin-left: 0px;
+}
+
+span.captcha{
+	vertical-align: bottom;
+	text-align:right;
+	width: 33%;
+	display: block;
+	float: left;
+	margin-right: 8px;
+}
+
+p.buttons{
+	clear: both;
+	width: 100%;
+	text-align: center;
+	line-height: 22px; /* hauteur du bouton standard */
+	margin-top: 20px;
+}
+
+
+
+/* Texte descriptif, texte d'aide... */
+/* Pour une mise en page homogène, s'assurer que le style p.normal du richtext ait les mêmes attributs */
+form.cmxform .description,
+form.cmxform .bottom-description,
+form.cmxform fieldset div,
+form.cmxform .free-text{
+
+}
+
+form.cmxform p.help-text{
+	font-size: .9em;
+	margin-left: 33%;
+	padding-left: 8px;
+}
+
+/* Erreurs */
+.error,
+.errors,
+form.cmxform ul.errors li,
+form.cmxform em{
+	color:#ff0000;
+}
+
+.warning{
+	color:orange;
+}
+
+.success{
+	color:green;
+}
+
+form.cmxform ul.errors{
+
+}
+
+form.cmxform ul.errors li{
+	list-style-type:disc;
+	list-style-position:inside;
+	padding-left:40px;
+}
+
+form.cmxform em{
+	font-style:normal;
+}
+
+a.dp-choose-date{
+	text-decoration: none;
+}
+
+/* Commentaires */
+.jTagEditor .textfield-label{
+	width:33%;
+	display:block;
+	float:left;
+	margin-right:8px;
+}
+
+
+
+/*
+	http://html5boilerplate.com/
+*/
+
+input, select { vertical-align: middle; }
+
+textarea { overflow: auto; } /* www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars/ */
+
+/* Align checkboxes, radios, text inputs with their label by: Thierry Koblentz tjkdesign.com/ez-css/css/base.css  */
+input[type="radio"] { vertical-align: text-bottom; }
+input[type="checkbox"] { vertical-align: bottom; *vertical-align: baseline; }
+
+input[type="radio"],
+input[type="checkbox"] {
+	vertical-align: baseline;
+}
+
+/* Hand cursor on clickable input elements */
+label, input[type="button"], input[type="submit"], input[type="image"], button { cursor: pointer; }
+
+/* Make buttons play nice in IE:
+   www.viget.com/inspire/styling-the-button-element-in-internet-explorer/ */
+input.button,
+button {  width: auto; overflow: visible; }
+
+
+
+@import url(/modules/website/style/form.gecko.3.css);
+@import url(/modules/website/style/form.khtml.css);
+@import url(/modules/website/style/form.trident.4.css);
+@import url(/modules/website/style/form.trident.5.css);
+@import url(/modules/website/style/form.trident.6.css);
+@import url(/modules/website/style/form.trident.7.css);
+@import url(/modules/website/style/datepicker.css);

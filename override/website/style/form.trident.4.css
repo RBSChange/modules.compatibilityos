@@ -1,0 +1,21 @@
+/* MODULES FORM (IE6 SPECIES) */
+
+/*---------------*/
+/* FORM CONTROLS */
+/*---------------*/  
+form.cmxform input.button,
+input.button{
+	height: 1.6em;
+	padding: 0;
+}
+
+
+
+/*
+	http://html5boilerplate.com/
+*/
+
+legend { margin-left: -7px; }
+
+/* Align checkboxes, radios, text inputs with their label by: Thierry Koblentz tjkdesign.com/ez-css/css/base.css  */
+input { vertical-align: text-bottom; }

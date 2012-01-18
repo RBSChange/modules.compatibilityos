@@ -1,0 +1,26 @@
+/* MODULES FORM (IE9 SPECIES) */
+
+form textarea,
+form.cmxform textarea{
+	padding: 2px 3px;
+}
+
+form.cmxform input.button,
+input.button{
+	line-height: 1.4;
+}
+
+form.cmxform ol li.list label{
+	line-height: 1.5;
+}
+
+li.checkbox input[type="radio"],
+li.checkbox input[type="checkbox"]{
+	margin-left: -3px;
+}
+
+form select,
+form.cmxform select{
+	min-height: 20px;
+	padding-top: 0px;
+}

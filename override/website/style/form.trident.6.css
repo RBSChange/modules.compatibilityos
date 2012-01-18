@@ -1,0 +1,41 @@
+/* MODULES FORM (IE8 SPECIES) */
+
+/*---------------*/
+/* FORM CONTROLS */
+/*---------------*/
+form input.textfield,
+form.cmxform input.textfield{
+	min-height: 18px;
+}
+
+form textarea,
+form.cmxform textarea{
+	padding: 2px 3px;
+}
+
+form input.button,
+form.cmxform input.button{
+	line-height: 1.4;
+	cursor: pointer;
+}
+
+form select,
+form.cmxform select{
+	min-height: 20px;
+	padding-top: 0px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+	vertical-align: bottom;
+}
+
+label.nocmx input[type="radio"],
+label.nocmx input[type="checkbox"] {
+	vertical-align: baseline;
+}
+
+li.checkbox input[type="radio"],
+li.checkbox input[type="checkbox"]{
+	margin-left: -3px;
+}

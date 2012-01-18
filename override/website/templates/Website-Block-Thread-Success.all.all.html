@@ -1,0 +1,7 @@
+<ul class="thread">
+	<li tal:repeat="ancestor breadcrumb/getElements" tal:attributes="class ancestor/class">
+		<a class="link" tal:condition="ancestor/href" tal:attributes="href ancestor/href"><img tal:condition="ancestor/imageSrc" src="${ancestor/imageSrc}" alt="${ancestor/getNavigationtitleAsHtml}" /><tal:block tal:condition="not: ancestor/onlyImage">${ancestor/getNavigationtitleAsHtml}</tal:block></a>
+		<strong tal:condition="not: ancestor/href"><img tal:condition="ancestor/imageSrc" src="${ancestor/imageSrc}" alt="${ancestor/getNavigationtitleAsHtml}" /><tal:block tal:condition="not: ancestor/onlyImage">${ancestor/getNavigationtitleAsHtml}</tal:block></strong>
+		<span tal:condition="not: repeat/ancestor/end" class="thread-separator"> &gt; </span>
+	</li>
+</ul>

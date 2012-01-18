@@ -1,0 +1,48 @@
+/* MODULES FORM (IE7 SPECIES) */
+
+/*---------------*/
+/* FORM CONTROLS */
+/*---------------*/
+
+form input.textfield,
+form.cmxform input.textfield{
+	min-height: 18px;
+}
+
+form textarea,
+form.cmxform textarea{
+	padding: 1px 3px;
+}
+
+form.cmxform input.button{
+	min-height: 22px;
+	cursor: pointer;
+	overflow: visible;	
+}
+
+a.button{
+	display: inline-block;
+	zoom: 1;
+	* display: inline;
+	line-height: 1.5;
+}
+
+form.cmxform fieldset.radio legend,
+fieldset.radio legend{
+	line-height: 1.9;
+}
+
+li.checkbox input[type="radio"],
+li.checkbox input[type="checkbox"]{
+	margin-left: -4px;
+}
+
+
+/*
+	http://html5boilerplate.com/
+*/
+
+legend { margin-left: -7px; }
+
+/* Align checkboxes, radios, text inputs with their label by: Thierry Koblentz tjkdesign.com/ez-css/css/base.css  */
+input[type="checkbox"] { vertical-align: baseline; }
