@@ -1,7 +1,0 @@
-<tal:block change:menu="menuObject menuObject; itemName item; liFirstInLevelClass first; liLastInLevelClass last">
-<tal:block tal:condition="not: repeat/item/isCurrent">
-<a tal:condition="not: item/getPopup" tal:attributes="href item/getUrl" tal:content="item/getLabel"></a>
-<a class="popup" tal:condition="item/getPopup" tal:attributes="href item/getUrl" onclick="return accessiblePopup(this, ${item/getPopupWidth}, ${item/getPopupHeight})">${item/getLabel}</a>
-</tal:block>
-<span tal:condition="repeat/item/isCurrent">${item/getLabel}</span>
-</tal:block>

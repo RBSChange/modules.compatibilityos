@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlrewriting>
-	<rules>
-		<rule documentModel="export" viewMode="detail">
-			<template>/product-export/$label,$id</template>
-		</rule>
-	</rules>
-</urlrewriting>

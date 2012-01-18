@@ -1,7 +1,0 @@
-<div id="sidebar-menu-block">
-<h3>Navigation</h3>
-<ul change:menu="menuObject menu; itemName item; maxLevel 5; ulClass sidebar-menu" tal:omit-tag="">
-<a tal:condition="not: repeat/item/isCurrent" change:menuitem="item" />
-<span tal:condition="repeat/item/isCurrent" tal:content="item/getLabel"></span>
-</ul>
-</div>

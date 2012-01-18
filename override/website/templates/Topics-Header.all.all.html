@@ -1,8 +1,0 @@
-<ul class="header-menu">
-	
-	<span tal:repeat="item menu" tal:omit-tag="">
-		<li tal:condition="item/href" class="item"><a tal:attributes="href item/href; title item/label;" tal:content="item/label" /></li>
-		<li tal:condition="not: item/href" class="current" tal:content="item/label" />
-	</span>
-	
-</ul>
