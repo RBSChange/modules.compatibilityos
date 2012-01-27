@@ -1,0 +1,176 @@
+/*---------------*/
+/* CORE ELEMENTS */
+/*---------------*/
+.cleaner,
+.clear-both,
+.valign-buttons{
+	clear:both;
+	width:100%;
+}
+
+.float-left,
+.floatLeft{
+	float: left;
+}
+
+.float-right,
+.floatRight{
+	float: right;
+}
+
+img.float-left{
+	float: left;
+	margin-right: 10px;
+}
+
+img.float-right{
+	float: right;
+	margin-left: 10px;
+}
+
+.text-align-left,
+.tal{
+	text-align:left;
+}
+
+.text-align-right,
+.tar{
+	text-align:right;
+}
+
+.text-align-center,
+.tac{
+	text-align:center;
+}
+
+.text-align-justify,
+.taj{
+	text-align: justify;
+}
+
+
+/* Hide only visually, but have it available for screenreaders: by Jon Neal.
+  www.webaim.org/techniques/css/invisiblecontent/  &  j.mp/visuallyhidden */
+.hidden,
+.invisible{
+	border: 0;
+	clip: rect(0 0 0 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}
+
+.strong{
+	font-weight: bold;
+}
+
+.small{
+	font-size: 90%;
+}
+
+/* The Magnificent Clearfix: Updated to prevent margin-collapsing on child elements.
+   j.mp/bestclearfix */
+.clearfix:before, .clearfix:after { content: "\0020"; display: block; height: 0; overflow: hidden; }
+.clearfix:after { clear: both; }
+/* Fix clearfix: blueprintcss.lighthouseapp.com/projects/15318/tickets/5-extra-margin-padding-bottom-of-page */
+.clearfix { zoom: 1; }
+
+/*
+	RICHTEXT
+	Liens, Polices, Fond table th  : #000000;
+	Fonds de couleur : #f9f9f9;
+	Bordures : #cccccc;
+*/
+
+a.link:hover,
+a.anchor:hover,
+a.link:active{
+	outline: none;
+}
+
+.heading-one,
+.heading-two,
+.heading-three,
+.heading-four{
+	line-height: 1;
+}
+
+.heading-five{ font-size: 116.67%; }		/* 14px */
+.heading-six{ font-size: 116.67%; font-style:italic; }	/* 14px */
+
+table.normal{
+	empty-cells:show;
+	border-collapse:collapse;
+	width:100%;
+	font-size:1em;
+}
+
+table.normal caption{
+	text-align:left;
+	font-weight:normal;
+}
+
+table.normal tr td,
+table.normal tr th{
+	border-width: 1px;
+	border-style: solid;
+}
+
+table.normal tr th{
+	font-weight: bold;
+}
+
+ul.normal li,
+ol.normal li{
+	list-style-position:inside;
+	margin-left:40px;
+}
+
+ul.normal li{
+	list-style-type:disc;
+}
+
+ol.normal li{
+	list-style-type:decimal;
+}
+
+blockquote {
+	border-left-width: 10px;
+	border-left-style: solid;
+	margin-right: 10px;
+	padding: 10px 10px 20px 10px;
+	quotes:"\201C""\201D""\2018""\2019";
+}
+
+blockquote:before {
+	content: open-quote;
+	font-size: 4em;
+	line-height: .1em;
+	margin-right: .25em;
+	vertical-align: -.4em;
+}
+
+hr{
+	height: 1px;
+	border: 0;	
+}
+
+abbr, acronym{
+	border-bottom-style: dotted;
+	border-bottom-width: 1px;
+}
+
+pre {
+	padding: 15px;
+	white-space: pre; /* CSS2 */
+	white-space: pre-wrap; /* CSS 2.1 */
+	white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+	word-wrap: break-word; /* IE */
+}
+
+span.underline{
+	text-decoration: underline;
+}

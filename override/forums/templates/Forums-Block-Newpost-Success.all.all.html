@@ -1,0 +1,30 @@
+<h1 change:h="">${trans:m.forums.frontoffice.newpost,ucf,lab} ${thread/getLabelAsHtml}</h1>
+
+<tal:block tal:condition="previewPostInfo">
+	<tal:block change:include="module 'forums'; template 'Forums-Inc-PostList-Success'; type 'html'; postListInfo previewPostInfo" />
+</tal:block>
+
+<form change:form="beanClass forums_persistentdocument_post; beanName post">
+	<fieldset>
+		<legend>${trans:m.forums.frontoffice.message-input,ucf}</legend>
+		<div change:errors=""></div>
+		<ol>
+	  		<li><input change:bbcodeinput="name textAsBBCode" module-profile="forums" labeled="true" required="true" /></li>
+		</ol>
+		<p class="buttons">
+			<input change:field="name beanId" hidden="true" />
+			<input change:field="name thread" hidden="true" value="${thread/getId}" />
+			<input tal:condition="answerof" change:field="name answerof" hidden="true" value="${answerof/getId}" />
+			<input name="preview" change:submit="labeli18n m.forums.frontoffice.form.preview" />
+			<input change:submit="labeli18n m.forums.frontoffice.form.submit" />
+		</p>
+	</fieldset>
+</form>
+<tal:block tal:condition="answerof">
+	<h2 change:h="">${trans:m.forums.frontoffice.toanswerof,ucf} <a change:link="document answerof/getPostauthor">${answerof/getAuthorNameAsHtml}</a></h2>
+	<tal:block change:include="module 'forums'; template 'Forums-Inc-PostList-Success'; type 'html'; postListInfo answerListInfo" />
+</tal:block>
+<tal:block tal:condition="not: answerof">
+	<h2 change:h="">${trans:m.forums.frontoffice.last-posts-in-thread,ucf}</h2>
+	<tal:block change:include="module 'forums'; template 'Forums-Inc-PostList-Success'; type 'html'; postListInfo lastPostListInfo" />
+</tal:block>

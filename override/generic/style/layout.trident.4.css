@@ -1,0 +1,18 @@
+/*-----------------------------*/
+/* TEMPLATES DE BLOCS DE PAGES */
+/*-----------------------------*/
+.margin-left{
+	margin-left: 0.9%;
+}
+
+.margin-right{
+	margin-right: 0.9%;
+}
+
+
+/*------*/
+/* MISC */
+/*------*/
+.cleaner{
+	display: inline;
+}

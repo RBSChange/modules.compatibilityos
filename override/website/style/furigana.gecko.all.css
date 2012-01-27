@@ -1,0 +1,34 @@
+ruby{
+	display: inline-table;
+	text-align: center;
+	white-space: nowrap;
+	text-indent: 0;
+	margin: 0;
+	vertical-align: 0%;
+}
+ruby rb,ruby rbc{
+	display: table-row-group;
+	line-height: 90%;
+}
+ruby rt,ruby rbc rtc{
+	display: table-header-group;
+	font-size: 60%;
+	line-height: 40%;
+	letter-spacing: 0;
+}
+ruby rbc rtc rtc{
+	display: table-footer-group;
+	font-size: 60%;
+	line-height: 40%;
+	letter-spacing: 0;
+}
+rbc rb,rtc rt{
+	display: table-cell;
+	letter-spacing: 0;
+}
+rtc rt[rbspan]{
+	display: table-caption;
+}
+rp{
+	display: none;
+}

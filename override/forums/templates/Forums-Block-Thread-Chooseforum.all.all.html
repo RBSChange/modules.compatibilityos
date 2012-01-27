@@ -1,0 +1,16 @@
+<h1 change:h="">${thread/getForum/getLabelAsHtml} : ${thread/getLabelAsHtml}</h1>
+
+<form change:form="" method="get">
+	<fieldset>
+		<legend>${trans:m.forums.frontoffice.move-thread,ucf}</legend>
+		<ol>
+			<li>
+				<select change:selectinput="" required="true" name="forumId" documentList="forums" labeli18n="m.forums.frontoffice.destination-forum"></select>
+			</li>
+		</ol>
+		<p class="buttons">
+			<input type="hidden" name="forumsParam[cmpref]" value="${thread/getId}" />
+			<input change:submit="labeli18n m.forums.frontoffice.move-thread" class="button" name="move" />
+		</p>
+	</fieldset>
+</form>

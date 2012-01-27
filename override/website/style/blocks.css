@@ -1,0 +1,46 @@
+.modules-website-sitemap ul {
+	padding-left: 20px;
+}
+
+/* MODULES-WEBSITE-TAGGEDMENUHEADER */
+ul.header-menu li{
+	display: inline;
+}
+
+/* MODULES-WEBSITE-SWITCHLANGUAGE */
+.modules-website-switchlanguage ul li{
+	display: inline;
+}
+
+/* MODULES-WEBSITE-TAGGEDMENUHORIZONTAL */
+ul.tagged-menu-horizontal li{
+	display: inline-block;
+	zoom: 1;
+	* display: inline;
+}
+
+/* MODULES-WEBSITE-TAGGEDMENUFOOTER */
+ul.footer-menu li{
+	display: inline;
+}
+
+/* MODULES-WEBSITE-THREAD */
+ul.thread li{
+	display: inline;
+}
+
+/* MODULES-WEBSITE-SITEMAP */
+.modules-website-sitemap li{
+	padding: 0 0 4px 60px;
+	font-size: 1.1em;
+	list-style-type: disc;
+	list-style-position: inside;
+}
+
+.modules-website-sitemap li li{
+	font-size: 1em;
+}
+
+.modules-website-sitemap li li li{
+	font-size: 0.9em;
+}

@@ -1,0 +1,29 @@
+div.freeColumn{
+
+}
+div.freeColumn.right{
+}
+
+div.freeColumn.left{
+
+}
+div.freeMargin{
+
+}
+div.freeLocation{
+	clear: left;
+	width: 100%;
+}
+
+div.freeBlock{
+	float: left;
+	width: 100%;
+}
+
+div.cleaner{
+	clear:both;
+	width:100%;
+}
+
+div.empty{
+}

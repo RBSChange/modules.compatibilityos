@@ -1,0 +1,81 @@
+/* CHANGE4 FREEBLOCKS */
+.freeLocation{
+	clear:left;
+	width:100%;
+}
+
+.freeBlock{
+	float:left;
+	width:100%;
+}
+/* END : CHANGE4 FREEBLOCKS */
+
+
+
+/*------------------*/
+/* BLOCKS STRUCTURE */
+/*------------------*/
+.website-block{
+	width: 100%;
+	float: left;
+}
+
+.row-100{
+	width: 100%;
+}
+
+.column-50{
+	width: 49%;
+	float: left;
+}
+
+.column-25{
+	width: 24%;
+	float: left;
+}
+
+.column-75{
+	width: 74%;
+	float: left;
+}
+
+.column-33{
+	width: 32%;
+	float: left;
+}
+
+.column-66{
+	width: 66%;
+	float: left;
+}
+
+.margin-left{
+	margin-left: 1%;
+}
+
+.margin-right{
+	margin-right: 1%;
+}
+
+/* SPECIAL CLASS FOR 2 COLUMNS TEMPLATES MODULES */
+.removable{
+	display: table-cell;
+	height: 100%;
+}
+
+
+.removable{
+	display: table-cell;
+	height: 100%;
+}
+.display-none{
+	display: none;
+}
+.display-inline{
+	display: inline;
+}
+@import url(/modules/generic/style/layout.!xul.all.css);
+@import url(/modules/generic/style/layout.xul.all.css);
+@import url(/modules/generic/style/layout.khtml.all.css);
+@import url(/modules/generic/style/layout.trident.4.css);
+@import url(/modules/generic/style/layout.trident.5.css);

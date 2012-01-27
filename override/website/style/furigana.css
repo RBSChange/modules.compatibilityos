@@ -1,0 +1,16 @@
+#richtext-body ruby{
+	border-bottom: #900 solid 2px;
+}
+#richtext-body rb{
+	background-color: #f88;
+}
+#richtext-body rt{
+	background-color: #8f8;
+}
+#richtext-body rp{
+	padding: 0 3px;
+}
+
+@import url(/modules/website/style/furigana.gecko.all.css);
+@import url(/modules/website/style/furigana.gecko.3.css);
+@import url(/modules/website/style/furigana.khtml.all.css);

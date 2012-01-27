@@ -1,0 +1,25 @@
+/*
+	bicubic resizing for non-native sized IMG:
+	code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/
+*/
+img { -ms-interpolation-mode: bicubic; }
+
+/*-----------------------------*/
+/* TEMPLATES DE BLOCS DE PAGES */
+/*-----------------------------*/
+.margin-left{
+	margin-left: 0.9%;
+}
+
+.margin-right{
+	margin-right: 0.9%;
+}
+
+
+
+/*------*/
+/* MISC */
+/*------*/
+.cleaner{
+	display: inline;
+}
