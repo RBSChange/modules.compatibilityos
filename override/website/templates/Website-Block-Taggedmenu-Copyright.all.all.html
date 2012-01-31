@@ -1,0 +1,4 @@
+<tal:block>Copyright © 2007 <a href="http://www.rbs.fr" title="RBS">RBS | Ready Business System</a></tal:block>
+<tal:block tal:condition="menuObject" change:menu="menuObject menuObject; itemName item; maxLevel 1; flat true">
+	<tal:block change:menuitem="item" />
+</tal:block>

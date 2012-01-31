@@ -1,0 +1,4 @@
+<tal:block change:menu="menuObject menuObject; itemName item; masterUlClass contextual-menu-vertical; liCurrentClass current; liInPathClass inpath; liFirstInLevelClass first; liLastInLevelClass last">
+	<tal:block tal:condition="not: repeat/item/isCurrent" change:menuitem="item" />
+	<strong tal:condition="repeat/item/isCurrent">${item/getLabel}</strong>
+</tal:block>
