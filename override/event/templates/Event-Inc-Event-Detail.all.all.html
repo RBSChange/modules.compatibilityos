@@ -1,0 +1,27 @@
+<h1 change:h=""><a tal:omit-tag="isOnDetailPage" change:link="document doc">${doc/getLabelAsHtml}</a></h1>
+<p class="normal event-infos">
+	<tal:block tal:condition="showTime">
+		<tal:block change:datetime="format 'classic'; value doc/getDate" />
+		<tal:block tal:condition="not: doc/onOneMinute"> - <tal:block change:datetime="format 'classic'; value doc/getEndDate" /></tal:block>		
+	</tal:block>
+	<tal:block tal:condition="not:showTime">
+		<tal:block change:date="format 'classic'; value doc/getDate" />
+		<tal:block tal:condition="not: doc/onOneDay"> - <tal:block change:date="format 'classic'; value doc/getEndDate" /></tal:block>		
+	</tal:block>
+</p>
+
+<img tal:condition="doc/getDetailvisual" change:media="document doc/getDetailvisual; class 'visual'; format 'modules.event.frontoffice/detailvisual'; zoom 'true'" />
+
+<div class="normal event-summary" tal:condition="doc/getSummary">${doc/getSummaryAsHtml}</div>
+
+<div class="normal event-contents" tal:condition="doc/getText">${doc/getTextAsHtml}</div>
+
+<tal:block tal:condition="showCategories">
+	<dl class="inline-list" tal:condition="doc/getPublishedCategoryCount">
+		<dt>${trans:modules.event.fo.categories,ucf}</dt>
+		<dd tal:repeat="category doc/getPublishedCategoryArray">
+			<a change:link="document category">${category/getLabelAsHtml}</a>
+			<span tal:condition="not: repeat/category/end">, </span>
+		</dd>
+	</dl>
+</tal:block>

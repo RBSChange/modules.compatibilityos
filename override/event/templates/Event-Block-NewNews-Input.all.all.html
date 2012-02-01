@@ -1,0 +1,39 @@
+<h1 change:h="">${trans:m.event.fo.news-submission,ucf}</h1>
+
+<tal:block tal:condition="news">
+	<h2 change:h="">${trans:m.event.fo.news-preview,ucf}</h2>
+	<div class="preview">
+		<tal:block change:include="module 'event'; template 'Event-Inc-News-Detail'; type 'html'; doc news; isOnDetailPage 'true'" />
+	</div>
+</tal:block>
+
+<h2 change:h="">${trans:m.event.fo.news-input,ucf}</h2>
+
+<form change:form="beanClass event_persistentdocument_news; beanName news" class="cmxform">
+	<div change:errors=""></div>
+	<tal:block change:field="name beanId" hidden="true" />
+	<tal:block change:hiddeninput="name modelName" value="${modelName}" />
+	<fieldset>
+		<legend>${trans:m.event.fo.news-infos,ucf}</legend>
+		<ol>
+	  		<li><input change:field="name label" /></li>
+	  		<li><input change:field="name date" /></li>
+			<li><input change:uploadfield="name detailvisual" accept="jpg,jpeg,png" /></li>
+	  		<li><input change:field="name summary" labeled="true" /></li>
+	  		<li><input change:field="name text" labeled="true" /></li>
+	 	</ol>
+ 	</fieldset>
+ 	<fieldset>
+		<legend>${trans:m.event.fo.your-infos,ucf}</legend>
+		<ol>
+	  		<li><input change:textinput="name authorEmail" labeli18n="m.event.fo.your-email" required="true" /></li>
+	  		<li><input change:textinput="name authorFirstName" labeli18n="m.event.fo.your-firstname" /></li>
+	  		<li><input change:textinput="name authorLastName" labeli18n="m.event.fo.your-lastname" /></li>
+	  		<li><input change:textinput="name authorWebsiteUrl" labeli18n="m.event.fo.your-websiteurl" /></li>
+	  	</ol>
+	</fieldset>
+	<p class="buttons">
+		<input class="button" name="preview" change:submit="labeli18n m.event.fo.form-preview" />
+		<input class="button" change:submit="labeli18n m.event.fo.form-submit" />
+	</p>
+</form>
