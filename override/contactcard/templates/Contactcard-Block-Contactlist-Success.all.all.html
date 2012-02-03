@@ -1,0 +1,42 @@
+<div change:paginator="contacts"></div>
+
+<p class="normal">
+	<strong change:translate="modules.contactcard.frontoffice.Order-by"></strong>
+	<a tal:condition="php: orderBy != 'label'" change:currentPageLink="contactcardParam[orderBy] 'label'; contactcardParam[page] '1'"
+		change:translate="modules.contactcard.document.contact.label"></a>
+	<span tal:condition="php: orderBy == 'label'"
+		change:translate="modules.contactcard.document.contact.label"></span>.
+	<br/>
+	<strong change:translate="modules.contactcard.frontoffice.Order-by-direction"></strong>
+	<a tal:condition="php: orderByDirection != 'asc'" change:currentPageLink="contactcardParam[orderByDirection] 'asc'; contactcardParam[page] '1'"
+		change:translate="modules.contactcard.frontoffice.order-by-asc"></a>
+	<span tal:condition="php: orderByDirection == 'asc'"
+		change:translate="modules.contactcard.frontoffice.order-by-asc"></span>
+	|
+	<a tal:condition="php: orderByDirection != 'desc'" change:currentPageLink="contactcardParam[orderByDirection] 'desc'; contactcardParam[page] '1'"
+		change:translate="modules.contactcard.frontoffice.order-by-desc"></a>
+	<span tal:condition="php: orderByDirection == 'desc'"
+		change:translate="modules.contactcard.frontoffice.order-by-desc"></span>.
+	<br/>
+</p>
+<!-- Filters : -->
+	
+<form change:form="" method="get" tal:condition="configuration/getShowFilters"> 
+	<fieldset name="affine"><legend for="affine">Affiner la liste des contacts</legend>
+		<input change:selectinput="name companyname" label="&modules.contactcard.frontoffice.office;" listId="modules_contactcard/companyname" tal:condition="configuration/getShowCompanynamesFilter"/>
+		<br/><br/>
+		<input change:selectinput="name functions" label="&modules.contactcard.frontoffice.function;" listId="modules_contactcard/functions" tal:condition="configuration/getShowFunctionsFilter"/>
+		<br/><br/>
+		<input name="Filter" change:submit="label &modules.contactcard.frontoffice.submit;"  />
+	</fieldset>
+</form>
+
+<tal:block tal:condition="contacts/count">
+	<ol class="contact-list">
+		<li tal:repeat="contact contacts" class="contact-item">
+			<div change:include="module 'contactcard'; template 'Contactcard-Block-Contact-Success'; type 'html'; contact contact; configuration configuration"></div>
+		</li>
+	</ol>	
+	<div change:paginator="contacts"></div>
+</tal:block>
+<p tal:condition="not:contacts/count" change:translate="modules.contactcard.frontoffice.No-contact ; companyname companyname ; functions functions"></p>

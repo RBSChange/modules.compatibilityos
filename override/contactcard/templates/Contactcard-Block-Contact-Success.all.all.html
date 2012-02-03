@@ -1,0 +1,79 @@
+<ol class="vcard">
+	<li class="contact-not-published" tal:condition="contactNotPublished" change:translate="modules.contactcard.bo.general.ContactNotPublished"></li>
+	<li class="float-right" tal:condition="configuration/getShowPhoto">
+		<a tal:condition="configuration/getShowLinkToDetail" change:link="tag contextual_website_website_modules_contactcard_contact ; contactcardParam[cmpref] contact/getId">
+			<img tal:condition="contact/getLastname" class="fn" change:media="document contact/getPhoto; format 'modules.contactcard.frontoffice/detailvisual'; alt contact/getLastname" />
+			<img tal:condition="not: contact/getLastname" class="fn" change:media="document contact/getPhoto; format 'modules.contactcard.frontoffice/detailvisual'; alt contact/getName" />
+		</a>
+		<tal:block tal:condition="not:configuration/getShowLinkToDetail">
+			<img tal:condition="contact/getLastname" class="fn" change:media="document contact/getPhoto; format 'modules.contactcard.frontoffice/detailvisual'; alt contact/getLastname" />
+			<img tal:condition="not: contact/getLastname" class="fn" change:media="document contact/getPhoto; format 'modules.contactcard.frontoffice/detailvisual'; alt contact/getName" />
+		</tal:block>
+	</li>
+	<li>
+		<h4 tal:condition="contact/getLastname" class="fn">
+			<a tal:condition="configuration/getShowLinkToDetail" change:link="tag contextual_website_website_modules_contactcard_contact ; contactcardParam[cmpref] contact/getId">		
+				<strong>
+					<span tal:condition="contact/getTitle" class="honorific-prefix">${contact/getTitle/getLabelAsHtml}</span>
+					<span class="given-name">${contact/getFirstnameAsHtml}</span>
+					<span class="family-name">${contact/getLastnameAsHtml}</span>
+				</strong>
+			</a>
+			<strong tal:condition="not:configuration/getShowLinkToDetail">
+				<span tal:condition="contact/getTitle" class="honorific-prefix">${contact/getTitle/getLabelAsHtml}</span>
+				<span class="given-name">${contact/getFirstnameAsHtml}</span>
+				<span class="family-name">${contact/getLastnameAsHtml}</span>
+			</strong>
+		</h4>
+		<h4 tal:condition="not: contact/getLastname" class="org fn">${contact/getNameAsHtml}</h4>	
+	</li>
+	<tal:block tal:condition="configuration/getShowCompanyInfos">
+		<li tal:condition="php: contact.getName() && contact.getLastname()">
+			<strong change:translate="modules.contactcard.frontoffice.OfficeLabel"></strong>
+			<span class="org">${contact/getNameAsHtml}</span>
+		</li>
+		<li tal:condition="contact/getFunction">
+			<strong change:translate="modules.contactcard.frontoffice.FunctionLabel"></strong>
+			<span class="title">${contact/getFunctionAsHtml}</span>
+		</li>
+	</tal:block>	
+	<tal:block tal:condition="configuration/getShowTelephoneNumber">
+		<li tal:condition="contact/getPhone" class="tel">
+			<strong change:translate="modules.contactcard.frontoffice.PhoneLabel"></strong>
+			<span class="type display-none">work</span>
+			<span class="value">${contact/getPhoneAsHtml}</span>
+		</li>
+		<li tal:condition="contact/getPost">
+			<strong change:translate="modules.contactcard.frontoffice.PostLabel"></strong>
+			${contact/getPostAsHtml}
+		</li>
+		<li tal:condition="contact/getFax" class="tel">
+			<strong change:translate="modules.contactcard.frontoffice.FaxLabel"></strong>
+			<span class="type display-none">fax</span>
+			<span class="value">${contact/getFaxAsHtml}</span>
+		</li>
+	</tal:block>
+	<tal:block tal:condition="configuration/getShowAddress">
+		<li tal:condition="contact/hasAddressInformations" class="address adr">
+			<strong change:translate="modules.contactcard.frontoffice.AddressLabel"></strong>
+			<ul>
+				<li class="street-address">
+					${contact/getAddress1AsHtml}
+					<tal:block tal:condition="contact/getAddress2">
+						<br />
+						${contact/getAddress2AsHtml}
+					</tal:block>
+				</li>
+				<li tal:condition="contact/getZipcode" class="display-inline postal-code" tal:content="contact/getZipcodeAsHtml"/>
+				<li tal:condition="contact/getCity" class="display-inline locality" tal:content="contact/getCityAsHtml"/>
+				<li tal:condition="contact/getCountry" class="country-name" tal:content="contact/getCountryAsHtml"/>
+			</ul>
+		</li>
+	</tal:block>
+	<li tal:condition="configuration/getShowContactpageLink">
+		<strong change:translate="modules.contactcard.frontoffice.ContactLabel"></strong>
+		<span>
+			<a change:link="tag contextual_website_website_modules_contactcard_page-contact ; contactcardParam[cmpref] contact/getId; formParam[receiverIds] contact/getId" class="link email" change:translate="modules.contactcard.frontoffice.Contactme"></a> 
+		</span>
+	</li>
+</ol>
