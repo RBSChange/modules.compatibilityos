@@ -52,11 +52,47 @@
 	<block type="modules_website_quicklinks" hidden="true" label="&amp;modules.website.bo.blocks.Quicklinks;" />
 	<block type="modules_website_sidebar" hidden="true" label="&amp;modules.website.bo.blocks.Sidebar;" />
 	<block type="modules_website_threadOld" hidden="true" afterAll="true" />
-	<block type="modules_website_xhtmltemplate" hidden="true" label="&amp;modules.website.bo.blocks.Xhtmltemplate.Title;">
+    <block type="modules_website_edit" hidden="true" icon="edit" label="&amp;modules.website.bo.blocks.Edit;"/>
+    <block type="modules_website_menu" hidden="true" label="&amp;modules.website.bo.blocks.Menu;" cache="true" cache-key="page,cmpref"
+		cache-deps="modules_website/menu,[modules_website/menuitem],[modules_website/page],modules_website/pageexternal,[modules_website/topic],modules_website/website">
 		<parameters>
-			<parameter name="template" type="String" default-value="" />
-			<parameter name="usecache" type="Boolean" default-value="false" />
+			<parameter name="depth" type="Integer" default-value="1" />
+			<parameter name="template" type="String" default-value="default" />
+			<parameter name="deployonlycurrentpath" type="Boolean" default-value="false" />
 		</parameters>
 	</block>
-        <block type="modules_website_edit" icon="edit" label="&amp;modules.website.bo.blocks.Edit;"/>
+	<block type="modules_website_taggedmenu" hidden="true" label="&amp;modules.website.bo.blocks.TaggedMenu;" cache="true" cache-key="page"
+		cache-deps="modules_website/menu,[modules_website/menuitem],[modules_website/page],modules_website/pageexternal,[modules_website/topic],modules_website/website">
+		<parameters>
+			<parameter name="tag" type="String" />
+			<parameter name="package" type="String" default-value="" />
+			<parameter name="template" type="String" default-value="default" />
+			<parameter name="depth" type="Integer" default-value="1" />
+			<parameter name="deployonlycurrentpath" type="Boolean" default-value="false" />
+		</parameters>
+	</block>
+	<block type="modules_website_contextualmenu" hidden="true" label="&amp;modules.website.bo.blocks.ContextualMenu;" cache="true"
+		cache-key="page" cache-deps="[modules_website/page],modules_website/pageexternal,[modules_website/topic],modules_website/website">
+		<parameters>
+			<parameter name="template" type="String" default-value="default" />
+			<parameter name="package" type="String" default-value="" />
+			<parameter name="depth" type="Integer" default-value="2" />
+			<parameter name="startwebsitelevel" type="Integer" default-value="1" />
+			<parameter name="deployall" type="Boolean" default="false" />
+		</parameters>
+	</block>
+	<block type="modules_website_sitemap" hidden="true" icon="sitemap" label="&amp;modules.website.bo.blocks.Sitemap;" cache="true"
+		cache-deps="[modules_website/page],modules_website/pageexternal,[modules_website/topic],modules_website/website">
+		<parameters>
+			<parameter name="column" type="Boolean" default-value="false" />
+		</parameters>
+	</block>
+	<block type="modules_website_Simplecontent" hidden="true" icon="">
+		<parameters>
+			<parameter name="view" type="String" />
+		</parameters>
+	</block>
+        
+    <!-- Users -->
+ 	<block type="modules_users_adminauthentication" hidden="true" icon="user-backoffice" label="&amp;modules.users.bo.layout.adminauthentication;" />
 </blocks>
