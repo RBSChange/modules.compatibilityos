@@ -1,0 +1,14 @@
+<!-- scrolling -->
+<script change:javascript="head 'modules.rss.lib.js.liscroller'" />
+<h2 change:h="" tal:condition="not: configuration/getUseLabel">${title}</h2>
+<h2 change:h="" tal:condition="configuration/getUseLabel">${document/getLabelAsHtml}</h2>
+    <ul class="feedrss ticker" id="ticker01">
+        <li tal:repeat="item php:channel.getItems(0, configuration.getItemCount())">
+			<span tal:condition="item/getDate" class="date-feedrss">${item/getLocalDate}</span>
+                        <a class="link" tal:condition="not: configuration/getOpenLinkInNewWindow" tal:attributes="href item/getPermalink">${item/getCropTitle}</a>
+                        <a class="link popup" tal:condition="configuration/getOpenLinkInNewWindow" tal:attributes="href item/getPermalink" onclick="return accessiblePopup(this);">${item/getCropTitle}</a>
+			<a class="link" tal:condition="configuration/getShowSource" href="${item/getChannelLink}">${trans:m.rss.fo.fromSource, ucf} ${item/getChannelTitle}</a>
+			<span>|</span>
+        </li>
+    </ul>
+
