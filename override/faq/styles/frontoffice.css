@@ -1,0 +1,14 @@
+.modules-faq .shortcuts{
+	margin-bottom: 20px;
+}
+.modules-faq .questions{
+	margin-bottom: 20px;
+}
+.modules-faq .questions li{
+	margin-bottom: 20px;
+}
+
+.modules-faq ul.shortcuts,
+.modules-faq ol.questions{
+	list-style-type: none;
+}

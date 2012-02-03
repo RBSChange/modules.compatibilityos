@@ -1,0 +1,24 @@
+<tal:block tal:condition="php: docs AND (paginationPosition == 'top' || paginationPosition == 'both')" change:paginator="docs" />
+
+<ul class="document-list" tal:condition="docs">
+	<li tal:repeat="doc docs" class="${php: repeat.doc.odd ? 'odd' : 'even'}">
+		<h2 change:h=""><a change:link="document doc; downloadParam[topicId] topicId">${doc/getLabelAsHtml}</a></h2>
+		<tal:block tal:condition="configuration/getShowVisuals">
+			<img tal:condition="doc/getVisual" change:media="document doc/getVisual; class 'document-visual'; format 'modules.download.frontoffice/listvisual'" />
+		</tal:block>
+		<div class="normal" tal:condition="doc/getDescription" tal:content="doc/getDescriptionAsHtml"></div>
+		
+		<tal:block tal:condition="configuration/getShowCategories">
+			<dl class="inline-list" tal:condition="doc/getPublishedCategoryCount">
+				<dt>${trans:modules.download.fo.categories,ucf}</dt>
+				<dd tal:repeat="category doc/getPublishedCategoryArray">
+					<a change:link="document category">${category/getLabelAsHtml}</a>
+					<span tal:condition="not: repeat/category/end">, </span>
+				</dd>
+			</dl>			
+		</tal:block>
+		<div class="cleaner"></div>
+	</li>
+</ul>
+
+<tal:block tal:condition="php: docs AND (paginationPosition == 'bottom' || paginationPosition == 'both')" change:paginator="docs" />

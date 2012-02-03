@@ -1,0 +1,33 @@
+<ul class="mini-navigation" tal:condition="php: (navigationPosition == 'top' || navigationPosition == 'both') AND (isOnDetailPage || linkToAll)">
+	<li tal:condition="isOnDetailPage">
+		<a change:link="tag functional_download_documentcard-list">${trans:m.download.fo.contextual-documentcards,ucf}</a>
+	</li>
+	<li tal:condition="linkToAll">
+		<a change:link="tag ctx_download_documentcardalllist">${trans:m.download.fo.all-documentcards,ucf}</a>
+	</li>
+</ul>
+
+<h1 change:h="">${doc/getLabelAsHtml}</h1>
+
+<img tal:condition="doc/getVisual" change:media="document doc/getVisual; class 'visual'; format 'modules.download.frontoffice/detailvisual'"/>
+
+<p class="normal"><a change:download="doc/getFile"></a></p>
+
+<div class="normal documentcard-description" tal:condition="doc/getDescription">${doc/getDescriptionAsHtml}</div>
+
+<dl class="inline-list" tal:condition="doc/getPublishedCategoryCount">
+	<dt>${trans:modules.download.fo.categories,ucf}</dt>
+	<dd tal:repeat="category doc/getPublishedCategoryArray">
+		<a change:link="document category">${category/getLabelAsHtml}</a>
+		<span tal:condition="not: repeat/category/end">, </span>
+	</dd>
+</dl>
+
+<ul class="mini-navigation" tal:condition="php: (navigationPosition == 'bottom' || navigationPosition == 'both') AND (isOnDetailPage || linkToAll)">
+	<li tal:condition="isOnDetailPage">
+		<a change:link="tag functional_download_documentcard-list">${trans:m.download.fo.contextual-documentcards,ucf}</a>
+	</li>
+	<li tal:condition="linkToAll">
+		<a change:link="tag ctx_download_documentcardalllist">${trans:m.download.fo.all-documentcards,ucf}</a>
+	</li>
+</ul>

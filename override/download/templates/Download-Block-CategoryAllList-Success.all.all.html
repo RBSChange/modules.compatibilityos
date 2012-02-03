@@ -1,0 +1,5 @@
+<dl class="menu-list">
+	<dt tal:condition="blockTitle">${blockTitle}</dt>
+	<dt tal:condition="not: blockTitle">${trans:m.download.fo.all-categories,ucf}</dt>
+	<dd tal:repeat="row categoriesInfos"><a change:link="document row/category">${row/category/getLabelAsHtml}</a> (${row/count})</dd>
+</dl>
