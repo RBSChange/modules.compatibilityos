@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+	<channel>
+		<title tal:content="playlist/getLabel"/>
+		
+		<tal:block tal:repeat="item playlist/getPublishedVideoArray">
+			<tal:block tal:condition="item/getImage">
+				<tal:block tal:define="global imageUrl php: MediaHelper::getPublicFormatedUrl(item.getImage())"/>
+			</tal:block>
+			<tal:block tal:condition="not: item/getImage">
+				<tal:block tal:condition="defaultImage" tal:define="global imageUrl defaultImage"/>
+			</tal:block>				
+			<item>
+				<title tal:content="item/getLabel" />
+				<description tal:condition="item/getDescription" tal:content="item/getDescription" />
+				<media:group>
+					<media:content tal:attributes="url item/getFileUrl"/>
+					<media:thumbnail tal:attributes="url imageUrl" />
+				</media:group>
+			</item>
+		</tal:block>
+	</channel>
+</rss>
