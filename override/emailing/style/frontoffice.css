@@ -1,0 +1,59 @@
+.modules-emailing-Subscribe input[type="text"],.modules-emailing-Subscribe textarea,.modules-emailing-Subscribe select{
+	margin-top: 10px;
+	border: 1px solid #666666;
+	font-size: 11px;
+	color: #666666;
+	letter-spacing: 1px;
+}
+.modules-emailing-Subscribe input[type="submit"],.modules-emailing-Subscribe input[type="reset"]{
+	margin-top: 20px;
+	letter-spacing: 1px;
+	background: url(/media/frontoffice/mailinglist_button.gif) ;
+	border: none;
+	color: #FFFFFF;
+	font-size: 9px;
+	text-transform: uppercase;
+	padding: 5px;
+}
+.modules-emailing-Subscribe fieldset{
+	margin-top: 20px;
+	border: dotted 1px #669900;
+}
+.modules-emailing-Subscribe legend{
+	font-size: 10px;
+	text-transform: uppercase;
+	color: #fff;
+	padding: 1px 5px 2px 5px;
+	background-color: #669900;
+}
+.modules-emailing-Subscribe small{
+	font-size: 10px;
+}
+.modules-emailing-Subscribe form{
+	margin-left: 30px;
+}
+.modules-emailing-Subscribe label span.requiredsymbol{
+	color: #669900;
+}
+.modules-emailing-Subscribe .errors{
+	font-weight: bold;
+	color: red;
+	padding: 10px 0 10px 0;
+}
+.modules-emailing-Subscribe .success{
+	font-weight: bold;
+	color: #669900;
+	padding: 10px 0 10px 0;
+}
+.modules-emailing-Subscribe ol{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+.modules-emailing-Subscribe ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+@import url(/modules/emailing/style/frontoffice.!xul.all.css);

@@ -1,0 +1,20 @@
+<form class="cmxform" change:form="" tal:condition="configuration/getMailinglist" >
+    <fieldset>
+        <legend>${configuration/getMailinglist/getDescription}</legend>
+		<div class="error" change:errors="" />
+		<ol>
+			<li>
+				<div change:textinput="name email; label &modules.emailing.frontoffice.Email;required true"/>
+			</li>
+		<tal:block tal:condition="configuration/getShowextendfields" tal:repeat="field configuration/getMailinglist/getSubscriberfieldsArray">
+			<li tal:condition="not: field/getIsemail">
+				<div  change:textinput="evaluatedname field/getMailingname; evaluatedlabel field/getLabel"/>
+			</li>
+		</tal:block>
+		
+			<li>	
+				<div change:submit="label &modules.emailing.frontoffice.Submit"/>
+			</li>
+		</ol>
+	</fieldset>
+</form>

@@ -1,0 +1,7 @@
+<ul class="success">
+    <li tal:condition="not: configuration/getConfirmsubscribe" 
+    	change:translate="&amp;modules.emailing.frontoffice.SubscribeSuccess;" />
+    	
+	<li tal:condition="configuration/getConfirmsubscribe" 
+		change:translate="&amp;modules.emailing.frontoffice.SubscribeAsked;" />
+</ul>

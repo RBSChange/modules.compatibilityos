@@ -1,0 +1,15 @@
+<form class="cmxform" change:form="" tal:condition="configuration/getMailinglist" >
+    <fieldset>
+        <legend><span change:translate="&amp;modules.emailing.frontoffice.UnsubscribePrefix;" />: ${configuration/getMailinglist/getDescription}</legend>
+		<div class="error" change:errors="" />
+		<div class="error" tal:condition="emailnotfound" change:translate="&amp;modules.emailing.frontoffice.Unsubscribeemailnotfound;" />
+		<ol>
+			<li>
+				<div change:textinput="name email; label &modules.emailing.frontoffice.Email;required true"/>
+			</li>		
+			<li>	
+				<div change:submit="label &modules.emailing.frontoffice.Unsubscribe"/>
+			</li>
+		</ol>
+	</fieldset>
+</form>
