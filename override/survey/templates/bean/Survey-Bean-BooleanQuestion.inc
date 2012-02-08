@@ -1,0 +1,2 @@
+<!-- Question -->
+<label<?php echo(($question->getAlignField()) ? ' class="align-field" style="width: 33%"' : ''); ?> change:fieldlabel="name <?php echo($question->getBeanPropertyName()); ?>" usefor="false"></label><input change:field="name <?php echo($question->getBeanPropertyName()); ?>" labeled="false" />

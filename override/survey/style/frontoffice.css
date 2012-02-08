@@ -1,0 +1,221 @@
+.modules-survey legend,
+.modules-survey div.description,
+.modules-survey li.question{
+	margin-bottom: 10px;
+}
+.modules-survey li.question div.description{
+	margin-bottom: 3px;
+}
+.modules-survey fieldset{
+	margin-bottom: 25px;
+}
+.modules-survey .sections,
+.modules-survey form{
+	margin-top: 20px;
+}
+.modules-survey legend{
+	font-weight: bold;
+}
+.modules-survey label{
+	line-height: 1.8;
+	padding-right: 10px;
+	width: auto;
+}
+.modules-survey label.option-label{
+	padding-right: 0;
+	padding-left: 10px;
+}
+.modules-survey label.required span.requiredsymbol{
+	padding: 0 3px;
+	color: red;
+}
+.modules-survey .errors{
+	color: red;
+	font-weight: bold;
+}
+.modules-survey textarea{
+	display: block;
+	width: 100%;
+	overflow: auto;
+}
+.modules-survey input.textfield{
+	width: 250px;
+}
+.modules-survey label.align-field{
+	display: block;
+	float: left;
+}
+.modules-survey ul.list-multiple li{
+	margin-left: 20px;
+}
+.modules-survey li{
+	clear: both;
+}
+.modules-survey img.float-left{
+	margin-right: 10px;
+}
+.modules-survey img.float-right{
+	margin-left: 10px;
+}
+.modules-survey .survey-header{
+	background: url(/media/frontoffice/top_bg.png) no-repeat;
+	width: 100%;
+}
+.modules-survey ul.field-errors{
+	clear: both;
+	background: url(/media/frontoffice/alert_bg.png) top repeat-y;
+	margin-top: 5px;
+}
+.modules-survey ul.field-errors li{
+	color: red;
+	padding-left: 10px;
+}
+.modules-survey ul.field-errors li.first{
+	list-style: url(/media/frontoffice/alert_bullet.gif) ;
+	list-style-position: inside;
+}
+.modules-survey .nav{
+	background: url(/media/frontoffice/nav_bg.png) no-repeat;
+	width: 930px;
+	height: 70px;
+	margin-bottom: 15px;
+}
+.modules-survey .nav .btn_suivant{
+	display: block;
+	float: right;
+	border: none;
+	margin: 0;
+	padding: 0;
+	margin-top: 8px;
+	margin-left: 10px;
+	margin-right: 10px;
+	padding-left: 10px;
+	width: 110px;
+	height: 34px;
+	background: url(/media/frontoffice/nav_suiv_on.png) no-repeat;
+	cursor: pointer;
+}
+.modules-survey .nav .btn_suivant_off{
+	display: block;
+	float: right;
+	color: #a9a9a9;
+	border: none;
+	margin: 0;
+	padding: 0;
+	padding-top: 8px;
+	padding-left: 10px;
+	margin-top: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	width: 110px;
+	height: 34px;
+	background: url(/media/frontoffice/nav_suiv_off.png) no-repeat;
+}
+.modules-survey .nav .btn_prec{
+	display: block;
+	float: left;
+	border: none;
+	margin: 0;
+	padding: 0;
+	margin-top: 8px;
+	margin-left: 10px;
+	margin-right: 10px;
+	width: 110px;
+	height: 34px;
+	padding-right: 30px;
+	background: url(/media/frontoffice/nav_prec_on.png) no-repeat;
+}
+.modules-survey .nav .btn_prec_off{
+	display: block;
+	float: left;
+	color: #a9a9a9;
+	border: none;
+	margin: 0;
+	padding: 0;
+	margin-top: 8px;
+	margin-left: 10px;
+	margin-right: 10px;
+	padding-top: 10px;
+	padding-left: 10px;
+	width: 100px;
+	height: 24px;
+	background: url(/media/frontoffice/nav_prec_off.png) no-repeat;
+}
+.modules-survey .nav ul{
+	margin: 0;
+	padding: 0;
+	height: 55px;
+}
+.modules-survey .nav ul li{
+	clear: none;
+	float: left;
+	display: block;
+	width: 5%;
+	height: 35px;
+	padding-right: 10px;
+	background: url(/media/frontoffice/nav_bullet.png) right top no-repeat;
+	margin-top: 1px;
+	padding-top: 15px;
+}
+.modules-survey .nav ul li span{
+	display: block;
+	color: #b2aaac;
+	text-decoration: none;
+	font-weight: bold;
+	margin-top: -5px;
+	padding-top: 6px;
+	padding-bottom: 6px;
+	padding-left: 10px;
+	padding-right: 10px;
+	text-align: left;
+	width: 11px;
+	height: 15px;
+	background: url(/media/frontoffice/nav_page.png) top left no-repeat;
+}
+.modules-survey .nav ul li.current{
+	width: 20%;
+}
+.modules-survey .nav ul li span.on{
+	color: #cac0c2;
+	float: left;
+	background: url(/media/frontoffice/nav_page.png) bottom left no-repeat;
+}
+.modules-survey #barre{
+	background: url(/media/frontoffice/barre_bg.png) top left no-repeat;
+	margin-left: 10px;
+	margin-right: 10px;
+	text-align: right;
+	width: 97.5%;
+	height: 8px;
+	font-size: 0.75em;
+}
+.modules-survey #barre .progression{
+	background: url(/media/frontoffice/barre_progression.png) top left no-repeat;
+	height: 8px;
+	float: left;
+}
+
+table.listmultifield{
+	width: 100%;
+	border-collapse: collapse;
+	margin: 5px 0;
+}
+table.listmultifield th,table.listmultifield td{
+	border: #888 solid 1px;
+	padding: 3px;
+}
+table.listmultifield thead th{
+	background: #ddd;
+	text-align: center;
+	font-weight: bold;
+}
+table.listmultifield tr.row0 td,table.listmultifield tr.row1 td{
+	width: 50px;
+	text-align: center;
+}
+table.listmultifield tr.row1{
+	background: #eee;
+}
+table.listmultifield tr.errors td{
+	background: #fdd;
+}

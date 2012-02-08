@@ -1,0 +1,15 @@
+<p>
+	<input type="hidden" name="surveyParam[previousStep]" value="${stepIndex-1}" />
+	<input type="hidden" name="surveyParam[nextStep]" value="${stepIndex+1}" />
+	<input type="hidden" change:hiddeninput="name wizard_process_id" />
+	<tal:block tal:condition="php: stepIndex > 0">
+			<input type="submit" name="surveyParam[goToPreviousStep]" value="Précédent" />
+	</tal:block>
+	<tal:block tal:condition="php: stepIndex == lastStepIndex">
+			<input type="submit" name="surveyParam[goToNextStep]" value="Enregistrer" />
+	</tal:block>
+	<tal:block tal:condition="php: stepIndex != lastStepIndex">
+			<input type="submit" name="surveyParam[goToNextStep]" value="Suivant" />
+	</tal:block>
+	(Avancement : ${php: strval(round(100*(stepIndex)/(lastStepIndex+1))) . '%'})
+</p>
