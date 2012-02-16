@@ -1,0 +1,27 @@
+<h2 class="title"><tal:block change:translate="modules.solrsearch.frontoffice.Others" /> (${otherResults/getTotalHitsCount})</h2>
+<ol class="solrsearch-results-list">
+	<tal:block tal:repeat="item otherResults">
+		<tal:block tal:condition="repeat/item/start">
+			<tal:block tal:define="global posclass string:first" />
+		</tal:block>
+		<tal:block tal:condition="not: repeat/item/start">
+			<tal:block tal:define="global posclass" />
+		</tal:block>
+		<tal:block tal:condition="repeat/item/end">
+			<tal:block tal:define="global posclass string: last" />
+		</tal:block>
+		<tal:block tal:define="global documentclass item/getResultType" />
+		<li tal:define="global liclass string:$documentclass $posclass" tal:attributes="class liclass">
+			<h3 class="title">
+				<img change:gauge="item/getNormalizedScore" />
+				<a class="link" tal:condition="not: item/isMedia" change:link="document item/getDocument">
+					<strong>${item/getHighlightedLabel}</strong>
+				</a>	
+			</h3>		
+			<tal:block tal:condition="item/isMedia">
+				<strong tal:content="item/getHighlightedLabel"></strong> <a class="link" change:download="item/getDocument"></a>
+			</tal:block>			
+			<tal:block change:include="module 'solrsearch'; template 'Solrsearch-Block-SearchresultDetail'; type 'html'; item item" />
+		</li>
+	</tal:block>
+</ol>

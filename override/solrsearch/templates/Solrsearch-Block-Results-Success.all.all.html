@@ -1,0 +1,51 @@
+<tal:block tal:condition="not: noHits">
+	<h1 change:h="">${trans:m.solrsearch.frontoffice.result-title,ucf,terms=terms,count=searchResults/getTotalHitsCount}</h1>
+	<p class="normal">
+		${trans:m.solrsearch.frontoffice.sort-by,ucf,lab}
+		<tal:block tal:condition="byScore">
+			<strong>${trans:m.solrsearch.frontoffice.sort-by-score,ucf}</strong>
+			<span> | </span>
+			<a class="link" change:currentPageLink="byDateParams">${trans:m.solrsearch.frontoffice.sort-by-date,ucf}</a>
+		</tal:block>
+		<tal:block tal:condition="not: byScore">
+			<a class="link" change:currentPageLink="byScoreParams">${trans:m.solrsearch.frontoffice.sort-by-score,ucf}</a>
+			<span> | </span>
+			<strong>${trans:m.solrsearch.frontoffice.sort-by-date,ucf}</strong>
+		</tal:block>
+	</p>
+	<p tal:condition="exists: documentModelFacet" class="normal">
+		<tal:block tal:repeat="facetCount documentModelFacet">
+			<a change:currentPageLink="solrsearchParam[documentModel] repeat/facetCount/key">${facetCount/getValue} (${php: number_format(facetCount.getCount(), 0, ',', ' ')})</a>
+			<span tal:condition="not: repeat/facetCount/end" > | </span>
+		</tal:block>
+	</p>
+	<p tal:condition="php: isset(documentModel) && documentModel != ''" class="normal">
+		${trans:m.solrsearch.frontoffice.documentmodelfilter,ucf,lab}
+		${documentModelLabel} <span class="small">(<a change:currentPageLink="solrsearchParam[documentModel] ''" title="${trans:m.solrsearch.frontoffice.removedocumentmodelfiltertitle,ucf}">${trans:m.solrsearch.frontoffice.removedocumentmodelfilter,ucf}</a>)</span>
+	</p>
+</tal:block>
+
+<p tal:condition="noHits" class="normal">
+	${trans:m.solrsearch.frontoffice.search-results-empty,ucf,lab}
+	<em class="highlight">${terms}</em>
+</p>
+
+<p tal:condition="exists: suggestionParams/solrsearchParam" class="normal">
+	${trans:m.solrsearch.frontoffice.search-suggestions,ucf,lab}
+	<a class="link" change:currentPageLink="suggestionParams" tal:content="suggestionParams/solrsearchParam/terms"></a>
+</p>
+
+<ol class="document-list">
+	<tal:block tal:repeat="item searchResults">
+		<li class="${php: repeat.item.odd ? 'odd' : 'even'}">
+			<h2 change:h="">
+				<img change:gauge="item/getNormalizedScore" />
+				<a change:link="document item/getDocument">${item/getHighlightedLabel}</a>				
+			</h2>
+			<tal:block change:include="module item/get__ITEM_MODULE; template item/get__ITEM_TEMPLATE; type 'html'; item item; showTypes configuration/getShowTypes; showDates configuration/getShowDates" />
+			<div class="cleaner"></div>
+		</li>
+	</tal:block>
+</ol>
+
+<tal:block change:paginator="paginator" />

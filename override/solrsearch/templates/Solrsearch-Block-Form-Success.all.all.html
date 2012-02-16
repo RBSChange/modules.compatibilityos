@@ -1,0 +1,25 @@
+<script type="text/javascript" tal:condition="doCompletion">
+/* <![CDATA[ */
+function solrsearch_complete(field, fieldOp, fieldName) {
+	var limit = 30;
+	var url = '/index.php?module=solrsearch&action=Complete&lang=${lang}&limit='+limit+'&op='+fieldOp;
+	if (fieldName != null) {
+		url += "&fieldName="+fieldName;
+	}
+	jQuery(field).autocomplete(url, {delay: 150, cacheLength : 1, max : limit, matchSubset: false, formatItem : function(result, index, count, term) { return result[0]+" ("+result[1]+")"; } });
+}
+
+jQuery(document).ready(function() {
+	var simpleField = document.getElementById('solrsearch');
+	solrsearch_complete(simpleField, "AND", "aggregateText");
+});
+/* ]]> */
+</script>
+<form class="cmxform" tal:attributes="method configuration/getSubmitMethod" action="${formAction}">
+	<p>
+		<label class="hidden" for="solrsearch">${trans:m.solrsearch.frontoffice.search-input,lab,ucf}</label>
+		<input class="textfield" type="text" id="solrsearch" name="${configuration/getModule}Param[terms]" value="${terms}" 
+			empty="${trans:m.solrsearch.frontoffice.search-button-title,ucf,attr}" />
+		<input class="button" type="submit" name="submit" value="${trans:m.solrsearch.frontoffice.search-button-ok,ucf,attr}" />
+	</p>
+</form>
