@@ -1,0 +1,295 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<tal:block>
+	${cssInclusion}
+	<window title="Check Links" orient="vertical" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul" onload="checkInit();">
+		${scriptInclusion}
+	<script type="text/javascript"><![CDATA[
+	    var ids = [${ids}];
+
+	    var lang = "${lang}";
+
+	    var index = 0;
+
+	    var count = ${count};
+
+	    var logs = [];
+
+	    var doItAgain = false;
+
+
+        function checkInit()
+        {
+            window.resizeTo(450, 320);
+
+            if (count == 0)
+            {
+                window.alert("Il n'existe aucune page à vérifier dans la langue en cours.");
+                self.close();
+            }
+
+            document.getElementById("counter").setAttribute("value", "0/" + count);
+        }
+
+
+        function start()
+        {
+            index = 0;
+
+            document.getElementById("progress").setAttribute("value", "0%");
+
+            document.getElementById("counter").setAttribute("value", "0/" + count);
+
+            document.getElementById("start").setAttribute("disabled", "true");
+
+            document.getElementById("view").setAttribute("disabled", "true");
+
+            document.getElementById("stop").removeAttribute("disabled");
+
+            document.getElementById("close").setAttribute("disabled", "true");
+
+            var logList = document.getElementById("log");
+
+            for (var i = logList.childNodes.length; i > 2; i--)
+            {
+                logList.removeChild(logList.childNodes[i - 1]);
+            }
+
+            doItAgain = true;
+
+            doCheck();
+        }
+
+
+        function stop()
+        {
+            doItAgain = false;
+
+            sendReport();
+
+            document.getElementById("progress").setAttribute("value", "0%");
+
+            document.getElementById("counter").setAttribute("value", "0/" + count);
+
+            document.getElementById("start").removeAttribute("disabled");
+
+            document.getElementById("view").removeAttribute("disabled");
+
+            document.getElementById("stop").setAttribute("disabled", "true");
+
+            document.getElementById("close").removeAttribute("disabled");
+        }
+
+
+        function updateProgress()
+        {
+            var percent = Math.floor(((index + 1)  / count) * 100);
+            document.getElementById("progress").setAttribute("value", percent + "%");
+            document.getElementById("counter").setAttribute("value", (index + 1) + "/" + count);
+        }
+
+
+        function finish()
+        {
+            doItAgain = false;
+
+            sendReport();
+
+            document.getElementById("start").removeAttribute("disabled");
+
+            document.getElementById("view").removeAttribute("disabled");
+
+            document.getElementById("stop").setAttribute("disabled", "true");
+
+            document.getElementById("close").removeAttribute("disabled");
+        }
+
+
+        function doCheck()
+        {
+            if ((index >= count) || !doItAgain)
+            {
+                finish();
+            }
+            else if (ids[index])
+            {
+                var req = new XMLHttpRequest();
+                req.open('GET', '${UIHOST}/xul_controller.php?module=website&action=CheckLinks&cmpref=' + ids[index] + '&lang=' + lang + '&doCheck=1', true);
+
+                var context = this;
+                req.onreadystatechange = function (aEvt)
+                {
+                  if (req.readyState == 4)
+                  {
+                     if (req.status == 200)
+                     {
+                         if (context.doItAgain)
+                         {
+                             var xmlText = req.responseText;
+                             if (xmlText.indexOf('<' + '?' + 'xml') == 0)
+                             {
+                                 xmlText = xmlText.substring(xmlText.indexOf('>')+1, xmlText.length);
+                             }
+                             xmlText = trim(xmlText);
+
+                             try
+                             {
+                            	 var e4x = new XML(xmlText);
+                            	 status  = e4x.status.toString().toUpperCase();
+
+                            	 var listItem = document.createElement("listitem");
+                            	 var listCellLabel = document.createElement("listcell");
+                            	 listCellLabel.setAttribute("label", e4x.message.toString());
+                            	 var listCellStatus = document.createElement("listcell");
+                            	 if (status == "OK")
+                            	 {
+                                     listCellStatus.setAttribute("label", "OK");
+                                     listCellStatus.setAttribute("style", "color: green;");
+                            	 }
+                            	 else
+                            	 {
+                            	     var nbError = xmlText.split('<li').length;
+                            	     if (nbError < 3)
+                            	     {
+                                        listCellStatus.setAttribute("label", "1 erreur");
+                                     }
+                                     else
+                                     {
+                                        listCellStatus.setAttribute("label", (nbError - 1) + " erreurs");
+                                     }
+                                     listCellStatus.setAttribute("style", "color: red;");
+                                     context.logs.push({id: context.ids[context.index], message: e4x.contents.toString()});
+                            	 }
+                            	 listItem.appendChild(listCellLabel);
+                            	 listItem.appendChild(listCellStatus);
+                            	 document.getElementById("log").appendChild(listItem);
+                             }
+                             catch (e)
+                             {
+                                if (context.ids[context.index])
+                                {
+                                    var listItem = document.createElement("listitem");
+                                	var listCellLabel = document.createElement("listcell");
+                                	listCellLabel.setAttribute("label", context.ids[context.index]);
+                                    listCellLabel.setAttribute("style", "color: red;");
+                                	var listCellStatus = document.createElement("listcell");
+                                	listCellStatus.setAttribute("label", "Erreur inconnue");
+                                    listCellStatus.setAttribute("style", "color: red;");
+                                	listItem.appendChild(listCellLabel);
+                                	listItem.appendChild(listCellStatus);
+                                	document.getElementById("log").appendChild(listItem);
+                                    context.logs.push({id: context.ids[context.index], message: req.responseText});
+                                }
+                             }
+                             context.updateProgress();
+                    	     context.index++;
+                    	     context.doCheck();
+                    	 }
+                     }
+                     else
+                     {
+                         context.stop();
+                     }
+                  }
+                };
+                req.send(null);
+            }
+        }
+
+
+        function sendReport()
+        {
+            if (logs.length > 0)
+            {
+                var data = [];
+                var message = "";
+
+                for (var i = 0; i < logs.length; i++)
+                {
+                    message += logs[i].message;
+                }
+
+                var req = new XMLHttpRequest();
+                req.open('post', '${UIHOST}/xul_controller.php?module=website&action=CheckLinks&lang=' + lang + '&doSend=1', false);
+                data.push("module=website");
+                data.push("action=CheckLinks");
+                data.push("lang=" + lang);
+                data.push("doSend=1");
+                data.push("message=" + encodeURIComponent(message));
+                req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                req.send(data.join("&"));
+
+                alert('Des erreurs ont été notifiées par mail.');
+            }
+            else
+            {
+                alert("Aucune erreur n'a été notifiée.");
+            }
+        }
+
+
+        function view()
+        {
+            if (logs.length > 0)
+            {
+            
+                var log = new XPCNativeWrapper(window.open("about:blank", "log")).wrappedJSObject;
+                log.document.open();
+                log.document.write('<h1 style="font-family: Trebuchet, Arial, sans-serif; font-size: 90%;">Erreurs détectées :</h1>');
+                log.document.write('<dl style="font-family: Trebuchet, Arial, sans-serif; font-size: 80%;">');
+                for (var i = 0; i < logs.length; i++)
+                {
+                    var message = logs[i].message.replace('<dt', '<dt style="color: navy; margin-top: 10px;"');
+                    log.document.write(message);
+                }
+                log.document.write("</dl>");
+                log.document.close();
+             
+            }
+            else
+            {
+                alert("Aucune erreur n'a été notifiée.");
+            }
+        }
+	]]></script>
+
+	<vbox flex="1">
+       <label value="Vérification des liens" style="font-size: 14pt; font-weight: bold;" />
+
+       <hbox>
+           <label value="Nombre de pages à vérifier" style="text-decoration: underline;" />
+           <label value=":" />
+				<label id="count" value="0" tal:attributes="value count;" />
+       </hbox>
+
+       <hbox pack="center" style="font-weight: bold;">
+				<label id="message" value="Démarrer la vérification à l'aide du bouton ci-dessous." />
+       </hbox>
+
+       <listbox id="log" rows="5">
+          <listhead>
+					<listheader label="Page" />
+					<listheader label="Résultat" />
+          </listhead>
+          <listcols>
+					<listcol flex="4" />
+					<listcol flex="1" />
+          </listcols>
+       </listbox>
+
+       <hbox pack="center" style="font-weight: bold;">
+				<progressmeter id="progress" mode="determined" value="0%" flex="1" />
+				<label id="counter" value="0/0" />
+       </hbox>
+
+       <hbox pack="end">
+           <button id="start" change:icon="media_play_green/small" label=" Démarrer" oncommand="start()" />
+           <button id="stop" change:icon="media_stop_red/small" label=" Arrêter" oncommand="stop()" disabled="true" />
+           <button id="view" change:icon="message/small" label=" Voir le rapport" oncommand="view()" disabled="true" />
+				<spacer flex="1" />
+           <button id="close" change:icon="error/small" label=" Quitter" oncommand="self.close()" />
+       </hbox>
+
+	</vbox>
+	</window>
+</tal:block>
