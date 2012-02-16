@@ -1,0 +1,24 @@
+<tal:block tal:condition="configuration/getDoCompletion" change:include="module 'ecomextended'; template 'Ecomextended-Block-Searchform-js'; type 'html'; transmitAll 'true';"/>
+<form change:form="" tal:attributes="method configuration/getFormMethod">
+	<ol>
+		<li>
+			<input id="ecomextended_terms" change:textinput="name terms" label="${trans:m.ecomextended.frontoffice.your-search,ucf,lab,attr}" size="35" />
+			<input id="ecomextended_op" change:selectinput="" tal:condition="configuration/getOneofOrAllWords" name="op" nopreamble="true" list="${ops}" />
+		</li>
+		<li>
+			<input change:selectinput="name sort" label="${trans:m.ecomextended.frontoffice.order-by,ucf,lab,attr}" nopreamble="true" list="${sortOptions}" />
+		</li>	
+	</ol>
+	<p class="buttons">
+		<input type="submit" class="button" value="${trans:m.ecomextended.frontoffice.search,attr}"/>
+		<input change:hiddeninput="name showAll" />
+		<tal:block tal:condition="filter" tal:repeat="f filter">
+			<tal:block tal:condition="php: ecomextended_SearchFilter::isAccumulable(repeat.f.key)">
+				<input type="hidden" name="ecomextendedParam[filter][${repeat/f/key}][]" value="${fValue}" tal:repeat="fValue f"/>
+			</tal:block>
+			<tal:block tal:condition="php: !ecomextended_SearchFilter::isAccumulable(repeat.f.key)">
+				<input type="hidden" name="ecomextendedParam[filter][${repeat/f/key}]" value="${f}"/>
+			</tal:block>
+		</tal:block>
+	</p>	
+</form>

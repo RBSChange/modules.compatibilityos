@@ -1,0 +1,22 @@
+div.ecomextended-facet {
+	margin-bottom: 10px;
+}
+
+div.ecomextended-facet ul {
+	padding-left: 10px;
+}
+
+div.ecomextended-facet ul li {
+	margin-bottom: 3px;
+}
+
+#loading-facet {
+	background-color: #fff;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	z-index: 10000;
+	background-image: url("/media/frontoffice/ecomextended/loading.gif");
+	background-position: center;
+	background-repeat: no-repeat;
+}

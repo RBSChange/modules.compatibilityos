@@ -1,0 +1,41 @@
+<h2 change:h="">${trans:m.ecomextended.frontoffice.search-result-title,ucf}</h2>
+
+<ul class="ecomextended-results-header" tal:condition="not: noHits">
+	<li class="count"><h4 change:h="" tal:content="resultsHeader | default"></h4></li>
+</ul>
+
+<p tal:condition="noHits" class="ecomextended-no-hits" class="normal">
+	<em>${trans:m.ecomextended.frontoffice.search-results-empty,ucf,lab}</em>
+	${terms}
+</p>
+
+<p tal:condition="exists: suggestionParams/ecomextendedParam" class="ecomextended-suggestions">
+	${trans:m.ecomextended.frontoffice.search-suggestions,ucf,lab}
+	<a class="link" change:currentPageLink="suggestionParams">${suggestionParams/ecomextendedParam/terms}</a>
+</p>
+
+<tal:block tal:condition="not: showAll">
+	<p tal:condition="exists: complementaryResults" class="normal">
+		<a change:currentPageLink="ecomextendedParam[showAll] 'true'; ecomextendedParam[page] '1'; ecomextendedParam[filter] ''" 
+			change:translate="&modules.ecomextended.frontoffice.Search-again-on-site;; terms terms; totalHitsCount complementaryResults/getTotalHitsCount">Relancer la recherche <em>${terms}</em> sur l'ensemble du site (au moins ${nonEcomResults/getTotalHitsCount} résultats)</a>
+	</p>
+</tal:block>
+
+<p tal:condition="showAll" class="normal">
+	<a tal:condition="exists: complementaryResults" change:currentPageLink="ecomextendedParam[showAll] 'false'; ecomextendedParam[page] '1'"
+		change:translate="&modules.ecomextended.frontoffice.Search-again-on-ecom;; terms terms; totalHitsCount complementaryResults/getTotalHitsCount">Relancer la recherche <em>${terms}</em> sur l'ensemble du site (au moins ${nonEcomResults/getTotalHitsCount} résultats)</a>
+</p>
+
+<ol class="solrsearch-results-list">
+	<tal:block tal:repeat="item searchResults">
+		<li class="${php: repeat.item.odd ? 'odd' : 'even'}">
+			<h3 change:h="">
+				<img change:gauge="item/getNormalizedScore" />
+				<a class="link" change:link="document item/getDocument"><strong>${item/getHighlightedLabel}</strong></a>				
+			</h3>
+			<tal:block change:include="module item/get__ITEM_MODULE; template item/get__ITEM_TEMPLATE; type 'html'; item item" />
+		</li>
+	</tal:block>
+</ol>
+
+<tal:block change:paginator="paginator" />

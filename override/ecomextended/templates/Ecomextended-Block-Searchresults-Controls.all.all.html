@@ -1,0 +1,40 @@
+<div class="modules-catalog-productlistorderoptions">
+	<div class="products-display">
+		<div>
+			<form change:form="" method="GET" module="ecomextended" class="">
+				<tal:block tal:condition="displayConfig/facetinline">
+					<p><strong>${trans:m.catalog.frontoffice.list-filter,ucf,lab}</strong></p>
+					<ol>
+						<li tal:condition="displayConfig/showAvailability">
+							<input change:checkboxinput="name onlyavailable; value 'on'" label="${trans:m.catalog.frontoffice.list-only-available,ucf,attr}"
+							 onchange="this.form.submit();" />
+						</li>
+						<li tal:repeat="facet searchResults/getFacetResults">
+							<tal:block tal:condition="php: facet.getNonEmptyCount() > 1 or filters.hasFilter(facet.getFieldName())">
+								<select name="ecomextendedParam[filter][${facet/getFieldName}]" onchange="this.form.submit()">
+									<option value="">${facet/getFieldLabel}</option>
+									<tal:block tal:repeat="facetCount facet">
+										<option tal:condition="php: filters.hasNotFilter(facet.getFieldName(), facetCount.getValue()) and facetCount.isNotEmpty()"
+											value="${facetCount/getValue}">${facetCount/getLabel} (${php: number_format(facetCount.getCount(), 0, ',', ' ')})</option>
+										<option tal:condition="php: filters.hasFilter(facet.getFieldName(), facetCount.getValue())"
+											value="${facetCount/getValue}" selected="selected">${facetCount/getLabel} (${php: number_format(facetCount.getCount(), 0, ',', ' ')})</option>
+										<option tal:condition="php: parentConfiguration.getDisplayEmptyFiltersCount() and facetCount.isEmpty()"
+											value="${facetCount/getValue}">${facetCount/getLabel} (${php: number_format(facetCount.getCount(), 0, ',', ' ')})</option>
+									</tal:block>
+								</select>
+							</tal:block>
+						</li>
+					</ol>
+				</tal:block>
+				<ol>
+					<li>
+						<input change:selectinput="name sort" label="${trans:m.ecomextended.frontoffice.order-by,ucf,attr}"
+							nopreamble="true" list="${sortOptions}" onchange="this.form.submit();" />
+						<input type="submit" value="${trans:m.ecomextended.frontoffice.ok}" class="button"/>
+					</li>
+				</ol>
+			</form>
+			<tal:block tal:condition="exists: filters" change:include="module 'ecomextended'; template 'Ecomextended-Block-Managesearchfilters-Success'; type 'html'; filters filters;" />
+		</div>
+	</div>
+</div>

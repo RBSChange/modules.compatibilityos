@@ -1,0 +1,126 @@
+<tal:block tal:condition="searchResults">
+	<tal:block metal:define-macro="showFacetCount">
+		<tal:block tal:condition="php: filters.hasNotFilter(facet.getFieldName(), facetCount.getValue()) and facetCount.isNotEmpty()">
+			<a class="link" rel="${relAttr}" href="${php: filters.getNewUrl(facet.getFieldName(), facetCount.getValue(), 'ecomextendedParam[page]', 'ecomextendedParam[filter]')}">${facetCount/getLabel} (${php: number_format(facetCount.getCount(), 0, ',', ' ')})</a>
+		</tal:block>
+		<tal:block tal:condition="php: filters.hasFilter(facet.getFieldName(), facetCount.getValue())">
+			<input type="hidden" name="ecomextendedParam[filter][${facet/getFieldName}]" value="${facetCount/getValue}" />
+			<strong>${facetCount/getLabel}</strong>
+		</tal:block>
+		<tal:block tal:condition="facetCount/isEmpty">
+			${facetCount/getLabel} (0)
+		</tal:block>
+	</tal:block>
+	<li metal:define-macro="showFacetMissing">
+		<a class="link" rel="${relAttr}" tal:condition="php: filters.hasNotFilter(facet.getFieldName(), '__MISSING__')"
+			href="${php: filters.getNewUrl(facet.getFieldName(), '__MISSING__', 'ecomextendedParam[page]', 'ecomextendedParam[filter]')}">${trans: m.ecomextended.frontoffice.facet-value-missing,ucf} (${facet/getMissingCount})</a>
+		<tal:block  tal:condition="php: filters.hasFilter(facet.getFieldName(), '__MISSING__')">
+			<input type="hidden" name="ecomextendedParam[filter][${facet/getFieldName}]" value="__MISSING__" />
+			<strong>${trans: m.ecomextended.frontoffice.facet-value-missing,ucf} (${facet/getMissingCount})</strong>
+		</tal:block>
+	</li>
+	<tal:block metal:define-macro="showFacetCountAccumulable">
+		<tal:block tal:condition="php: filters.hasNotFilter(facet.getFieldName(), facetCount.getValue()) and facetCount.isNotEmpty()">
+			<input type="checkbox" id="first-${facet/getFieldName}-${repeat/facetCount/key}" name="ecomextendedParam[filter][${facet/getFieldName}][]" value="${facetCount/getValue}" />
+			<label for="first-${facet/getFieldName}-${repeat/facetCount/key}">${facetCount/getLabel} (${php: number_format(facetCount.getCount(), 0, ',', ' ')})</label>
+		</tal:block>
+		<tal:block tal:condition="php: filters.hasFilter(facet.getFieldName(), facetCount.getValue())">
+			<input type="checkbox" id="first-${facet/getFieldName}-${repeat/facetCount/key}" name="ecomextendedParam[filter][${facet/getFieldName}][]" value="${facetCount/getValue}" checked="checked" />
+			<label for="first-${facet/getFieldName}-${repeat/facetCount/key}"><strong>${facetCount/getLabel}</strong></label>
+		</tal:block>
+	</tal:block>
+	<li metal:define-macro="showFacetMissingAccumulable">
+		<tal:block tal:condition="php: filters.hasNotFilter(facet.getFieldName(), '__MISSING__')">
+			<input type="checkbox" id="other-${facet/getFieldName}-missing"
+				name="ecomextendedParam[filter][${facet/getFieldName}][]" value="__MISSING__" />
+			<label for="other-${facet/getFieldName}-missing">${trans: m.ecomextended.frontoffice.facet-value-missing,ucf} (${facet/getMissingCount})</label>
+		</tal:block>
+		<tal:block tal:condition="php: filters.hasFilter(facet.getFieldName(), '__MISSING__')">
+			<input type="checkbox" id="other-${facet/getFieldName}-missing" checked="checked"
+				name="ecomextendedParam[filter][${facet/getFieldName}][]" value="__MISSING__" />
+			<label for="other-${facet/getFieldName}-missing"><strong>${trans: m.ecomextended.frontoffice.facet-value-missing,ucf} (${facet/getMissingCount})</strong></label>
+		</tal:block>
+	</li>
+	<div class="header">
+		<h3 change:h="" change:translate="&modules.ecomextended.frontoffice.Refine-your-search;"></h3>
+	
+		<p class="normal" tal:condition="php: searchResults.getTotalHitsCount() > 1">
+			${php: number_format(searchResults.getTotalHitsCount(), 0, ',', ' ')} 
+			
+			<tal:block tal:condition="not: showAll" change:translate="&modules.ecomextended.frontoffice.products;"/>
+			<tal:block tal:condition="showAll" change:translate="&modules.ecomextended.frontoffice.results;"/>
+		</p>
+		
+		<p class="normal" tal:condition="php: searchResults.getTotalHitsCount() == 1 && !showAll" 
+		 change:translate="&modules.ecomextended.frontoffice.One-product;"></p>
+		 
+		<p class="normal" tal:condition="php: searchResults.getTotalHitsCount() == 1 && showAll"
+		 change:translate="&modules.ecomextended.frontoffice.One-result;"></p>
+		 
+		<p class="normal" tal:condition="php: searchResults.getTotalHitsCount() == 0 && !showAll"
+		 change:translate="&modules.ecomextended.frontoffice.No-product;"></p>
+		 
+		 <p class="normal" tal:condition="php: searchResults.getTotalHitsCount() == 0 && showAll""
+		 change:translate="&modules.ecomextended.frontoffice.No-result;"></p>
+	</div>
+	<tal:block change:include="module 'ecomextended'; template 'Ecomextended-Block-Searchresultsfacets-js'; type 'html'; transmitAll 'true';"/>
+	
+	<div class="ecomextended-facets">
+		<form change:form="" method="get" class="">
+			<input change:hiddeninput="name terms" />
+			<input change:hiddeninput="name op" />
+			<input change:hiddeninput="name sort" />
+			<input change:hiddeninput="name showAll" />
+		<tal:block tal:repeat="facet facetResults">
+			<tal:block tal:condition="php: facet.getNonEmptyCount() > 0">
+			<div class="ecomextended-facet" tal:define="relAttr php: configuration.getPermitFollow() ? '' : 'nofollow'">
+			<h4 change:h="">${facet/getFieldLabel}</h4>
+			
+			<a tal:condition="php: filters.hasFilter(facet.getFieldName())" class="link" rel="${relAttr}"
+				change:translate="modules.ecomextended.frontoffice.Remove-filter"
+				href="${php: filters.getNewUrl(facet.getFieldName(), '', 'ecomextendedParam[page]', 'ecomextendedParam[filter]')}">Enlever ce filtre</a>
+			
+			<div tal:condition="php: facet.getSimpleFieldName() == 'shelfIdCompiled'"
+				change:block="" module="ecomextended" name="shelves" />
+			<tal:block tal:condition="php: facet.getSimpleFieldName() != 'shelfIdCompiled'">
+				<tal:block tal:condition="php: ecomextended_SearchFilter::isAccumulable(facet.getFieldName())">
+				<ul class="accumulable">
+					<li tal:repeat="facetCount facet/getFirstEntries">
+						<div metal:use-macro="showFacetCountAccumulable" />
+					</li>
+					<li tal:condition="php: !facet.getOtherEntries() and facet.getMissingCount()"
+						metal:use-macro="showFacetMissingAccumulable" />
+				</ul>
+				<ul class="other accumulable" tal:condition="facet/getOtherEntries">
+					<li tal:repeat="facetCount facet/getOtherEntries">
+						<div metal:use-macro="showFacetCountAccumulable" />
+					</li>
+					<li tal:condition="facet/getMissingCount"
+						metal:use-macro="showFacetMissingAccumulable" />
+				</ul>
+				<input type="submit" />
+				</tal:block>
+				
+				<tal:block tal:condition="not: php: ecomextended_SearchFilter::isAccumulable(facet.getFieldName())">
+				<ul class="">
+					<li tal:repeat="facetCount facet/getFirstEntries">
+						<div metal:use-macro="showFacetCount" />
+					</li>
+					<li tal:condition="php: !facet.getOtherEntries() and facet.getMissingCount()"
+						metal:use-macro="showFacetMissing" />
+				</ul>
+				<ul class="other" tal:condition="facet/getOtherEntries">
+					<li tal:repeat="facetCount facet/getOtherEntries">
+						<div metal:use-macro="showFacetCount" />
+					</li>
+					<li tal:condition="facet/getMissingCount"
+						metal:use-macro="showFacetMissing" />
+				</ul>
+				</tal:block>
+			</tal:block>
+			</div>
+			</tal:block>
+		</tal:block>
+		</form>
+	</div>
+</tal:block>

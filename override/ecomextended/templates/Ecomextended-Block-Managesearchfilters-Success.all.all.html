@@ -1,0 +1,17 @@
+<tal:block tal:condition="php: filters AND filters.count() > 0">
+	<h3 change:h="" change:translate="modules.ecomextended.frontoffice.Your-selection"></h3>
+	<ul class="normal ecomextended-filters">
+		<li tal:repeat="filter filters">
+			${filter/getLabel} :
+			<span tal:repeat="filterValue filter/getValues">${filterValue/getLabel}<tal:block tal:condition="not: repeat/filterValue/end">, </tal:block></span>
+			[<a class="link ecomextended-remove-filter" rel="nofollow"
+				href="${php: filters.getNewUrl(filter.getField(), '', 'ecomextendedParam[page]', 'ecomextendedParam[filter]')}"
+				change:translate="modules.ecomextended.frontoffice.remove-filter">enlever ce filtre</a>]
+		</li>
+	</ul>
+	<p class="normal" tal:condition="php: filters.count() > 1">
+		<a class="link" rel="nofollow"
+		 href="${php: filters.getCleanUrl('ecomextendedParam[filter]', 'ecomextendedParam[page]')}"
+		 change:translate="modules.ecomextended.frontoffice.Remove-all-filters">Enlever tous les filtres</a>
+	</p>
+</tal:block>

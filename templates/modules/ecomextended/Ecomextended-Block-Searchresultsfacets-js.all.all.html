@@ -1,0 +1,30 @@
+<tal:block tal:define="global showHideOtherLocale"><tal:block change:translate="&modules.ecomextended.frontoffice.Showhideothers;"/></tal:block>
+<script type="text/javascript">
+/* <![CDATA[ */
+jQuery(document).ready(function() {
+	jQuery('div.ecomextended-facet').each(function(divIndex) {
+		var div = jQuery(this);
+		jQuery('input[type=submit]', div).hide();
+		jQuery('ul', div).each(function() {
+			var ul = jQuery(this);
+			if (ul.hasClass('other')) {
+				var other = ul;
+				var toggler = jQuery('<p class="ecomextended-show-hide"><a href="#" class="link ecomextended-show-hide" onclick="return false;">${showHideOtherLocale}</a></p>');
+				toggler.bind('click', function() { other.toggle(); });
+				toggler.insertBefore(other);
+				other.toggle();
+			}
+			if (ul.hasClass('accumulable')) {
+				jQuery('li input', ul).click(function(event) {
+					var jWin = jQuery(window);
+					jQuery('<div id="loading-facet"/>').css('top', jWin.scrollTop()-1000)
+						.css('width', jWin.width()).css('height', jWin.height()+2000)
+						.css('opacity', 0.5).appendTo(jQuery('body').first());
+					this.form.submit();
+				});
+			}
+		});
+	});
+});
+/* ]]> */
+</script>

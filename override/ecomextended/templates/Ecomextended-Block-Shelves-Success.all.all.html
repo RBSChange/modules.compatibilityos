@@ -1,0 +1,10 @@
+<div class="ecomextended-facet">
+<ul change:menu="menuObject shelfs">
+	<a change:menuitem="item" tal:condition="php: item.getId() != currentShelfId"/>
+	<tal:block tal:condition="php: item.getId() == currentShelfId">
+		<input type="hidden" name="ecomextendedParam[filter][${shelfFieldName}]"
+			value="${currentShelfId}" />
+		<strong >${escape: item/getLabel}</strong>
+	</tal:block>
+</ul>
+</div>
