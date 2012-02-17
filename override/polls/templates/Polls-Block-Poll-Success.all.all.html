@@ -1,0 +1,43 @@
+<ul class="mini-navigation" tal:condition="poll/canCurrentUserVote">
+	<li tal:define="pollsParam php: array('viewResults' => null)">
+		<a change:currentPageLink="pollsParam pollsParam">${trans:m.polls.fo.view-form,ucf}</a>
+	</li>
+</ul>
+
+<h2 change:h="">${poll/getLabelAsHtml}</h2>
+<dl class="inline-list">
+	<dt>${trans:m.polls.fo.voters,ucf}</dt>
+	<dd>${poll/getVoterCount}<span> - </span></dd>
+	<dt>${trans:m.polls.fo.enddate,ucf}</dt>
+	<dd tal:condition="poll/getEndDate">${datetime:poll/getUIEndDate}</dd>
+	<dd tal:condition="not:poll/getEndDate">${trans:m.polls.fo.never}</dd>
+</dl>
+<div class="normal" tal:condition="poll/getDescription">${poll/getDescriptionAsHtml}</div>
+<ul change:errors=""></ul>
+<ol class="document-list" tal:define="showResults poll/canShowResults">
+	<li tal:repeat="question poll/getChildrenQuestions" class="${php: repeat.question.odd ? 'odd' : 'even'}">
+		<h3 change:h="">${question/getLabelAsHtml}</h3>
+		<div class="normal" tal:condition="question/getDescription">${question/getDescriptionAsHtml}</div>
+		<tal:block tal:condition="showResults" tal:define="allowMultipleAnswers question/allowMultipleAnswers">
+			<table class="normal">
+				<thead>
+					<tr>
+						<th>${trans:m.polls.fo.answers,ucf}</th>
+						<th colspan="2">${trans:m.polls.fo.votes,ucf}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr tal:repeat="answer question/getChildrenAnswers" class="${php: repeat.answer.odd ? 'odd' : 'even'}">
+						<td class="answer">
+							${answer/getLabelAsHtml}
+							<div tal:condition="answer/getDescription">${answer/getDescriptionAsHtml}</div>
+						</td>
+						<td class="votes">${answer/getVotes}</td>
+						<td class="percentage">${answer/getFormattedPercentage}</td>
+					</tr>
+				</tbody>
+			</table>
+		</tal:block>
+		<p class="normal" tal:condition="not:showResults">${trans:m.polls.fo.results-visible-when-finished}</p>
+	</li>
+</ol>

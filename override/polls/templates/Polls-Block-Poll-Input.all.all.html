@@ -1,0 +1,39 @@
+<ul class="mini-navigation" tal:condition="poll/canShowResults">
+	<li tal:define="pollsParam php: array('viewResults' => true)">
+		<a change:currentPageLink="pollsParam pollsParam">${trans:m.polls.fo.view-results,ucf}</a>
+	</li>
+</ul>
+
+<h2 change:h="">${poll/getLabelAsHtml}</h2>
+<dl class="inline-list">
+	<dt>${trans:m.polls.fo.voters,ucf}</dt>
+	<dd>${poll/getVoterCount}<span> - </span></dd>
+	<dt>${trans:m.polls.fo.enddate,ucf}</dt>
+	<dd tal:condition="poll/getEndDate">${datetime:poll/getUIEndDate}</dd>
+	<dd tal:condition="not:poll/getEndDate">${trans:m.polls.fo.never}</dd>
+</dl>
+<div class="normal" tal:condition="poll/getDescription">${poll/getDescriptionAsHtml}</div>
+<form change:form="">
+	<ol class="document-list">
+		<li tal:repeat="question poll/getChildrenQuestions" class="${php: repeat.question.odd ? 'odd' : 'even'}">
+			<fieldset tal:define="allowMultipleAnswers question/allowMultipleAnswers">
+				<legend>${question/getLabelAsHtml}</legend>
+				<div class="normal" tal:condition="question/getDescription">${question/getDescriptionAsHtml}</div>
+				<p class="normal" tal:condition="php: question.getMaxAnswers() GT 1">${trans:m.polls.fo.up-to-n-answers,ucf,max=question/getMaxAnswers}</p>
+				<p class="normal" tal:condition="php: question.getMaxAnswers() EQ -1">${trans:m.polls.fo.unlimited-answers,ucf}</p>
+				<ul change:errors="" relKey="question${question/getId}"></ul>
+				<ol>
+					<li tal:repeat="answer question/getChildrenAnswers" class="${php: repeat.answer.odd ? 'odd' : 'even'}">
+						<input tal:condition="not: allowMultipleAnswers" change:radioinput="" name="question${question/getId}" value="${answer/getId}" label="${answer/getLabelAsHtml}" />
+						<input tal:condition="allowMultipleAnswers" change:checkboxinput="" name="question${question/getId}[]" value="${answer/getId}" label="${answer/getLabelAsHtml}" />
+						<div class="help-text" tal:condition="answer/getDescription">${answer/getDescriptionAsHtml}</div>
+					</li>
+				</ol>
+			</fieldset>
+		</li>
+	</ol>
+	<p class="buttons">
+		<input type="hidden" name="pollParam[currentPoll]" tal:attributes="value item/getId" />
+		<input name="vote" change:submit="" value="${trans:m.poll.frontoffice.submit,ucf}" />
+	</p>
+</form>
