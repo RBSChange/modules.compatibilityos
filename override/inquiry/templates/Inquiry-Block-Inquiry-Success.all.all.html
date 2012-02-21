@@ -1,0 +1,73 @@
+<h2 change:h="">${inquiry/getLabel}</h2>
+
+<ul class="normal">
+	<li><strong>${trans:m.inquiry.frontoffice.inquiry-date,lab,ucf}</strong> <tal:block change:datetime="inquiry/getCreationdate" /></li>
+	<li><strong>${trans:m.inquiry.frontoffice.inquiry-status,lab,ucf}</strong> ${inquiry/getProcessingStatusLabelAsHtml}</li>
+</ul>
+
+<h3 change:h="">${trans:m.inquiry.frontoffice.inquiry-data,ucf}</h3>
+
+<ul class="normal">
+	<tal:block tal:repeat="field inquiry/getResponseData">
+		<li tal:condition="field/value"><strong>${field/label} :</strong> ${field/value}</li>
+		<li tal:condition="not: field/value"><strong>${field/label} :</strong> -</li>
+	</tal:block>
+</ul>
+
+<h3 change:h="">${trans:m.inquiry.frontoffice.write-messages-for-inquiry,ucf}</h3>
+
+<tal:block tal:condition="not:inquiry/isClosed">
+	<tal:block tal:condition="contentsPreview">
+		<h4 change:h="">${trans:m.inquiry.frontoffice.message-preview,ucf}</h4>
+		
+		<ul>
+			<li class="from-author">
+				<p><strong>${trans:m.inquiry.frontoffice.message-sent-by-author,ucf} <tal:block change:datetime="" /></strong></p>
+				<blockquote>${contentsPreview}</blockquote>
+			</li>
+		</ul>
+	</tal:block>
+	
+	<div class="messages-form">
+		<h4 change:h="">${trans:m.inquiry.frontoffice.message-edition,ucf}</h4>
+	
+		<ul change:messages=""></ul>
+		<ul change:errors=""></ul>	
+		<form change:form="" method="post">
+			<ol>
+				<li>
+					<textarea change:bbcodeinput="name contents" module-profile="inquiry" labeli18n="m.inquiry.frontoffice.your-message"></textarea>
+				</li>
+				<li class="buttons">
+					<input type="hidden" value="${inquiry/getId}" name="inquiryParam[cmpref]" />
+					<input change:submit="labeli18n m.inquiry.frontoffice.preview" class="button" name="preview" />
+					<input change:submit="labeli18n m.inquiry.frontoffice.send" class="button" name="send" />
+					<tal:block tal:repeat="task tasks">
+						<input change:submit="" label="${task}" class="button" name="task" />  
+					</tal:block>
+				</li>
+			</ol>
+		</form>
+	</div>
+</tal:block>
+
+<p class="normal" tal:condition="inquiry/isClosed">${trans:m.inquiry.frontoffice.no-new-message-on-closed-inquiries,ucf}</p>
+
+<h3 change:h="">${trans:m.inquiry.frontoffice.messages-for-inquiry,ucf}</h3>
+
+<ul tal:condition="messages">
+	<tal:block tal:repeat="message messages">
+		<li class="from-author" tal:condition="not: message/getIsFromStaff">
+			<p><strong>${trans:m.inquiry.frontoffice.message-sent-by-author,ucf} <tal:block change:datetime="message/getMessageDate" /></strong></p>
+			<blockquote>${message/getContentsAsHtml}</blockquote>
+		</li>
+		<li class="from-staff" tal:condition="message/getIsFromStaff">
+			<p><strong>${trans:m.inquiry.frontoffice.message-sent-by-staff,ucf} <tal:block change:datetime="message/getMessageDate" /></strong></p>
+			<blockquote>${message/getContentsAsHtml}</blockquote>
+		</li>	
+	</tal:block>
+</ul>
+
+<tal:block change:paginator="messages"/>
+
+<p class="normal" tal:condition="not: messages">${trans:m.inquiry.frontoffice.no-message-for-this-inquiry,ucf}</p>

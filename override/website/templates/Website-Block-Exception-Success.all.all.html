@@ -1,0 +1,9 @@
+<tal:block tal:condition="exception">
+	<h3 change:h="" tal:condition="not: exception/getLocaleMessage" change:translate="modules.website.frontoffice.Exception-thrown; message exception/getMessage"></h3>
+	<h3 change:h="" tal:condition="exception/getLocaleMessage" change:translate="modules.website.frontoffice.Exception-thrown; message exception/getLocaleMessage"></h3>
+	<tal:block tal:condition="devMode">
+		<pre style="overflow: auto">${exception/getTraceAsString}</pre>
+		<p class="normal" change:translate="modules.website.frontoffice.For-more-information-view-logs"></p>
+	</tal:block>
+</tal:block>
+<p tal:condition="not: exception" class="normal" change:translate="modules.website.frontoffice.No-exception"></p>

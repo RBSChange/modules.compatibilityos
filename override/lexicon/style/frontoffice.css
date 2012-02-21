@@ -1,0 +1,25 @@
+.modules-glossary{
+	width: 100%;
+	float: left;
+}
+ul.listalpha{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+ul.listalpha li{
+	display: inline;
+}
+ul.listalpha li a{
+	text-align: center;
+	padding: 4px;
+}
+ul.listalpha li.current{
+	padding: 4px;
+	font-weight: bold;
+}
+ul.result-listalpha{
+	margin-top: 20px;
+}
+ul.result-listalpha li{
+	margin-bottom: 10px;
+}

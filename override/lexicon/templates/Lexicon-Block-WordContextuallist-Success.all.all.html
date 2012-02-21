@@ -1,0 +1,23 @@
+<div class="modules-glossary">
+    <h2 change:h="" change:translate="modules.lexicon.frontoffice.title"></h2>
+    
+    <ul class="listalpha">
+    	<tal:block tal:repeat="item navigation">
+    		<li tal:condition="item/href"><a class="link" tal:attributes="href item/href;title item/title">${item/label}</a></li>
+    		<li tal:condition="not: item/href" class="current" tal:attributes="title item/title">${item/label}</li>
+    	</tal:block>
+    </ul>
+    
+    <h3 change:h="">${current}</h3>
+   
+    <tal:block change:paginator="paginator" />
+   
+    <dl class="result-listalpha normal">
+		<tal:block tal:repeat="item paginator">
+			<dt tal:content="item/getLabel" />
+			<dd tal:content="item/getDefinition" />
+		</tal:block>
+	</dl>
+	
+	<tal:block change:paginator="paginator" />
+</div>

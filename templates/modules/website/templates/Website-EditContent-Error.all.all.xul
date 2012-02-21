@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css" ?>
+<tal:block>
+	${cssInclusion}
+	<window orient="vertical" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+		<script type="text/javascript">
+			<![CDATA[
+			function restorePage()
+			{
+    if (window.confirm(document.getElementById("reset-confirm").value))
+    {
+        var restoreUrl = window.location.href;
+        
+        restoreUrl = restoreUrl.replace('!', '&force_page_reset=1!');
+        
+        window.location.href = restoreUrl;
+    }
+			}
+			]]>
+		</script>
+
+		<label id="reset-confirm" value="&amp;modules.website.bo.general.Page-edition-error-reset-confirm;" collapsed="true" />
+		<vbox flex="1" align="center">
+
+	<hbox flex="1" align="center">
+		
+		<vbox style="border: 1px outset red; padding: 5px;">   
+	           
+	        <hbox align="center">      
+	        	<image change:icon="warning/command shadow" />    
+						<label value="&amp;modules.website.bo.general.Page-edition-errorEllipsis;" style="font-size: 12pt; font-weight: bold;" />
+			</hbox>
+			
+			<tabbox style="margin: 5px;">
+			    <tabs>
+							<tab i18n:attributes="label &amp;modules.uixul.bo.general.The-following-error-occuredSpaced;" change:icon="information/small shadow" />
+							<tab i18n:attributes="label &amp;modules.website.bo.general.Page-edition-error-contentSpaced;" change:icon="about/small shadow" />
+			    </tabs>
+			    
+			    <tabpanels>
+			      <tabpanel id="error" orient="vertical">
+						
+						<description tal:content="error" />
+						
+				  </tabpanel>
+				  
+				  <tabpanel id="content" orient="vertical">
+						
+						<vbox style="overflow: scroll;">
+									<description tal:content="content" class="monospace" style="max-width: 400px; min-height: 100px;" />
+						</vbox>
+						
+				  </tabpanel>
+				</tabpanels>
+		    </tabbox>
+                    
+                    <hbox align="center">							
+						<button change:icon="nav_left_blue/small shadow" i18n:attributes="label &amp;modules.uixul.bo.layout.BackToDataEditingSpaced;"
+							oncommand="parent.document.getElementById('pageDeck').setAttribute('selectedIndex', 0); parent.document.getElementById('designFrame').setAttribute('src', 'about:blank');" />
+                                                
+                        <spacer flex="1" />
+						<button tal:condition="content" change:icon="nav_refresh_red/small shadow" i18n:attributes="label &amp;modules.website.bo.general.Page-edition-error-restoreSpaced;"
+							oncommand="restorePage();" />
+
+						<button tal:condition="not: content" change:icon="nav_undo_red/small shadow" i18n:attributes="label &amp;modules.website.bo.general.Page-edition-error-restoreSpaced;"
+							disabled="true" />
+					</hbox>
+		</vbox>
+	</hbox>
+			<spacer flex="1" />
+		</vbox>
+	</window>
+</tal:block>

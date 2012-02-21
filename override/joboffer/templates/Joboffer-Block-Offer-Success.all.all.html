@@ -1,0 +1,25 @@
+<ul class="mini-navigation" tal:condition="php: listPage OR spontaneousUrl">
+	<li><a tal:condition="listPage" change:link="document listPage" change:translate="modules.joboffer.frontoffice.View-list"></a></li>
+	<li><a class="link" tal:condition="spontaneousUrl" href="${spontaneousUrl}" change:translate="modules.joboffer.frontoffice.Spontaneous-candidacy"></a></li>
+</ul>
+
+<h2 change:h="">[${item/getOfferType/getLabelAsHtml}] ${item/getLabelAsHtml}</h2>
+<small>
+	<span tal:condition="item/getStartpublicationdate" change:date="format 'd/m/Y'; value item/getStartpublicationdate"></span>
+	<span tal:condition="not:item/getStartpublicationdate" change:date="format 'd/m/Y'; value item/getCreationdate"></span>
+	<tal:block tal:condition="item/getReference">- ${item/getReferenceAsHtml}</tal:block>
+</small>
+<div class="offer-description">${item/getDescriptionAsHtml}</div>
+<dl class="offer-infos">
+	<tal:block tal:condition="item/getEndpublicationdate" tal:omit-tag="">
+		<dt><strong change:translate="modules.joboffer.frontoffice.Deposit-limit"></strong></dt>
+		<dd><span change:date="format 'l d M Y'; value item/getEndpublicationdate"></span></dd>
+	</tal:block>
+	<dt><strong change:translate="modules.joboffer.frontoffice.Location"></strong></dt>
+	<dd>${item/getLocationAsHtml}</dd>
+	<dt><strong change:translate="modules.joboffer.frontoffice.Background"></strong></dt>
+	<dd>${item/getBackgroundAsHtml}</dd>
+	<dt><strong change:translate="modules.joboffer.frontoffice.Profile"></strong></dt>
+	<dd>${item/getProfileAsHtml}</dd>
+</dl>
+<a class="link button" href="${item/getFormPageUrl}" change:translate="modules.joboffer.frontoffice.Submit-candidacy-for-this-offer"></a>
