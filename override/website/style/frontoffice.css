@@ -143,7 +143,8 @@ table.normal tr th{
 .link-broken,
 a.link-broken:hover,
 a.link-broken:active,
-a.link-broken:visited{
+a.link-broken:visited,
+.image-broken{
 	text-decoration:line-through;
 	color:red;
 }
