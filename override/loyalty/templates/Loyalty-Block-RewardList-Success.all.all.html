@@ -1,0 +1,42 @@
+<h2 change:h="" change:translate="modules.loyalty.frontoffice.rewardlist.Title"></h2>
+<ul class="mini-navigation" tal:condition="configuration/getShowLinkToHelp">
+	<li><a change:link="tag contextual_website_website_modules_loyalty_loyalty-rules" change:translate="modules.loyalty.frontoffice.View-loyalty-rules"></a></li>
+</ul>
+<h3 change:h="" change:translate="modules.loyalty.frontoffice.rewardlist.Your-informations"></h3>
+<ul class="normal">
+	<li><strong change:translate="modules.loyalty.frontoffice.rewardlist.Current-point-countLabel"></strong> ${loyaltyInfos/getPoints}</li>
+	<li tal:condition="pendingCoupon">
+		<strong change:translate="modules.loyalty.frontoffice.rewardlist.Pending-couponLabel"></strong>
+		<ul class="normal">
+			<li><strong change:translate="modules.loyalty.frontoffice.rewardlist.CodeLabel"></strong> ${pendingCoupon/getCode}</li>
+			<li><strong change:translate="modules.loyalty.frontoffice.rewardlist.LabelLabel"></strong> ${pendingCoupon/getLabelAsHtml}</li>
+			<li tal:condition="pendingCoupon/getDescription"><strong change:translate="modules.loyalty.frontoffice.rewardlist.DescriptionLabel"></strong> ${pendingCoupon/getDescriptionAsHtml}</li>
+			<li tal:condition="pendingCoupon/getEndpublicationdate"><strong change:translate="modules.loyalty.frontoffice.rewardlist.Expires-onLabel"></strong> <tal:block change:date="format 'd/m/Y H:i'; value pendingCoupon/getEndpublicationdate" /></li>
+		</ul>
+	</li>
+</ul>
+
+<h3 change:h="" change:translate="modules.loyalty.frontoffice.rewardlist.Available-list-title"></h3>
+<p tal:condition="pendingCoupon" class="normal" change:translate="modules.loyalty.frontoffice.rewardlist.Only-one-peding-coupon"></p>
+<table class="normal" tal:condition="rewards">
+	<thead>
+		<tr>
+			<th tal:condition="configuration/getShowVisuals"></th>
+			<th change:translate="modules.loyalty.frontoffice.rewardlist.Description"></th>
+			<th change:translate="modules.loyalty.frontoffice.rewardlist.Point-cost"></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr tal:repeat="reward rewards">
+			<td tal:condition="configuration/getShowVisuals"><img tal:condition="reward/getVisual" change:media="document reward/getVisual; format 'modules.catalog.frontoffice/list'" /></td>
+			<td>
+				<p>${reward/getLabelAsHtml}</p>
+				<div class="description">${reward/getDescriptionAsHtml}</div>
+			</td>
+			<td>${reward/getPointCost} <span change:translate="modules.loyalty.frontoffice.rewardlist.points"></span></td>
+			<td><a tal:condition="php: reward.isValidForCustomer(customer) AND pendingCoupon === null" class="button" change:actionlink="" block="loyalty_rewardList" action="obtain" rewardId="${reward/getId}" change:translate="modules.loyalty.frontoffice.rewardlist.Obtain"></a></td>
+		</tr>
+	</tbody>
+</table>
+<p tal:condition="not: rewards" change:translate="modules.loyalty.frontoffice.rewardlist.No-available-reward"></p>

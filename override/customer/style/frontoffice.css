@@ -1,0 +1,44 @@
+ol.ecom-adresses li{
+	width: 49%;
+	margin-bottom: 12px;
+	margin-right: 1%;
+	min-height: 2px;
+	display: -moz-inline-stack;
+	display: inline-block;
+	vertical-align: top;
+	zoom: 1;
+	*display: inline;
+	_height: 2px;
+
+	border-width: 1px;
+	border-style: solid;
+}
+
+ol.ecom-adresses li.odd{
+	float: right;
+	margin-right: 0;
+}
+
+.modules-customer ol.ecom-adresses li.odd{
+	float: none;
+}
+
+ol.ecom-adresses dl{
+	margin-bottom: 12px;
+}
+
+ol.ecom-adresses dt,
+ol.ecom-adresses form.cmxform{
+	padding:6px;
+	margin-bottom: 6px;
+}
+
+ol.ecom-adresses dt{
+	font-weight:bold;		
+}
+
+ol.ecom-adresses dd{
+	padding:0 6px;	
+}
+
+@import url(/modules/customer/style/frontoffice.trident.5.css);

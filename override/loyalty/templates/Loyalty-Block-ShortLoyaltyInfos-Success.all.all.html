@@ -1,0 +1,26 @@
+<div class="ecom-block">
+	<h3 change:h="" change:translate="modules.loyalty.frontoffice.shortloyaltyinfos.Title"></h3>
+	<div class="content" tal:condition="customer">
+		<ul class="normal">
+			<li><strong change:translate="modules.loyalty.frontoffice.rewardlist.Current-point-countLabel"></strong> <a change:link="tag contextual_website_website_modules_loyalty_rewardlist">${loyaltyInfos/getPoints}</a></li>
+			<li tal:condition="pendingCoupon">
+				<tal:block tal:condition="pendingCoupon/getEndpublicationdate">
+					<strong change:translate="modules.loyalty.frontoffice.shortloyaltyinfos.Pending-expiring-onLabel"></strong> <tal:block change:date="format 'd/m/Y'; value pendingCoupon/getEndpublicationdate" />
+				</tal:block>
+				<strong tal:condition="not: pendingCoupon/getEndpublicationdate" change:translate="modules.loyalty.frontoffice.shortloyaltyinfos.Pending-coupon"></strong>
+			</li>
+			<li><strong change:translate="modules.loyalty.frontoffice.shortloyaltyinfos.GodchildrenLabel"></strong> <a change:link="tag contextual_website_website_modules_loyalty_godchildlist">${loyaltyInfos/getGodchildrenCount}</a></li>
+		</ul>
+		<p class="normal"><a change:link="tag contextual_website_website_modules_loyalty_loyalty-rules" change:translate="modules.loyalty.frontoffice.Know-more"></a></p>
+	</div>
+	<div class="content" tal:condition="not:customer">
+		<p class="normal" change:translate="modules.loyalty.frontoffice.shortloyaltyinfos.Not-registered-description"></p>
+		<ul class="normal">
+			<li><a change:link="tag contextual_website_website_modules_loyalty_loyalty-rules" change:translate="modules.loyalty.frontoffice.Know-more"></a></li>
+			<li>
+				<a tal:condition="godfatherCode" change:link="tag contextual_website_website_modules_loyalty_godchildregistration" change:translate="modules.loyalty.frontoffice.Register"></a>
+				<a tal:condition="not: godfatherCode" change:link="tag contextual_website_website_modules_customer_new-account" change:translate="modules.loyalty.frontoffice.Register"></a>
+			</li>
+		</ul>
+	</div>
+</div>

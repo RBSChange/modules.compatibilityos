@@ -1,0 +1,58 @@
+<h2 change:h="">${trans: m.productreturns.fo.returns-list-for-order,ucf,number=order/getOrderNumber} <tal:block change:datetime="order/getOrderDate" /></h2>
+
+<ul class="mini-navigation">
+	<li>
+		<a change:link="tag ctx_order_order; orderParam[cmpref] order/getId">${trans:m.productreturns.fo.order-detail,ucf}</a>
+	</li>
+	<li>
+		<a change:link="tag ctx_productreturns_returnorder; productreturnsParam[cmpref] order/getId">${trans:m.productreturns.fo.new-return-order,ucf}</a>
+	</li>
+</ul>
+
+<ul tal:condition="returns">
+	<li tal:repeat="return returns" id="return-${return/getId}">
+		<div tal:condition="return/canBeCanceled" class="float-right">
+			<a class="button" action="cancel" returnId="${return/getId}" change:actionlink="">${trans:m.productreturns.fo.cancel-return,ucf}</a>
+		</div>
+		<div tal:condition="return/getTaskForCurrentFrontendUser" class="float-right">
+			<a class="button" href="${return/getTaskUrlForCurrentFrontendUser}">${return/getTaskLabelForCurrentFrontendUserAsHtml}</a>
+		</div>		
+		<h3 change:h="">${trans:m.productreturns.fo.return-number,ucf}${return/getLabelAsHtml}</h3>
+		<table border="0" class="normal" summary="${trans:m.order.frontoffice.Cart-table-summary,ucf}">
+			<thead>
+				<tr>
+					<th>${trans:m.order.frontoffice.designation,ucf}</th>
+					<th>${trans:m.order.frontoffice.quantity,ucf}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr tal:repeat="line return/getLineArray" class="row-${repeat/line/odd}">
+					<td>
+						${line/getLabelAsHtml}
+						<br/>
+						${line/getCodeReferenceAsHtml}
+					</td>
+					<td>
+						${line/getQuantity}
+					</td>
+				</tr>
+			</tbody>
+		</table>		
+		<span>${trans:m.productreturns.document.return.creationdate,ucf,lab}</span> <tal:block change:datetime="value return/getCreationdate" /><br />
+		<span>${trans:m.productreturns.document.return.status,ucf,lab}</span> ${return/getStatusLabelAsHtml}<br />
+		<span>${trans:m.productreturns.document.return.reasonid,ucf,lab}</span> ${return/getReasonLabelAsHtml}
+		<tal:block tal:condition="return/getReasonDetails">
+			<br />
+			<span>${trans:m.productreturns.document.return.reasondetails,ucf,lab}</span> ${return/getReasonDetailsAsHtml}
+		</tal:block>
+		<tal:block tal:condition="return/getSticker">
+			<br />
+			<span>${trans:m.productreturns.document.return.sticker,ucf,lab}</span> <a change:download="document return/getSticker"></a>
+		</tal:block>
+		<tal:block tal:condition="return/getTrackingNumber">
+			<br />
+			<span>${trans:m.productreturns.document.return.trackingnumber,ucf,lab}</span> ${return/getTrackingNumberAsHtml}
+		</tal:block>
+	</li>
+</ul>
+<p tal:condition="not:returns">${trans:m.productreturns.fo.no-return-yet-for-this-order,ucf}</p>

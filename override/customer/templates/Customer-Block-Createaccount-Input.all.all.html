@@ -1,0 +1,24 @@
+<form change:form="beanClass customer_CustomerWrapperBean; beanName customerWrapper">
+	<fieldset>
+		<legend>${trans:m.customer.frontoffice.create-account-title,ucf}</legend>
+		<ul change:errors=""></ul>
+		<ol>
+			<li><input change:field="name customer.user.email" /></li>
+			<tal:block tal:condition="configuration/getConfirmEmail"> 
+				<li><input required="true" change:field="name emailconfirm; id customer_createaccount_emailconfirm" /></li>
+			</tal:block>
+			<li><input change:field="name customer.user.titleid" /></li>
+			<li><input change:field="name customer.user.firstname" /></li>
+			<li><input change:field="name customer.user.lastname" /></li>
+			<li><input change:field="name customer.birthday" /></li>
+			<tal:block tal:condition="not: customerWrapper/getBeanId">
+				<li><input change:passwordinput="name password" value="" labeled="true" class="passwordinput" /></li>
+				<li><input change:passwordinput="name passwordconfirm" value="" labeled="true" class="passwordinput" /></li>
+			</tal:block>
+		</ol>
+		<p class="buttons">
+			<input change:field="name beanId" hidden="true" />
+			<input class="button" change:submit="name save" labeli18n="m.customer.document.customerwrapperbean.create-account" />
+		</p>
+	</fieldset>
+</form>

@@ -1,0 +1,44 @@
+<h2 change:h="">${trans:m.customer.frontoffice.addresses-title,ucf}</h2>
+<p class="normal">${trans:m.customer.frontoffice.addresses-instructions,ucf}</p>
+
+<p class="buttons">
+	<a class="button" change:actionlink="" block="customer_manageaddress" action="add">${trans:m.customer.frontoffice.add-address,ucf}</a>
+</p>
+
+<ul change:messages=""></ul>
+
+<ol class="ecom-adresses">
+	<li class="current" tal:define="address customer/getDefaultAddress" tal:condition="address">
+		<tal:block tal:define="isDefault php: true" metal:use-macro="address" />
+	</li>
+	<tal:block tal:define="addresses customer/getSecondaryAddresses" tal:condition="addresses">
+		<li tal:repeat="address addresses" class="${php: repeat.address.odd ? 'odd' : 'even'}">
+			<tal:block tal:define="isDefault php: false" metal:use-macro="address" />
+		</li>
+	</tal:block>	
+</ol>
+
+<tal:block metal:define-macro="address">
+	<dl>
+		<dt>${address/getLabelAsHtml} <tal:block tal:condition="isDefault">(${trans:m.customer.frontoffice.is-default-address})</tal:block></dt>
+		<dd>${address/getTitle/getLabelAsHtml} ${address/getFirstnameAsHtml} ${address/getLastnameAsHtml}</dd>
+		<dd>${address/getAddressLine1AsHtml}</dd>
+		<dd tal:condition="address/getAddressLine2">${address/getAddressline2AsHtml}</dd>
+		<dd tal:condition="address/getAddressLine3">${address/getAddressline3AsHtml}</dd>
+		<dd>${address/getZipcodeAsHtml} ${address/getCityAsHtml}</dd>
+		<dd tal:condition="address/getProvince">${address/getProvinceAsHtml}</dd>
+		<dd>${address/getCountry/getLabelAsHtml}</dd>
+		<dd tal:condition="address/getPhone">${address/getPhoneAsHtml}</dd>
+		<dd tal:condition="address/getFax">${address/getFaxAsHtml}</dd>
+		<dd tal:condition="address/getEmail">${address/getEmailAsHtml}</dd>
+	</dl>	
+	
+	<form change:form="beanName address">
+		<p>
+			<input change:hiddeninput="name beanId" value="${address/getId}" />
+			<input class="button" change:submit="name edit" labeli18n="m.customer.frontoffice.edit" />
+			<input tal:condition="not: isDefault" class="button" change:submit="name delete" labeli18n="m.customer.frontoffice.delete" />
+			<input tal:condition="not: isDefault" class="button" change:submit="name setDefault" labeli18n="m.customer.frontoffice.set-default" />
+		</p>
+	</form>
+</tal:block>

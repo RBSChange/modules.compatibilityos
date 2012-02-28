@@ -1,0 +1,13 @@
+<li tal:condition="not: inBackoffice">
+	<h4 change:h="">${address/getLabelAsHtml}</h4>
+</li>
+<li>${address/getTitle/getLabelAsHtml} ${address/getFirstnameAsHtml} ${address/getLastnameAsHtml}</li>
+<li tal:condition="address/getAddressLine1">${address/getAddressLine1AsHtml}</li>
+<li tal:condition="address/getAddressLine2">${address/getAddressline2AsHtml}</li>
+<li tal:condition="address/getAddressLine3">${address/getAddressline3AsHtml}</li>
+<li>${address/getZipcodeAsHtml} ${address/getCityAsHtml}</li>
+<li tal:condition="address/getProvince">${address/getProvinceAsHtml}</li>
+<li tal:condition="address/getCountry">${address/getCountry/getLabelAsHtml}</li>
+<li tal:condition="address/getPhone">${address/getPhoneAsHtml}</li>
+<li tal:condition="address/getMobilephone">${address/getMobilephoneAsHtml}</li>
+<li tal:condition="address/getFax">${address/getFaxAsHtml}</li>

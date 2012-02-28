@@ -1,0 +1,13 @@
+<h2 change:h="" change:translate="modules.loyalty.frontoffice.rewardlist.Title"></h2>
+
+<p class="normal" change:translate="modules.loyalty.frontoffice.rewardlist.Reward-obtained; reward reward/getLabelAsHtml; cost reward/getPointCost; points loyaltyInfos/getPoints"></p>
+
+<h3 change:h="" change:translate="modules.loyalty.frontoffice.rewardlist.Reward-details"></h3>
+<ul class="normal">
+	<li><strong change:translate="modules.loyalty.frontoffice.rewardlist.Reward-labelLabel"></strong> ${reward/getLabelAsHtml}</li>
+	<li><strong change:translate="modules.loyalty.frontoffice.rewardlist.Reward-descriptionLabel"></strong> ${reward/getDescriptionAsHtml}</li>
+	<li><strong change:translate="modules.loyalty.frontoffice.rewardlist.Coupon-codeLabel"></strong> ${coupon/getCodeAsHtml}</li>
+	<li tal:condition="coupon/getEndpublicationdate"><strong change:translate="modules.loyalty.frontoffice.rewardlist.Expires-onLabel"></strong> <tal:block change:date="format 'd/m/Y H:i'; value coupon/getEndpublicationdate" /></li>
+</ul>
+
+<p class="normal"><a class="button" change:actionlink="" block="loyalty_RewardList" change:translate="modules.loyalty.frontoffice.rewardlist.Back-to-reward-list"></a></p>

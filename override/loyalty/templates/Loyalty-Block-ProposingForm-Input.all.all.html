@@ -1,0 +1,21 @@
+<h2 change:h="" change:translate="modules.loyalty.frontoffice.proposingform.Title"></h2>
+<ul class="mini-navigation" tal:condition="configuration/getShowLinkToHelp">
+	<li><a change:link="tag contextual_website_website_modules_loyalty_loyalty-rules" change:translate="modules.loyalty.frontoffice.View-loyalty-rules"></a></li>
+</ul>
+<form id="proposing-message-form" change:form="beanClass loyalty_persistentdocument_proposing; beanName proposing">
+	<ul change:errors=""></ul>
+	<ul change:messages=""></ul>
+	<tal:block change:field="name beanId" hidden="true" />
+	<tal:block change:field="name godfatherId" hidden="true" value="${customer/getId}" />
+	<ol>
+		<li>
+			<input change:field="name godchildEmail" />
+		</li>
+		<li>
+			<input change:field="name message" />
+		</li>
+	</ol>
+	<p class="normal">
+		<input class="button" change:submit="name send" label="&modules.loyalty.frontoffice.proposingform.Submit;" />
+	</p>
+</form>

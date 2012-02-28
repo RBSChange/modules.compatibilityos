@@ -1,0 +1,16 @@
+<h2 change:h="" change:translate="modules.loyalty.frontoffice.Godchild-registration-title"></h2>
+<form change:form="beanClass loyalty_CustomerWrapperBean; beanName customerWrapper">
+	<ul change:errors=""></ul>
+	<ol>
+		<li><input change:field="name customer.user.email" size="40" value="${godchildemail}"/></li>
+		<li><input change:field="name customer.user.titleid" /></li>
+		<li><input change:field="name customer.user.firstname" size="40" /></li>
+		<li><input change:field="name customer.user.lastname" size="40" /></li>
+		<li><input change:passwordinput="name password" value="" labeled="true" class="passwordinput" /></li>
+		<li><input change:passwordinput="name passwordconfirm" value="" labeled="true" class="passwordinput" /></li>
+		<li><input change:field="name godfatherCode" value="${godfatherCode}" size="40" /></li>
+	</ol>
+	<p>
+		<input class="button" change:submit="name save" label="&modules.loyalty.document.customerwrapperbean.Create-account;" />
+	</p>
+</form>

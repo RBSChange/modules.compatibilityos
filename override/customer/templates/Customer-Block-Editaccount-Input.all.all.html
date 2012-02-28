@@ -1,0 +1,17 @@
+<form change:form="beanName customer">
+	<fieldset>
+		<legend>${trans:m.customer.frontoffice.accountedit-title,ucf}</legend>
+		<ul change:errors=""></ul>
+		<ol>
+			<li><input change:field="name user.email" /></li>
+			<li><input change:field="name user.titleid" /></li>
+			<li><input change:field="name user.firstname" /></li>
+			<li><input change:field="name user.lastname" /></li>
+			<li><input change:field="name birthday" /></li>
+		</ol>
+		<p class="buttons">
+			<input change:field="name beanId" hidden="true" />
+			<input class="button" change:submit="name save" labeli18n="m.customer.frontoffice.save" />
+		</p>
+	</fieldset>
+</form>

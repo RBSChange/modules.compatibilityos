@@ -1,0 +1,66 @@
+<h2 change:h="">${trans:m.productreturns.bo.blocks.returnorder.title,ucf}</h2>
+
+<ul change:messages=""></ul>
+<ul change:errors=""></ul>
+
+<form tal:condition="enableForm" change:form="beanClass productreturns_persistentdocument_return">
+	<table border="0" class="normal" summary="${trans:m.order.frontoffice.Cart-table-summary,ucf}">
+		<thead>
+			<tr>
+				<th>${trans:m.order.frontoffice.designation,ucf}</th>
+				<th tal:condition="shop/getDisplayPriceWithoutTax">
+					<abbr title="${trans:m.order.frontoffice.unitprice-without-tax,ucf}">${trans:m.order.frontoffice.unitprice-without-tax-abr,ucf}</abbr>
+				</th>
+				<th tal:condition="shop/getDisplayPriceWithTax">
+					<abbr title="${trans:m.order.frontoffice.unitprice-with-tax,ucf}">${trans:m.order.frontoffice.unitprice-with-tax-abr,ucf}</abbr>
+				</th>
+				<th>${trans:m.order.frontoffice.quantity,ucf}</th>
+				<th>${trans:m.productreturns.fo.quantity-to-return,ucf}</th>
+				<th tal:condition="shop/getDisplayPriceWithoutTax">
+					<abbr title="${trans:m.order.frontoffice.totalprice-without-tax,ucf}">${trans:m.order.frontoffice.totalprice-without-tax-abr,ucf}</abbr>
+				</th>
+			   	<th class="last" tal:condition="shop/getDisplayPriceWithTax">
+					<abbr title="${trans:m.order.frontoffice.totalprice-with-tax,ucf}">${trans:m.order.frontoffice.totalprice-with-tax-abr,ucf}</abbr>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr tal:repeat="line linesInfos" class="row-${repeat/line/odd}">
+				<td>
+					${line/orderLine/getLabelAsHtml}
+					<br/>
+					${line/orderLine/getCodeReference}
+				</td>
+				<td class="priceht" tal:condition="shop/getDisplayPriceWithoutTax">${php: order.formatPrice(line['orderLine'].getUnitPriceWithoutTax())}</td>
+				<td class="pricettc" tal:condition="shop/getDisplayPriceWithTax">${php: order.formatPrice(line['orderLine'].getUnitPriceWithTax())}</td>
+				<td>
+					${trans: m.productreturns.fo.ordered,ucf,lab} ${line/orderLine/getQuantity}
+					<br />
+					${trans: m.productreturns.fo.shipped,ucf,lab} ${line/shippedQuantity}
+					<tal:block tal:condition="line/alreadyReturnedQuantity">
+						<br />
+						${trans: m.productreturns.fo.already-returned,ucf,lab} ${line/alreadyReturnedQuantity}
+					</tal:block>
+				</td>
+				<td>
+					<select change:select="min 0; max line/returnableQuantity; defaultValue line/selectedQuantity; name string:productreturnsParam[selectedQuantities][${line/orderLine/getId}]"></select>
+				</td>
+				<td class="priceht" tal:condition="shop/getDisplayPriceWithoutTax">${php: order.formatPrice(line['orderLine'].getAmountWithoutTax())}</td>
+				<td class="pricettc" tal:condition="shop/getDisplayPriceWithTax">${php: order.formatPrice(line['orderLine'].getAmountWithTax())}</td>
+			</tr>
+		</tbody>
+	</table>
+	<h3 change:h="">${trans:m.productreturns.fo.return-reason,ucf}</h3>
+	<ol>
+		<li>
+			<input change:selectinput="list reasons" name="reasonId" labeled="true" />
+		</li>
+		<li>
+			<input change:field="" name="reasonDetails" />
+		</li>
+	</ol>
+	<p class="buttons">
+		<input class="button" name="save" change:submit="label &modules.productreturns.fo.Submit-request;" />
+		<a class="button" change:link="tag ctx_productreturns_returnslist; productreturnsParam[cmpref] order/getId">${trans:m.productreturns.fo.cancel,ucf}</a>
+	</p>
+</form>
