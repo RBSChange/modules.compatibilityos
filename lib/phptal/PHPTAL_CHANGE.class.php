@@ -15,5 +15,6 @@ class compatibilityos_PHPTAL_CHANGE
 		$namespaceCHANGE->addAttribute(new PHPTAL_NamespaceAttributeSurround('menuitem', 9));
 		
 		$namespaceCHANGE->addAttribute(new PHPTAL_NamespaceAttributeSurround('currentlink', 30));
+		$namespaceCHANGE->addAttribute(new PHPTAL_NamespaceAttributeSurround('popup', 30));
 	}
 }
