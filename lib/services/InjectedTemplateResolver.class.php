@@ -11,9 +11,8 @@ class compatibilityos_InjectedTemplateResolver extends TemplateResolver
 		$path = parent::getPath($templateName);
 		if ($path === null)
 		{
-			list($p1, $p2) = explode('_', $this->getPackageName());
 			$fullName = $templateName.'.all.all.'.$this->getMimeContentType();
-			$path = f_util_FileUtils::buildWebeditPath('modules', 'compatibilityos', 'templates', $p1, $p2, $this->getDirectory(), $fullName);
+			$path = f_util_FileUtils::buildWebeditPath('modules', 'compatibilityos', 'templates', $this->getPackageName() , $this->getDirectory(), $fullName);
 			return (file_exists($path)) ? $path : null;
 		}	
 		return $path;
