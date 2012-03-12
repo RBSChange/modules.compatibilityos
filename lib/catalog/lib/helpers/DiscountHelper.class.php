@@ -49,7 +49,8 @@ class catalog_DiscountHelper
 		switch ($discountType)
 		{
 			case self::TYPE_PRICE :
-				$formattedValue = catalog_PriceHelper::applyFormat($discountValue, $priceFormat);
+				$discountValue = catalog_PriceFormatter::getInstance()->round($discountValue);
+				$formattedValue = sprintf($priceFormat, number_format($discountValue, 2, ',', ' '));
 				break;
 
 			case self::TYPE_PERCENTAGE :
@@ -57,8 +58,8 @@ class catalog_DiscountHelper
 				break;
 
 			case self::TYPE_VALUE :
-				$value = 0 - $discountValue;
-				$formattedValue = catalog_PriceHelper::applyFormat($value, $priceFormat);
+				$value = catalog_PriceFormatter::getInstance()->round(0 - $discountValue);
+				$formattedValue = sprintf($priceFormat, number_format($value, 2, ',', ' '));
 				break;
 		}
 		return $formattedValue;
