@@ -1,0 +1,7 @@
+<ul tal:condition="animations" class="associated-pictograms">
+	<li tal:repeat="animation animations">
+		<a change:link="document animation">
+			<img change:media="document animation/getPictogram; format 'modules.catalog.frontoffice/pic35x35'" />
+		</a>
+	</li>
+</ul>

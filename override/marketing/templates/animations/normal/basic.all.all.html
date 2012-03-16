@@ -1,0 +1,29 @@
+<div class="ecom-block ${animation/getTemplate} ${displaytype}" tal:define="shop animation/getShop">
+	<h3 change:h="">${animation/getLabelAsHtml}</h3>
+	<div class="content" tal:define="product animation/getRandomProduct" tal:condition="product">
+		<ul>
+			<li class="picture" change:productvisual="name 'visual'; mode 'list'; product product">
+				<a tal:condition="visual" change:link="module marketing; action ClickOnAnimation; productId product/getId; animationId animation/getId" tal:attributes="title product/getLinkTitle">
+					<img change:media="document visual; format 'modules.marketing.frontoffice/animnormal'" />
+				</a>
+			</li>
+			<li>
+				<h4 change:h="">
+					<a change:link="module marketing; action ClickOnAnimation; productId product/getId; animationId animation/getId" tal:attributes="title product/getLinkTitle">${product/getLabelAsHtml}</a>
+				</h4>
+			</li>
+			<li tal:condition="product/getDescription">${product/getShortDescription}</li>
+			<tal:block change:productprice="name 'price'; product product">
+				<li class="priceht" tal:condition="shop/getDisplayPriceWithoutTax">
+					<tal:block tal:condition="price/isDiscount"><del>${price/getFormattedOldValueWithoutTax}</del></tal:block>
+					${price/getFormattedValueWithoutTax}
+				</li>
+         		<li class="pricettc" tal:condition="shop/getDisplayPriceWithTax"> 
+					<tal:block tal:condition="price/isDiscount"><del>${price/getFormattedOldValueWithTax}</del></tal:block>
+					${price/getFormattedValueWithTax}
+				</li>
+			</tal:block>
+		</ul>
+		<p class="all-products"><a change:link="document animation" change:translate="modules.marketing.frontoffice.anim-list"></a></p>
+	</div>
+</div>

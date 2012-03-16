@@ -1,48 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <scripts>
-	<script name="modules.uixul.lib.wPropagation">
+	<!-- catalog -->
+	<script name="modules.catalog.lib.js.jquery-cycle">
 		<dependencies>
-			<dependency name="modules.uixul.lib.wCore" />
+			<dependency name="modules.website.lib.js.jquery-noconflict" />
 		</dependencies>
 	</script>
-	<script name="modules.uixul.lib.wValidation">
+	<script name="modules.catalog.lib.js.jquery-jqzoom">
 		<dependencies>
-			<dependency name="modules.uixul.lib.wCore" />
+			<dependency name="modules.website.lib.js.jquery-noconflict" />
 		</dependencies>
 	</script>
-	<script name="modules.uixul.lib.wToolkit">
+	<script name="modules.catalog.lib.js.jquery-slider">
 		<dependencies>
-			<dependency name="modules.uixul.lib.wCore" />
+			<dependency name="modules.website.lib.js.jquery-noconflict" />
 		</dependencies>
 	</script>
-	<script name="modules.uixul.lib.wDragAndDrop">
+	<script name="modules.catalog.lib.js.productListManagement">
 		<dependencies>
-			<dependency name="modules.uixul.lib.wCore" />
+			<dependency name="modules.website.lib.js.jquery-noconflict" />
 		</dependencies>
 	</script>
-	<script name="modules.uixul.lib.wServerRequest">
+	<script name="modules.catalog.lib.js.productAdditionalVisualsManagement">
 		<dependencies>
-			<dependency name="modules.uixul.lib.wCore" />
-		</dependencies>
-	</script>
-	<script name="modules.uixul.lib.wCompatibility">
-		<dependencies>
-			<dependency name="modules.uixul.lib.wCore" />
-			<dependency name="modules.uixul.lib.wToolkit" />
-			<dependency name="modules.uixul.lib.wDragAndDrop" />
-			<dependency name="modules.uixul.lib.wPropagation" />
-			<dependency name="modules.uixul.lib.wValidation" />
-			<dependency name="modules.uixul.lib.wServerRequest" />
-		</dependencies>
-	</script>
-	<script name="modules.uixul.lib.default">
-		<dependencies>
-			<dependency name="modules.uixul.lib.wCompatibility" />
-		</dependencies>
-	</script>
-	<script name="modules.photoalbum.lib.js.jquery-cycle-all">
-		<dependencies>
-			<dependency name="modules.website.lib.js.jquery" />
+			<dependency name="modules.website.lib.js.jquery-noconflict" />
 		</dependencies>
 	</script>
 </scripts>
