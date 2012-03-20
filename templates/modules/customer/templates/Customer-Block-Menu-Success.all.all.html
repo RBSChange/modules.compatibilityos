@@ -1,0 +1,30 @@
+<div tal:condition="displayMenuaccount" class="ecom-block">
+	<h3 change:h="">${trans:m.customer.frontoffice.menu-mon,ucf}
+		<strong change:translate="modules.customer.frontoffice.menu-account"></strong>
+	</h3>
+	<div class="content">
+		<ul change:menu="menuObject menuaccount; itemName item; ulClass navlist%index;">
+			<li change:menuitem="item"></li>
+		</ul>
+	</div>
+</div>
+<div tal:condition="displayMenuorders" class="ecom-block">
+	<h3 change:h="">${trans:m.customer.frontoffice.menu-mes,ucf}
+		<strong change:translate="modules.customer.frontoffice.menu-orders"></strong>
+	</h3>
+	<div class="content">
+		<ul change:menu="menuObject menuorders; itemName item; ulClass navlist%index;">
+			<li change:menuitem="item"></li>
+		</ul>
+	</div>
+</div>
+<div tal:condition="displayMenuservices" class="ecom-block">
+	<h3 change:h="">${trans:m.customer.frontoffice.menu-mes,ucf}
+		<strong change:translate="modules.customer.frontoffice.menu-services"></strong>
+	</h3>
+	<div class="content">
+		<ul change:menu="menuObject menuservices; itemName item; ulClass navlist%index;">
+			<li change:menuitem="item"></li>
+		</ul>
+	</div>
+</div>

@@ -27,6 +27,11 @@
 	<!-- Contactcard -->
 	<block type="modules_contactcard_detail" icon="contactcard" label="&amp;modules.contactcard.bo.blocks.Detail;" />
 
+	<!-- Customer -->
+	<block type="modules_customer_menu" icon="menu" label="&amp;modules.customer.bo.blocks.Menu;" />
+	<block type="modules_customer_ResendConfirmationEmail" icon="mail" label="&amp;modules.customer.bo.blocks.Resend-confirmation-email;" hidden="true" />
+	<block type="modules_customer_AccountPublication" icon="status-detail" label="&amp;modules.customer.bo.blocks.Account-publication;" hidden="true" />
+	
 	<!-- FAQ -->
 	<block type="modules_faq_contextuallist" icon="list-block" label="&amp;modules.faq.bo.blocks.contextualList.title;" hidden="true">
 		<parameters>

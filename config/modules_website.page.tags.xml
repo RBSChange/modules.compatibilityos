@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<tags>
+	<tag label="&amp;modules.customer.bo.tags.Password-lost;" icon="change-password">contextual_website_website_modules_customer_password-lost</tag>
+	<tag label="&amp;modules.customer.bo.tags.Resend-confirmation-email;" icon="mail">contextual_website_website_modules_customer_resend-confirmation-email</tag>
+</tags>

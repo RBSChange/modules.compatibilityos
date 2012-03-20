@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.customer.bo.tags" lcid="de_DE">
+	<key id="password-lost">Passwort verloren</key>
+	<key id="menu-account">Mein Konto</key>
+	<key id="menu-orders">Meine Bestellungen</key>
+	<key id="resend-confirmation-email">BestätigungsE-mail erneut zuschicken</key>
+</i18n>

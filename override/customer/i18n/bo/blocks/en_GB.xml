@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.customer.bo.blocks" lcid="en_GB">
+	<key id="resend-confirmation-email">resend confirmation email</key>
+	<key id="account-publication">account activation</key>
+	<key id="menu">account menu</key>
+</i18n>

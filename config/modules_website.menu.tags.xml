@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<tags>
+	<!-- Customer -->
+	<tag label="&amp;modules.customer.bo.tags.menu-account;" icon="menu">contextual_website_website_modules_customer_menu-account</tag>
+	<tag label="&amp;modules.customer.bo.tags.menu-orders;" icon="menu">contextual_website_website_modules_customer_menu-orders</tag>
+	<tag label="&amp;modules.customer.bo.tags.menu-services;" icon="menu">contextual_website_website_modules_customer_menu-services</tag>
+</tags>

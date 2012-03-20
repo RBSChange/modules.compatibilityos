@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.customer.bo.blocks" lcid="de_DE">
+	<key id="resend-confirmation-email">BestätigungsE-mail erneut zuschicken</key>
+	<key id="account-publication">Konto aktivieren</key>
+	<key id="menu">Kontomenü</key>
+</i18n>
