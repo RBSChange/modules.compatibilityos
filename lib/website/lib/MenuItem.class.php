@@ -78,6 +78,14 @@ class website_MenuItem
     {
         return $this->label;
     }
+    
+	/**
+	 * @deprecated
+	 */
+    public function getNavigationLabel()
+    {
+        return $this->label;
+    }
 
 	/**
 	 * @deprecated

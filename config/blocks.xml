@@ -115,7 +115,7 @@
 	<block type="modules_website_sidebar" hidden="true" label="&amp;modules.website.bo.blocks.Sidebar;" />
 	<block type="modules_website_threadOld" hidden="true" afterAll="true" />
     <block type="modules_website_edit" hidden="true" icon="edit" label="&amp;modules.website.bo.blocks.Edit;"/>
-    <block type="modules_website_menu" hidden="true" label="&amp;modules.website.bo.blocks.Menu;" cache="true" cache-key="page,cmpref"
+    <block type="modules_website_menu" hidden="true" dropModels="" label="&amp;modules.website.bo.blocks.Menu;" cache="true" cache-key="page,cmpref"
 		cache-deps="modules_website/menu,[modules_website/menuitem],[modules_website/page],modules_website/pageexternal,[modules_website/topic],modules_website/website">
 		<parameters>
 			<parameter name="depth" type="Integer" default-value="1" />
