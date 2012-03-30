@@ -1,0 +1,51 @@
+<tal:block metal:define-macro="saleGlobalData">
+	<h4>${sale/getLabelAsHtml}</h4>
+	<tal:block tal:condition="configuration/getShowShareBlock" change:block="" module="sharethis" name="shareurl" url="${sale/getUrl}" title="${sale/getLabelAsHtml}" />
+	<p class="highlight">
+		<img tal:condition="sale/getHighlightingVisual" change:media="document sale/getHighlightingVisual; format 'modules.privatesales.frontoffice/sale-hightlight'" />
+	</p>
+	<div tal:condition="sale/getPublishedCategoryCount">
+		<strong>${trans: m.privatesales.fo.categories,ucf,lab}</strong>
+		<ul class="categories">
+			<li tal:repeat="item sale/getPublishedCategoryArray">${item/getLabelAsHtml}</li>
+		</ul>
+	</div>
+	<div tal:condition="sale/getPublishedTargetCount">
+		<strong>${trans: m.privatesales.fo.targets,ucf,lab}</strong>
+		<ul class="targets">
+			<li tal:repeat="item sale/getPublishedTargetArray">${item/getLabelAsHtml}</li>
+		</ul>
+	</div>
+</tal:block>
+
+<h3 change:h="">${trans: m.privatesales.fo.current-sales,ucf}</h3>
+<ul class="current-sales" tal:condition="currentSales">
+	<li tal:repeat="sale currentSales">
+		<tal:block metal:use-macro="saleGlobalData"></tal:block>
+		<p class="normal">
+			${trans: m.privatesales.fo.to,ucf} <tal:block change:datetime="sale/getSaleEndDate" />
+		</p>
+		<p class="normal buttons">
+					<a tal:condition="sale/getTrailer" class="button" change:actionlink="" block="privatesales_salePreview" cmpref="${sale/getId}">${trans: m.privatesales.fo.view-trailer,ucf}</a>
+			<a class="button" change:link="document sale; catalogParam[shopId] shop/getId">${trans: m.privatesales.fo.access-sale,ucf}</a>
+		</p>
+	</li>			
+</ul>
+<p class="normal" tal:condition="not: currentSales">${trans: m.privatesales.fo.no-sale-to-display,ucf}</p>
+
+<h3 change:h="">${trans: m.privatesales.fo.future-sales,ucf}</h3>
+<ul class="future-sales" tal:condition="futureSales">
+	<li tal:repeat="sale futureSales">
+		<tal:block metal:use-macro="saleGlobalData"></tal:block>
+		<p class="normal">
+			${trans: m.privatesales.fo.from,ucf} <tal:block change:datetime="sale/getSaleStartDate" />
+			${trans: m.privatesales.fo.to} <tal:block change:datetime="sale/getSaleEndDate" />
+		</p>
+		<p class="normal buttons">
+			<a tal:condition="sale/canAccess" class="button" change:link="document sale">${trans: m.privatesales.fo.access-sale,ucf}</a>
+			<a tal:condition="sale/canRegister" class="button"  change:actionlink="" block="privatesales_salePreview" action="Register" cmpref="${sale/getId}">${trans: m.privatesales.fo.register-for-this-sale,ucf}</a>
+			<a tal:condition="sale/getTrailer" class="button" change:actionlink="" block="privatesales_salePreview" cmpref="${sale/getId}">${trans: m.privatesales.fo.view-trailer,ucf}</a>
+		</p>
+	</li>
+</ul>
+<p class="normal" tal:condition="not: futureSales">${trans: m.privatesales.fo.no-sale-to-display,ucf}</p>

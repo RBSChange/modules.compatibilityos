@@ -24,6 +24,15 @@
 		</parameters>
 	</block>
 
+	<!-- Catalog -->
+	<block type="modules_catalog_TopShelvesMenu" icon="menu" label="&amp;modules.catalog.bo.general.block.TopShelvesMenu;">
+		<parameters>
+			<parameter name="maxlevel" type="Integer" min-occurs="1" default-value="1">
+				<constraints>min:1</constraints>
+			</parameter>
+		</parameters>
+	</block>
+
 	<!-- Contactcard -->
 	<block type="modules_contactcard_detail" icon="contactcard" label="&amp;modules.contactcard.bo.blocks.Detail;" />
 
@@ -33,7 +42,7 @@
 	<block type="modules_customer_AccountPublication" icon="status-detail" label="&amp;modules.customer.bo.blocks.Account-publication;" hidden="true" />
 	
 	<!-- FAQ -->
-	<block type="modules_faq_contextuallist" icon="list-block" label="&amp;modules.faq.bo.blocks.contextualList.title;" hidden="true">
+	<block type="modules_faq_contextuallist" icon="list-block" hidden="true">
 		<parameters>
 			<parameter name="order" type="String" min-occurs="1" default-value="manual" fieldtype="dropdownlist" hidehelp="true">
 				<fieldlistitem value="manual" labeli18n="modules.faq.bo.general.Manual" />
@@ -48,7 +57,7 @@
 			</parameter>
 		</parameters>
 	</block>
-	<block type="modules_faq_topic" icon="list-block" label="&amp;modules.faq.bo.blocks.topic.Title;" hidden="true">
+	<block type="modules_faq_topic" icon="list-block" hidden="true">
 		<parameters>
 			<parameter name="order" type="String" min-occurs="1" default-value="manual" fieldtype="dropdownlist" hidehelp="true">
 				<fieldlistitem value="manual" labeli18n="modules.faq.bo.general.Manual" />
@@ -61,6 +70,15 @@
 			<parameter name="nbItemsPerPage" type="Integer" min-occurs="1" default-value="10" hidehelp="true">
 				<constraints>min:1</constraints>
 			</parameter>
+		</parameters>
+	</block>
+	
+	<!-- Marketing -->
+	<block type="modules_marketing_animation" hidden="true" icon="animation" dropModels="">
+		<parameters>
+			<parameter name="addrssfeed" type="Boolean" default-value="true" />
+			<parameter name="displaytype" type="String" list-id="modules_marketing/animationdisplay" default-value="normal" />
+			<parameter name="usetypetitle" type="Boolean" default-value="false" />
 		</parameters>
 	</block>
 	

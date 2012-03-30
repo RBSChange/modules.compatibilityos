@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<script>
+	<binding fileName="modules/list/persistentdocument/import/list_binding.xml" />
+	
+	<systemfolder module="list" relatedmodule="website">
+		<dynamiclist listid="modules_website/markerstype"
+			label="Liste des types de marqueur" description="Liste des types de marqueur">
+		</dynamiclist>
+	</systemfolder>
+</script>

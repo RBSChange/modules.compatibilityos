@@ -1,0 +1,54 @@
+.ecom-block li.picture{
+	text-align: center;
+}
+.ecom-block p.all-products{
+	padding: 0 10px 10px 10px;
+	text-align: right;
+}
+
+.ecom-block.basic{
+	width: 100%;
+	padding: 0;
+	color: #000;
+	margin-bottom: 16px;
+}
+
+.ecom-block.basic.normal,
+.ecom-block.basic.small{
+	width: 141px;
+}
+
+.ecom-block.basic ul{
+	padding: 10px;
+}
+
+.ecom-block.basic.content{
+	background-color: #eeeeee;
+}
+.ecom-block.basic a.link,
+.ecom-block.basic a.link:hover{
+	color: #696a12;
+}
+
+.ecom-block.basic h3.title{
+	margin: 0;
+	padding: 10px;
+}
+.ecom-block.basic li.priceht{
+	color: #fff;
+	font-size: 2.2em;
+	display: inline;
+}
+.ecom-block.basic li.pricettc{
+	color: #fff;
+	font-size: 2.2em;
+	display: inline;
+}
+.ecom-block.basic li.priceht del{
+	color: #fff;
+	font-size: 0.6em;
+}
+.ecom-block.basic li.pricettc del{
+	color: #fff;
+	font-size: 0.6em;
+}

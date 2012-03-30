@@ -1,0 +1,20 @@
+<h2 change:h="" id="private-sales-list">${shop/getLabelAsHtml}</h2>
+
+<div class="filters" tal:condition="php: configuration.getShowCategoryFilter() || configuration.getShowTargetFilter()">
+	<form action="#private-sales-list" method="post" change:form="">
+		<strong>${trans: m.privatesales.fo.filter,ucf,lab}</strong>
+		<ol>
+			<li tal:condition="configuration/getShowCategoryFilter">
+				<label class="invisible"  name="category">${trans: m.privatesales.fo.categories,ucf}</label>
+                <select change:selectinput="" name="category" listId="modules_privatesales/categories" default-value="${filteredCategory}"></select>
+			</li>
+			<li tal:condition="configuration/getShowTargetFilter">
+				<label class="invisible"  name="target">${trans: m.privatesales.fo.targets,ucf}</label>
+                <select change:selectinput="" name="target" listId="modules_privatesales/targets" default-value="${filteredTarget}"></select> 
+			</li>
+		</ol>
+		<input class="button" change:submit="" name="filter" value="${trans: m.privatesales.fo.ok,ucf}" />
+	</form>
+</div>
+
+<tal:block change:include="module 'privatesales'; template 'Privatesales-Inc-Sales-List'; type 'html'; transmitAll 'true'" />

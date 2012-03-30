@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.catalog.frontoffice" lcid="fr_FR">
+  <key id="add-to-favorite-success-one">Le produit {label} a bien été ajouté aux favoris.</key>
+  <key id="add-to-favorite-success-several">Les produits {firstLabels} et {lastLabel} ont bien été ajoutés aux favoris.</key>
+  <key id="add-to-favorite-error-one">Le produit {label} n'a pas pu être ajouté aux favoris.</key>
+  <key id="add-to-favorite-error-several">Les produits {firstLabels} et {lastLabel} n'ont pas pu être ajoutés aux favoris.</key>
+  <key id="add-to-cart-success-one">le produit {label} a bien été ajouté à votre panier.</key>
+  <key id="add-to-cart-success-several">les produits {firstLabels} et {lastLabel} ont bien été ajoutés à votre panier.</key>
+  <key id="add-to-cart-error-one">le produit {label} n'a pas pu être ajouté à votre panier.</key>
+  <key id="add-to-cart-error-several">les produits {firstLabels} et {lastLabel} n'ont pas pu être ajoutés à votre panier.</key>
+</i18n>

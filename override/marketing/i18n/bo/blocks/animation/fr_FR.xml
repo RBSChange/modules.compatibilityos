@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.marketing.bo.blocks.animation" lcid="fr_FR">
+  <key id="title">animation commerciale</key>
+  <key id="displaytype">type d'affichage</key>
+  <key id="displaytype-help">type d'affichage</key>
+  <key id="usetypetitle">Titre par défaut</key>
+  <key id="usetypetitle-help">Utilisation du titre par défaut au lieu du libellé de l'animation</key>
+  <key id="addrssfeed">Ajouter un flux RSS</key>
+</i18n>

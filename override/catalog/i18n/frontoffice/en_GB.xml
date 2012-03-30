@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<i18n baseKey="m.catalog.frontoffice" lcid="en_GB">
+  <key id="add-to-cart-error-one">The product "{label}" could not be added to your basket.</key>
+  <key id="add-to-cart-error-several">the {firstLabels} and {lastLabel} products could not be added to your basket.</key>
+  <key id="add-to-cart-success-one">The {label} product has been successfully added to your basket.</key>
+  <key id="add-to-cart-success-several">the {firstLabels} and {lastLabel} products have been successfully added to your basket.</key>
+  <key id="add-to-favorite-error-one">The {label} product could not be added to my favourite products.</key>
+  <key id="add-to-favorite-error-several">the {firstLabels} and {lastLabel} products could not be added to my favourite products.</key>
+  <key id="add-to-favorite-success-one">the {label} product has been successfully added to my favourite products.</key>
+  <key id="add-to-favorite-success-several">the {firstLabels} and {lastLabel} products have been successfully added to my favourite products.</key>
+</i18n>
