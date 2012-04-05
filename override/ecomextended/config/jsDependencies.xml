@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scripts>
+	<script name="modules.ecomextended.lib.js.searchform-completion">
+		<dependencies>
+			<dependency name="modules.solrsearch.lib.js.jquery-autocomplete" />
+		</dependencies>
+	</script>
+	<script name="modules.ecomextended.lib.js.searchresultsfacets">
+		<dependencies>
+			<dependency name="modules.website.lib.js.jquery" />
+		</dependencies>
+	</script>
+</scripts>

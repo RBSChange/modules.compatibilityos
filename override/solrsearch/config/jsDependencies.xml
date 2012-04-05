@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scripts>
+	<!-- JQuery autocomplete: http://plugins.jquery.com/project/autocomplete -->
+	<script name="modules.solrsearch.lib.js.jquery-autocomplete">
+		<dependencies>
+			<dependency name="modules.solrsearch.lib.js.jquery-bgiframe" />
+			<dependency name="modules.solrsearch.lib.js.jquery-ajaxqueue" />
+			<dependency name="modules.solrsearch.lib.js.thickbox" />
+		</dependencies>
+	</script>
+	<script name="modules.solrsearch.lib.js.jquery-bgiframe">
+		<dependencies>
+			<dependency name="modules.website.lib.js.jquery" />
+		</dependencies>
+	</script>
+	<script name="modules.solrsearch.lib.js.jquery-ajaxqueue">
+		<dependencies>
+			<dependency name="modules.website.lib.js.jquery" />
+		</dependencies>
+	</script>
+	<script name="modules.solrsearch.lib.js.thickbox" />
+</scripts>
