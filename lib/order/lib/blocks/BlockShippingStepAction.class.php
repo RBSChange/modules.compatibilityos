@@ -1,6 +1,6 @@
 <?php
 /**
- * @package modules.order.lib.blocks
+ * @deprecated
  */
 class order_BlockShippingStepAction extends order_BlockAbstractProcessStepAction
 {
