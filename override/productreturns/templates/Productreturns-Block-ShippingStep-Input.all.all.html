@@ -1,0 +1,43 @@
+<div class="modules-order">
+	<div class="orderprocess shipping">
+		<tal:block change:include="module 'productreturns'; template 'Productreturns-Inc-Process-NavigationTop'; type 'html'; process process" />	
+		<form change:form="beanName address">
+			<ul change:errors=""></ul>
+			<h3 change:h="">${trans:m.order.document.shippingstepbean.delivery-address-legend,ucf}</h3>
+			<p>${trans:m.order.document.shippingstepbean.delivery-address-text,ucf}</p>
+			<ol>
+				<li><input change:field="name titleid" /></li>
+				<li><input change:field="name firstname" size="30" /></li>
+				<li><input change:field="name lastname" size="30" /></li>
+				<li><input change:field="name addressLine1" size="30" /></li>
+				<li><input change:field="name addressLine2" size="30" /></li>
+				<li><input change:field="name addressLine3" size="30" /></li>
+				<li><input change:field="name zipCode" size="30" /></li>
+				<li><input change:field="name city" size="30" /></li>
+				<li><input change:field="name province" size="30" /></li>
+				<li><input change:selectinput="name countryid" listId="modules_customer/shippingcountry" labeled="true" required="true" /></li>
+				<li><input change:field="name company" size="30" /></li>
+				<li><input change:field="name email" size="30" /></li>
+				<li><input change:field="name phone" size="30" /></li>
+				<li><input change:field="name fax" size="30" /></li>
+			</ol>
+			<br />
+			<div tal:condition="customer/getAddressCount">
+				<span>${trans:m.order.document.shippingstepbean.registered-address-text,ucf,lab}</span>
+				<select name="productreturnsParam[registeredaddress]">
+					<option value="0">${trans:m.order.document.shippingstepbean.registered-address-choose,ucf}</option>
+					<option tal:repeat="addr customer/getAddressArray" value="${addr/getId}">${addr/getLabel}</option>
+				</select>
+				<input class="button" change:submit="name UseRegisteredAddress" label="${trans:m.order.document.shippingstepbean.registered-address-select,ucf,attr}" />
+			</div>
+			<br />
+			<div class="cleaner"></div>
+			<p class="buttons">
+				<input change:field="name beanId" hidden="true" />
+				<input class="button" change:submit="name Select" label="${trans:m.order.document.shippingstepbean.select,ucf,attr}" />
+			</p>
+		</form>
+		<br />
+		<a class="link" change:actionlink="" block="productreturns_returnsList" cmpref="${return/getOrder/getId}">${trans:m.productreturns.fo.back-to-returns-list,ucf}</a>
+	</div>
+</div>

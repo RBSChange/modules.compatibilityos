@@ -1,0 +1,32 @@
+<div class="modules-order">
+	<div class="orderprocess confirm">
+		<tal:block change:include="module 'productreturns'; template 'Productreturns-Inc-Process-NavigationTop'; type 'html'; process process" />	
+		
+		<h3 change:h="">${trans:m.productreturns.fo.return-number,ucf}${return/getLabelAsHtml} ${trans:m.productreturns.fo.on-order} ${return/getOrder/getOrderNumber}</h3>
+		<h4 change:h="">${trans:m.productreturns.fo.shippingaddress,ucf}</h4>
+		<a class="link" change:actionlink="" block="productreturns_shippingStep">${trans:m.productreturns.fo.update-shipping-address,ucf}</a>
+		<ol class="address" tal:define="address return/getReshipmentAddress">
+			<li>${address/getTitle/getLabelAsHtml} ${address/getFirstnameAsHtml} ${address/getLastnameAsHtml}</li>
+			<li>${address/getAddressLine1AsHtml}</li>
+			<li tal:condition="address/getAddressLine2">${address/getAddressLine2AsHtml}</li>
+			<li tal:condition="address/getAddressLine3">${address/getAddressLine3AsHtml}</li>
+			<li>${address/getZipCodeAsHtml} ${address/getCityAsHtml}</li>
+			<li tal:condition="address/getProvince">${address/getProvinceAsHtml}</li>
+			<li>${address/getCountry/getLabelAsHtml}</li>
+			<li tal:condition="address/getPhone">${address/getPhoneAsHtml}</li>
+			<li tal:condition="address/getFax">${address/getFaxAsHtml}</li>
+		</ol>
+		<br />
+		<div class="cleaner"></div>
+		<h4 change:h="">${trans:m.productreturns.fo.reshipment-fees,ucf}</h4>
+		<div class="payment-information-block">
+			<dl>
+				<dd class="pricetotal">${trans:m.order.frontoffice.total-withtax-abr,ucf,lab}</dd>
+				<dt class="pricetotal">${bill/getAmountFormated}</dt>
+			</dl>
+		</div>
+		<div class="cleaner"></div>
+		<tal:block change:block="" name="payment" module="payment" billid="${bill/getId}" />
+		<a class="link" change:actionlink="" block="productreturns_billingStep">${trans:m.order.frontoffice.back-to-previous-step,ucf}</a>
+	</div>
+</div>

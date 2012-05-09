@@ -1,7 +1,0 @@
-<h1 tal:condition="blockTitle" change:h="">
-	${blockTitle}
-</h1>
-
-<tal:block change:block="" module="event" name="BaseeventCalendar" date="${date}" __filterByModel="${configuration/getFilterByModel" __includedModels="${configuration/getIncludedModels}" />
-
-<tal:block change:include="type 'html'; transmitAll 'true'" module="event" template="Event-Inc-Baseevent-List" />

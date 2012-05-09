@@ -1,9 +1,0 @@
-<tal:block tal:condition="php: docs AND (paginationPosition == 'top' || paginationPosition == 'both')" change:paginator="docs" />
-
-<ul class="document-list" tal:condition="docs">
-	<li tal:repeat="doc docs" class="${php: repeat.doc.odd ? 'odd' : 'even'}">
-		<tal:block change:include="type 'html'; transmitAll 'true'" module="${doc/getListItemTemplateModule}" template="${doc/getListItemTemplateName}" />
-	</li>
-</ul>
-
-<tal:block tal:condition="php: docs AND (paginationPosition == 'bottom' || paginationPosition == 'both')" change:paginator="docs" />

@@ -1,0 +1,21 @@
+<div class="modules-order">
+	<div class="orderprocess confirm">
+		<tal:block change:include="module 'productreturns'; template 'Productreturns-Inc-Process-NavigationTop'; type 'html'; process process" />	
+			
+		<h3 change:h="">${trans:m.productreturns.fo.return-number,ucf}${return/getLabelAsHtml} ${trans:m.productreturns.fo.on-order} <a change:link="document return/getOrder">${return/getOrder/getOrderNumber}</a></h3>
+		<div class="payment-information-block" id="payment">
+			<dl>
+				<dd class="pricetotal">${trans:m.order.frontoffice.total-withtax-abr,ucf,lab}</dd>
+				<dt class="pricetotal">${bill/getAmountFormated}</dt>
+			</dl>
+		</div>
+		<div class="cleaner"></div>
+		<tal:block class="errors" tal:condition="not: bill">
+				<h3 change:h="">${trans:m.order.frontoffice.payment-failed,ucf}</h3>
+				<p><strong class="error">${trans:m.order.frontoffice.payment-failed-text,ucf}</strong></p>
+		</tal:block>
+		<tal:block tal:condition="bill">
+			<tal:block change:block="" name="payment" module="payment" billid="${bill/getId}" />
+		</tal:block>
+	</div>
+</div>

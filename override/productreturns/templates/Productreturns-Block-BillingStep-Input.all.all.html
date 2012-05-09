@@ -1,0 +1,40 @@
+<div class="modules-order">
+	<div class="orderprocess billing">
+		<tal:block change:include="module 'productreturns'; template 'Productreturns-Inc-Process-NavigationTop'; type 'html'; process process" />	
+		<form change:form="beanName bill">
+			<ul change:errors=""></ul>		
+			<p>${trans:m.order.document.billingstepbean.transaction-amount-overview-text,ucf}</p>
+			<br />
+			<div class="payment-information-block" id="payment" tal:define="shop cart/getShop">
+				<h4 change:h="">${trans:m.order.document.billingstepbean.transaction-amount-overview-head,ucf}</h4>
+				<dl>
+					<dd class="pricetotal">${trans:m.order.frontoffice.total-withtax-abr,ucf,lab}</dd>
+					<dt class="pricetotal">${bill/getAmountFormated}</dt>
+				</dl>
+			</div>
+
+			<h3 change:h="">${trans:m.order.document.billingstepbean.mops-legend,ucf}</h3>
+			<tal:block tal:define="connectors return/getAvailablePaymentConnectors">
+				<p class="error" tal:condition="not: connectors">${trans:m.order.document.billingstepbean.no-valid-mop,ucf}</p>
+				<tal:block tal:condition="connectors">
+					<ol id="paymentselector" style="clear: both">
+						<li tal:repeat="connector connectors">
+							<tal:block tal:define="selected php: bill.isSelectedConnector(connector, repeat.connector.start)">
+								<input tal:condition="selected" checked="checked" id="mode_${connector/getId}" 
+									type="radio" name="productreturnsParam[paymentConnectorId]" value="${connector/getId}" />
+								<input tal:condition="not:selected" id="mode_${connector/getId}" 
+									type="radio" name="productreturnsParam[paymentConnectorId]" value="${connector/getId}" />
+								<label class="nocmx" for="mode_${connector/getId}">${connector/getSelectionAsHtml}</label>
+							</tal:block>
+						</li>
+					</ol>
+					<p class="buttons">
+						<input change:field="name beanId" hidden="true" />
+						<input class="button" change:submit="name Select" label="${trans:m.order.document.billingstepbean.select,ucf,attr}" />				
+					</p>
+				</tal:block>
+			</tal:block>
+		</form>
+		<a class="link" change:actionlink="" block="productreturns_shippingStep">${trans:m.order.frontoffice.back-to-previous-step,ucf}</a>
+	</div>
+</div>
