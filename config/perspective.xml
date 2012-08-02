@@ -52,10 +52,6 @@
 	</models>
 	<toolbar>
 		<toolbarbutton name="edit" />
-		<toolbarbutton name="delete" />
-		<toolbarbutton name="activate" />
-		<toolbarbutton name="deactivated" />
-		<toolbarbutton name="reactivate" />
 	</toolbar>
 	<actions>
 		<action name="refresh" single="true" icon="refresh" label="&amp;modules.uixul.bo.actions.Refresh;" />
